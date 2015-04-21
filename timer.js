@@ -1,4 +1,3 @@
-
 function getAllIndexes(arr, val) {
     var indexes = [], i;
     for(i = 0; i < arr.length; i++)
@@ -154,41 +153,36 @@ $('#time').on('touchstart', function(){
 
 //stats
 $('#stats').click(function(){
-  if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 0){
-    var dup = times[sn].slice(0);
-    dup.splice(dup.indexOf('DNF'), 1);
-    $('#timelist').html(times[sn].join());
-    $('#sm').text(Math.floor(dup.average() * 1000) / 1000);
-    $('#pb').text(Math.min.apply(Math, dup));
-    $('#pw').text(Math.max.apply(Math, dup));
-    if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 2){
-      var dup = times[sn].slice(0);
-    	dup.splice(dup.indexOf('DNF'), 1);
-      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
-      $('#sa').text(Math.floor(dup.average() * 1000) / 1000);
+  if(times[sn].length > 0){
+      $('#timelist').html(times[sn].join());
+      $('#sm').text(Math.floor(times[sn].average() * 1000) / 1000);
+      $('#pb').text(Math.min.apply(Math, times[sn]));
+      $('#pw').text(Math.max.apply(Math, times[sn]));
+      if(times[sn].length > 2){
+        var dup = times[sn].slice(0);
+        dup.splice(dup.indexOf('DNF'), 1);
+        dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
+        $('#sa').text(Math.floor(dup.average() * 1000) / 1000);
+      }
+      if(times[sn].length > 4){
+        var dup = times[sn].slice(times[sn].length - 5);
+        dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
+        $('#aof').text(Math.floor(dup.average() * 1000) / 1000);
+      }
+      if(times[sn].length > 11){
+        var dup = times[sn].slice(times[sn].length - 12);
+        dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
+        $('#aot').text(Math.floor(dup.average() * 1000) / 1000);
+      }
+      if(times[sn].length > 99){
+        var dup = times[sn].slice(times[sn].length - 100);
+        dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
+        $('#aoh').text(Math.floor(dup.average() * 1000) / 1000);
+      }
+    } else {
+      $('#timelist').text('None submitted.');
+      $('.modal-body span:not(#timelist, .a)').text('DNF');
     }
-    if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 4){
-      var dup = times[sn].slice(times[sn].length - 5);
-      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
-      $('#aof').text(Math.floor(dup.average() * 1000) / 1000);
-    }
-    if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 11){
-      var dup = times[sn].slice(times[sn].length - 12);
-      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
-      $('#aot').text(Math.floor(dup.average() * 1000) / 1000);
-    }
-    if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 99){
-      var dup = times[sn].slice(times[sn].length - 100);
-      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
-      $('#aoh').text(Math.floor(dup.average() * 1000) / 1000);
-    }
-    if(getAllIndexes(times[sn], 'DNF').length > 1){
-    	$('.modal-body span:not(#timelist, .a)').text('DNF');
-    }
-  } else {
-    $('#timelist').text('None submitted.');
-    $('.modal-body span:not(#timelist, .a)').text('DNF');
-  }
 });
 
 //reset
@@ -239,36 +233,31 @@ if(window.innerHeight < window.innerWidth && isMobile.any()){
 }
 $(window).on('orientationchange', function(){
   if(window.innerHeight < window.innerWidth && isMobile.any()){
-    if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 0){
-      var dup = times[sn].slice(0);
-      dup.splice(dup.indexOf('DNF'), 1);
+    if(times[sn].length > 0){
       $('#timelist').html(times[sn].join());
-      $('#sm').text(Math.floor(dup.average() * 1000) / 1000);
-      $('#pb').text(Math.min.apply(Math, dup));
-      $('#pw').text(Math.max.apply(Math, dup));
-      if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 2){
+      $('#sm').text(Math.floor(times[sn].average() * 1000) / 1000);
+      $('#pb').text(Math.min.apply(Math, times[sn]));
+      $('#pw').text(Math.max.apply(Math, times[sn]));
+      if(times[sn].length > 2){
         var dup = times[sn].slice(0);
         dup.splice(dup.indexOf('DNF'), 1);
         dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
         $('#sa').text(Math.floor(dup.average() * 1000) / 1000);
       }
-      if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 4){
+      if(times[sn].length > 4){
         var dup = times[sn].slice(times[sn].length - 5);
         dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
         $('#aof').text(Math.floor(dup.average() * 1000) / 1000);
       }
-      if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 11){
+      if(times[sn].length > 11){
         var dup = times[sn].slice(times[sn].length - 12);
         dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
         $('#aot').text(Math.floor(dup.average() * 1000) / 1000);
       }
-      if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 99){
+      if(times[sn].length > 99){
         var dup = times[sn].slice(times[sn].length - 100);
         dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
         $('#aoh').text(Math.floor(dup.average() * 1000) / 1000);
-      }
-      if(getAllIndexes(times[sn], 'DNF').length > 1){
-        $('.modal-body span:not(#timelist, .a)').text('DNF');
       }
     } else {
       $('#timelist').text('None submitted.');
