@@ -74,11 +74,7 @@ body h2 {
 <div class="container text-center">
   <div class="jumbotron text-center">
     <h1 id="time">0.000</h1>
-    <button id="ins" class="btn btn-success btn-lg dis">Start WCA (15-sec) Inspection</button><br/>
-    <div class="btn-group">
-      <div class="btn btn-warning plus2">+2</div>
-      <div class="btn btn-danger dnf">DNF</div>
-    </div>
+    <button id="ins" class="btn btn-success btn-lg dis">Start WCA (15-sec) Inspection</button>
     <hr class="dis"/>
     <p id="scramble" class="dis"></p>
   </div>
@@ -283,12 +279,14 @@ $('#time').on('touchstart', function(){
 $('#stats').click(function(){
   if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 0){
     var dup = times[sn].slice(0);
+    dup.splice(dup.indexOf('DNF'), 1);
     $('#timelist').html(times[sn].join());
     $('#sm').text(Math.floor(dup.average() * 1000) / 1000);
     $('#pb').text(Math.min.apply(Math, dup));
     $('#pw').text(Math.max.apply(Math, dup));
     if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 2){
       var dup = times[sn].slice(0);
+    	dup.splice(dup.indexOf('DNF'), 1);
       dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
       $('#sa').text(Math.floor(dup.average() * 1000) / 1000);
     }
@@ -366,12 +364,14 @@ $(window).on('orientationchange', function(){
   if(window.innerHeight < window.innerWidth && isMobile.any()){
     if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 0){
       var dup = times[sn].slice(0);
+      dup.splice(dup.indexOf('DNF'), 1);
       $('#timelist').html(times[sn].join());
-      $('#sm').text(Math.floor(dup.splice(dup.indexOf('DNF'), 1).average() * 1000) / 1000);
-      $('#pb').text(Math.min.apply(Math, dup.splice(dup.indexOf('DNF'), 1)));
-      $('#pw').text(Math.max.apply(Math, dup.splice(dup.indexOf('DNF'), 1)));
+      $('#sm').text(Math.floor(dup.average() * 1000) / 1000);
+      $('#pb').text(Math.min.apply(Math, dup));
+      $('#pw').text(Math.max.apply(Math, dup));
       if(times[sn].length - getAllIndexes(times[sn], 'DNF').length > 2){
         var dup = times[sn].slice(0);
+        dup.splice(dup.indexOf('DNF'), 1);
         dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
         $('#sa').text(Math.floor(dup.average() * 1000) / 1000);
       }
@@ -401,16 +401,6 @@ $(window).on('orientationchange', function(){
   } else {
     $('#mod').modal('hide');
   }
-});
-
-//penalties
-$('.plus2').click(function(){
-  times[sn][times[sn].length - 1] += 2;
-  $('.plus2, .dnf').fadeOut();
-});
-$('.dnf').click(function(){
-  times[sn][times[sn].length - 1] = 'DNF';
-  $('.plus2, .dnf').fadeOut();
 });
 
 //cookie store
