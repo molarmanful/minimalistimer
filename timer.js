@@ -190,10 +190,10 @@ $('#reset').on('dblclick doubletap', function(){
   times[sn] = [];
   $('#mod').modal('hide');
 });
-/*$('#resl').on('dblclick doubletap', function(){
+$('#resl').on('dblclick doubletap', function(){
   times[sn].splice(times[sn].length - 1, 1);
   $('#mod').modal('hide');
-});*/
+});
 
 //change events
 $('#st li a').click(function(){
