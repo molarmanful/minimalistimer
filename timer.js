@@ -191,7 +191,7 @@ $('#reset').on('dblclick doubletap', function(){
   $('#mod').modal('hide');
 });
 $('#resl').on('dblclick doubletap', function(){
-  times[sn].splice(-1, 1);
+  times[sn].pop();
   $('#mod').modal('hide');
 });
 
