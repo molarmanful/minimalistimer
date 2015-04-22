@@ -126,7 +126,11 @@ scramblers["pyram"].initialize(null, Math);
 scramblers["sq1"].initialize(null, Math);
 scramblers["clock"].initialize(null, Math);
 $('#scramble').html(scramblers["333"].getRandomScramble().scramble_string);
-window.scrollTo(0, 1);
+//hide mobile toolbar
+setTimeout(function(){
+	// Hide the address bar!
+	window.scrollTo(0, 1);
+}, 0);
 
 //inspection time
 var ins;
