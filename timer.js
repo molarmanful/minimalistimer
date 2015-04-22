@@ -187,7 +187,7 @@ $('#stats').click(function(){
 
 //reset
 $('#reset').on('dblclick doubletap', function(){
-  times[sn] = [];
+  times[sn].length = 0;
   $('#mod').modal('hide');
 });
 $('#resl').on('dblclick doubletap', function(){
