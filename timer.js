@@ -101,7 +101,7 @@ Array.prototype.sum = Array.prototype.sum || function(){
 Array.prototype.average = Array.prototype.average || function(){
   return this.sum() / (this.length || 1);
 }
-var times = [[],[],[],[],[],[],[],[],[],[]];
+var times = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
 var event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock'];
 
 //cookie get
@@ -218,10 +218,14 @@ $('#resl').click(function(){
 });
 
 //change events
-$('#st li a').click(function(){
+$('#st li a:not(.nosel)').click(function(){
   st = $(this).attr('class');
   $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
   sn = event.indexOf(st);
+});
+$('.skewb').click(function(){
+  sn = 16;
+  $('#scramble').html(getskewboptscramble(0));
 });
 
 //change scramble
