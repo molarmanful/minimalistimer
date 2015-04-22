@@ -96,7 +96,7 @@ Array.prototype.average = Array.prototype.average || function(){
   return this.sum() / (this.length || 1);
 }
 var times = [[],[],[],[],[],[],[],[],[],[]];
-var event = ['222', '333', '444', '555', '666', '777', 'minx', 'pyram', 'sq1', 'clock'];
+var event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock'];
 
 //cookie get
 $.cookie.json = true;
@@ -110,8 +110,13 @@ var sn = 1;
 var timer_obj = new Timer(document.getElementById('time'));
 scramblers["222"].initialize(null, Math);
 scramblers["333"].initialize(null, Math);
+scramblers["333oh"].initialize(null, Math);
+scramblers["333bf"].initialize(null, Math);
+scramblers["333ft"].initialize(null, Math);
 scramblers["444"].initialize(null, Math);
+scramblers["444bf"].initialize(null, Math);
 scramblers["555"].initialize(null, Math);
+scramblers["555bf"].initialize(null, Math);
 scramblers["666"].initialize(null, Math);
 scramblers["777"].initialize(null, Math);
 scramblers["minx"].initialize(null, Math);
