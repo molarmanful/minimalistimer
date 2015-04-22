@@ -190,7 +190,7 @@ $('#reset').on('dblclick doubletap', function(){
   times[sn].length = 0;
   $('#mod').modal('hide');
 });
-$('#resl').on('dblclick doubletap', function(){
+$('#resl').click(function(){
   times[sn].pop();
   $('#mod').modal('hide');
 });
