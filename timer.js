@@ -128,8 +128,7 @@ scramblers["clock"].initialize(null, Math);
 $('#scramble').html(scramblers["333"].getRandomScramble().scramble_string);
 //hide mobile toolbar
 setTimeout(function(){
-	// Hide the address bar!
-	window.scrollTo(0, 1);
+  window.scrollTo(0, 1);
 }, 0);
 
 //inspection time
