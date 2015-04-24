@@ -6,7 +6,7 @@ CACHE MANIFEST
 index.html
 
 # CSS
-bootstrap.min.css
+https://bootswatch.com/lumen/bootstrap.min.css
 
 # JS
 jquery.min.js
