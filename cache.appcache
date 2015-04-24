@@ -1,0 +1,27 @@
+CACHE MANIFEST
+
+# Now you can time yourself OFFLINE!!! YEAH!!!
+
+# Main page
+index.html
+
+# CSS
+bootstrap.min.css
+
+# JS
+jquery.min.js
+bootstrap.min.js
+jquery.cookie.js
+jquery.finger.js
+scramble_222.js
+scramble_333.js
+scramble_NNN.js
+scramble_clock.js
+scramble_minx.js
+scramble_pyram.js
+scramble_sq1.js
+timer.js
+
+
+NETWORK:
+*
