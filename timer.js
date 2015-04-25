@@ -63,7 +63,7 @@ var event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '55
 
 //cookie get
 $.cookie.json = true;
-if($.cookie('times') != undefined){
+if($.cookie('times') != undefined && $.cookie('times').length == 15){
   times = $.cookie('times');
 }
 
