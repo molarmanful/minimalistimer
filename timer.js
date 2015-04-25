@@ -269,8 +269,8 @@ $(window).on('orientationchange', function(){
 
 //time submitting
 $('#subet').click(function(){
-  if(!isNaN($('#et').val())){
-    times[sn].push($('#et').val());
+  if(!isNaN(parseFloat($('#et').val()))){
+    times[sn].push(parseFloat($('#et').val()));
     updatestats();
   }
 });
