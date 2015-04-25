@@ -45,7 +45,7 @@ function updatestats(){
     }
   } else {
     $('#timelist').text('None submitted.');
-    $('.modal-body span:not(#timelist)').text('DNF');
+    $('.modal-body span:not(#timelist, .input-group-addon)').text('DNF');
   }
 }
 var Timer = function(DOM_element){
