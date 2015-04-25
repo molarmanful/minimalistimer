@@ -172,7 +172,7 @@ $(document).keyup(function(e){
       $('button, a').blur().attr('disabled', 'true');
     } else {
       record = false;
-    	$('.dis, .plus2, .dnf').fadeTo('fast', 1);
+    	$('.dis').fadeTo('fast', 1);
     	$('button, a').removeAttr('disabled');
       times[sn].push(parseFloat($('#time').text()));
     	$('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
@@ -191,7 +191,7 @@ $('#time').on('touchend', function(){
     $('button, a').blur().attr('disabled', 'true');
   } else {
     record = false;
-    $('.dis, .plus2, .dnf').fadeTo('fast', 1);
+    $('.dis').fadeTo('fast', 1);
     $('button, a').removeAttr('disabled');
     times[sn].push(parseFloat($('#time').text()));
     $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
@@ -264,6 +264,14 @@ $(window).on('orientationchange', function(){
     $('#mod').modal('show');
   } else {
     $('#mod').modal('hide');
+  }
+});
+
+//time submitting
+$('#subet').click(function(){
+  if(!isNaN($('#et').val())){
+    times[sn].push($('#et').val());
+    updatestats();
   }
 });
 
