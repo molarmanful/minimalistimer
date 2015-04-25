@@ -5,49 +5,6 @@ function getskewboptscramble(e){
  ss[0]+=b.join(" ")
 }
 */
-function updatestats(){
-  if(times[sn].length > 0){
-    $('#timelist').html(times[sn].join());
-    $('#sm').text(Math.floor(times[sn].average() * 1000) / 1000);
-    $('#pb').text(Math.min.apply(Math, times[sn]));
-    $('#pw').text(Math.max.apply(Math, times[sn]));
-    if(times[sn].length > 2){
-      var dup = times[sn].slice(0);
-      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
-      $('#sa').text(Math.floor(dup.average() * 1000) / 1000);
-    }
-    if(times[sn].length < 3){
-      $('#sa').text('DNF');
-    }
-    if(times[sn].length > 4){
-      var dup = times[sn].slice(times[sn].length - 5);
-      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
-      $('#aof').text(Math.floor(dup.average() * 1000) / 1000);
-    }
-    if(times[sn].length < 5){
-      $('#aof').text('DNF');
-    }
-    if(times[sn].length > 11){
-      var dup = times[sn].slice(times[sn].length - 12);
-      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
-      $('#aot').text(Math.floor(dup.average() * 1000) / 1000);
-    }
-    if(times[sn].length < 12){
-      $('#aot').text('DNF');
-    }
-    if(times[sn].length > 99){
-      var dup = times[sn].slice(times[sn].length - 100);
-      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
-      $('#aoh').text(Math.floor(dup.average() * 1000) / 1000);
-    }
-    if(times[sn].length < 100){
-      $('#aoh').text('DNF');
-    }
-  } else {
-    $('#timelist').text('None submitted.');
-    $('.modal-body span:not(#timelist, .input-group-btn)').text('DNF');
-  }
-}
 var Timer = function(DOM_element){
 
 	this.start_t = null;
@@ -279,3 +236,47 @@ window.onbeforeunload = function(){
   $.cookie('times', times);
 };
   
+//function for updating stuff
+function updatestats(){
+  if(times[sn].length > 0){
+    $('#timelist').html(times[sn].join());
+    $('#sm').text(Math.floor(times[sn].average() * 1000) / 1000);
+    $('#pb').text(Math.min.apply(Math, times[sn]));
+    $('#pw').text(Math.max.apply(Math, times[sn]));
+    if(times[sn].length > 2){
+      var dup = times[sn].slice(0);
+      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+      $('#sa').text(Math.floor(dup.average() * 1000) / 1000);
+    }
+    if(times[sn].length < 3){
+      $('#sa').text('DNF');
+    }
+    if(times[sn].length > 4){
+      var dup = times[sn].slice(times[sn].length - 5);
+      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+      $('#aof').text(Math.floor(dup.average() * 1000) / 1000);
+    }
+    if(times[sn].length < 5){
+      $('#aof').text('DNF');
+    }
+    if(times[sn].length > 11){
+      var dup = times[sn].slice(times[sn].length - 12);
+      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+      $('#aot').text(Math.floor(dup.average() * 1000) / 1000);
+    }
+    if(times[sn].length < 12){
+      $('#aot').text('DNF');
+    }
+    if(times[sn].length > 99){
+      var dup = times[sn].slice(times[sn].length - 100);
+      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+      $('#aoh').text(Math.floor(dup.average() * 1000) / 1000);
+    }
+    if(times[sn].length < 100){
+      $('#aoh').text('DNF');
+    }
+  } else {
+    $('#timelist').text('None submitted.');
+    $('.modal-body span:not(#timelist, .input-group-btn)').text('DNF');
+  }
+}
