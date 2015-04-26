@@ -221,11 +221,12 @@ function updatestats(){
   var m = average_time(str_array_to_time_array(times[sn]));
   var mt = m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
   var avg, avgt;
+  var sort = times[sn].sort();
   if(times[sn].length > 0){
     $('#timelist').html(times[sn].join());
     $('#sm').text(mt);
-    $('#pb').text(times[sn].sort()[0]);
-    $('#pw').text(times[sn].sort()[times[sn].length - 1]);
+    $('#pb').text(sort[0]);
+    $('#pw').text(sort[times[sn].length - 1]);
     if(times[sn].length > 2){
       var dup = times[sn].slice(0);
       dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
