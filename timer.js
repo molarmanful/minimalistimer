@@ -114,7 +114,7 @@ $(document).keyup(function(e){
       record = false;
     	$('.dis').fadeTo('fast', 1);
     	$('button, a').removeAttr('disabled');
-      times[sn].push(parseFloat($('#time').text()));
+      times[sn].push($('#time').text());
     	$('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
     }
   }
@@ -133,7 +133,7 @@ $('#time').on('touchend', function(){
     record = false;
     $('.dis').fadeTo('fast', 1);
     $('button, a').removeAttr('disabled');
-    times[sn].push(parseFloat($('#time').text()));
+    times[sn].push($('#time').text());
     $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
   }
 });
@@ -209,8 +209,8 @@ $(window).on('orientationchange', function(){
 
 //time submitting
 $('#subet').click(function(){
-  if(!isNaN(parseFloat($('#et').val()))){
-    times[sn].push(parseFloat($('#et').val()));
+  if($('#et').val().replace(/\d/g, '') == ':.'){
+    times[sn].push($('#et').val());
     updatestats();
   }
 });
