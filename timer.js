@@ -112,10 +112,10 @@ $(document).keyup(function(e){
       $('button, a').blur().attr('disabled', 'true');
     } else {
       record = false;
-    	$('.dis').fadeTo('fast', 1);
+	    $('.dis').fadeTo('fast', 1);
     	$('button, a').removeAttr('disabled');
       times[sn].push($('#time').text());
-    	$('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
+      $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
     }
   }
 });
@@ -163,10 +163,6 @@ $('#st li a:not(.nosel)').click(function(){
   st = $(this).attr('class');
   $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
   sn = event.indexOf(st);
-});
-$('.skewb').click(function(){
-  sn = 16;
-  $('#scramble').html(getskewboptscramble(0));
 });
 
 //change scramble
@@ -228,8 +224,8 @@ function updatestats(){
   if(times[sn].length > 0){
     $('#timelist').html(times[sn].join());
     $('#sm').text(mt);
-    $('#pb').text(Math.min.apply(Math, times[sn]));
-    $('#pw').text(Math.max.apply(Math, times[sn]));
+    $('#pb').text(times[sn].sort()[0]);
+    $('#pw').text(times[sn].sort()[times[sn].length - 1]);
     if(times[sn].length > 2){
       var dup = times[sn].slice(0);
       dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
