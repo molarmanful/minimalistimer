@@ -205,7 +205,7 @@ $(window).on('orientationchange', function(){
 
 //time submitting
 $('#subet').click(function(){
-  if($('#et').val().replace(/\d/g, '') == ':.'){
+  if($('#et').val().replace(/\d/g, '') == ':.' && $('#et').val().split(/:|\./g)[1].length <= 2 && $('#et').val().split(/:|\./g)[2].length <= 3){
     times[sn].push($('#et').val());
     updatestats();
   }
