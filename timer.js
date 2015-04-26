@@ -235,7 +235,7 @@ function updatestats(){
       dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
       avg = average_time(str_array_to_time_array(dup));
       avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
-      $('#sa').text(Math.floor(avgt);
+      $('#sa').text(avgt);
     }
     if(times[sn].length < 3){
       $('#sa').text('DNF');
@@ -245,7 +245,7 @@ function updatestats(){
       dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
       avg = average_time(str_array_to_time_array(dup));
       avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
-      $('#aof').text(Math.floor(avgt);
+      $('#aof').text(avgt);
     }
     if(times[sn].length < 5){
       $('#aof').text('DNF');
@@ -255,7 +255,7 @@ function updatestats(){
       dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
       avg = average_time(str_array_to_time_array(dup));
       avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
-      $('#aot').text(Math.floor(avgt);
+      $('#aot').text(avgt);
     }
     if(times[sn].length < 12){
       $('#aot').text('DNF');
@@ -265,7 +265,7 @@ function updatestats(){
       dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
       avg = average_time(str_array_to_time_array(dup));
       avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
-      $('#aoh').text(Math.floor(avgt);
+      $('#aoh').text(avgt);
     }
     if(times[sn].length < 100){
       $('#aoh').text('DNF');
