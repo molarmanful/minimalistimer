@@ -1,4 +1,4 @@
-var Timer=function(t){this.start_t=null,this.interval=null,this.DOM=t,this.toggle=function(){null==this.interval?this.start():this.end()},this.start=function(){this.start_t=new Date;var t=this,i=function(){t.update()};this.interval=setInterval(i,10)},this.end=function(){clearInterval(this.interval),this.interval=null},this.update=function(){var t=(new Date-this.start_t)/1e3,i=60>t?0:Math.floor(Math.floor(t)/60);t=(t%60).toFixed(3),this.DOM.innerHTML=i.toString()+":"+t}};
+var startTimer=function(t){this.start_t=null,this.interval=null,this.DOM=t,this.toggle=function(){null==this.interval?this.start():this.end()},this.start=function(){this.start_t=new Date;var t=this,i=function(){t.update()};this.interval=setInterval(i,10)},this.end=function(){clearInterval(this.interval),this.interval=null},this.update=function(){var t=(new Date-this.start_t)/1e3,i=60>t?0:Math.floor(Math.floor(t)/60);t=(t%60).toFixed(3),this.DOM.innerHTML=i.toString()+":"+t}};
 
 var str_to_time = function(time_str) {
   var pieces = time_str.split(/:|\./g);
@@ -58,7 +58,7 @@ if($.cookie('times') != undefined && $.cookie('times').length == 15){
 //timer and scramble initialization
 var st = "333";
 var sn = 1;
-var timer_obj = new Timer(document.getElementById('time'));
+var timer_obj = new startTimer(document.getElementById('time'));
 scramblers["222"].initialize(null, Math);
 scramblers["333"].initialize(null, Math);
 scramblers["333oh"].initialize(null, Math);
