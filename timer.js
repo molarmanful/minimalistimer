@@ -216,7 +216,7 @@ window.onbeforeunload = function(){
   $.cookie('times', times);
 };
   
-//function for updating stuff
+//function for updating stats
 function updatestats(){
   var m = average_time(str_array_to_time_array(times[sn]));
   var mt = m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
