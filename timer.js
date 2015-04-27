@@ -143,6 +143,21 @@ $('#time').on('touchstart', function(){
   }
 });
 
+//stackmat
+var timer = new Stackmat.Timer({
+  interval: 1000, 
+  signalReceived: function(state) {
+    if(state.isRunning()){
+      $("#time").text(state.getTimeAsString());
+    } else if (state.isReset()) {
+      $("#time").text('0:0.000');
+    } else {
+      $("#time").text(state.getTimeAsString());
+    }
+  }
+});
+timer.start();
+
 //stats
 $('#stats').click(function(){
   updatestats();
