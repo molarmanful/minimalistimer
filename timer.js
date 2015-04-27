@@ -144,8 +144,7 @@ $('#time').on('touchstart', function(){
 });
 
 //stackmat
-var timer = new Stackmat.Timer({
-  interval: 1000, 
+var timer = new Stackmat.Timer({ 
   signalReceived: function(state) {
     if(state.isRunning()){
       $("#time").text(state.getTimeAsString());
