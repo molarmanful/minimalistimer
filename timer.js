@@ -221,9 +221,9 @@ function updatestats(){
   var m = average_time(str_array_to_time_array(times[sn]));
   var mt = m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
   var avg, avgt;
-  var sort = times[sn].sort();
+  var sort = times[sn].slice(0).sort();
   if(times[sn].length > 0){
-    $('#timelist').html(times[sn].join('  '));
+    $('#timelist').html(times[sn].join('      '));
     $('#sm').text(mt);
     $('#pb').text(sort[0]);
     $('#pw').text(sort[times[sn].length - 1]);
