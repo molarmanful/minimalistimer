@@ -223,7 +223,7 @@ function updatestats(){
   var avg, avgt;
   var sort = times[sn].sort();
   if(times[sn].length > 0){
-    $('#timelist').html(times[sn].join());
+    $('#timelist').html(times[sn].join('  '));
     $('#sm').text(mt);
     $('#pb').text(sort[0]);
     $('#pw').text(sort[times[sn].length - 1]);
