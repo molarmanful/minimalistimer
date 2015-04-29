@@ -156,7 +156,7 @@ $('#reset').on('dblclick doubletap', function(){
 $('.timeitem').each(function(){
   $(this).on('dblclick doubletap', function(){
     $(this).remove();
-    times[sn].splice(times[sn][$('.timeitem').index($(this))], 1);
+    times[sn].splice($('.timeitem').index($(this)), 1);
     updatestats();
   });
 });
