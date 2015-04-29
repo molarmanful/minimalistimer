@@ -64,16 +64,15 @@
   <meta name="msapplication-TileImage" content="https://dl.dropboxusercontent.com/s/ptkes7psnnfqwja/mstile-144x144.png">
   <meta name="theme-color" content="#363636">
 
-  <style>
-html {
-  display: none;
-}
-body .jumbotron h1 {
+  <style>body .jumbotron h1 {
   font-size: 14.3vw;
 }
 body .jumbotron #time {
   width: 100%;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 body .jumbotron #scramble {
   font-size: 3.3vw;
@@ -94,6 +93,7 @@ body h2 {
 </head>
 
 <body>
+
 <nav class="navbar navbar-inverse dis">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -136,8 +136,8 @@ body h2 {
     <hr class="dis"/>
     <p id="scramble" class="dis"></p>
   </div>
-  <p class="text-center dis hidden-sm hidden-xs text-muted">Press the <kbd>spacebar</kbd> to star/stop the timer. Click the scramble to change it.</p>
-  <p class="text-center dis hidden-md hidden-lg text-muted">Press the display to start/stop the timer. Tap the scramble to change it. Change device orientation to landscape to show statistics.</p>
+  <p class="text-center dis hidden-sm hidden-xs">Press the <kbd>spacebar</kbd> to star/stop the timer. Click the scramble to change it.</p>
+  <p class="text-center dis hidden-md hidden-lg">Press the display to start/stop the timer. Tap the scramble to change it. Change device orientation to landscape to show statistics.</p>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom dis hidden-xs">
   <div class="container-fluid">
@@ -163,7 +163,7 @@ body h2 {
         </div>
         <br/>
         <button id="reset" class="btn btn-danger btn-sm">Double-click to delete ALL times for this event</button>
-        <button id="delete" class="btn btn-danger btn-sm" style="display:none">Double-click to delete selected time(s)</button>
+        <button id="resl" class="btn btn-danger btn-sm">Click to delete last time for this event</button>
         <hr/>
         <p>Times:<br/><span id="timelist">None submitted.</span></p>
         <hr/>
@@ -196,7 +196,6 @@ body h2 {
   <script src='jquery.cookie.js'></script>
   <script src='jquery.finger.js'></script>
   <script src='timer.js'></script>
-  <script src='https://rawgithub.com/LeaVerou/prefixfree/gh-pages/prefixfree.min.js'></script>
 
 </body>
 
