@@ -69,10 +69,7 @@
 }
 body .jumbotron #time {
   width: 100%;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 body .jumbotron #scramble {
   font-size: 3.3vw;
@@ -88,12 +85,29 @@ body .dnf {
 }
 body h2 {
   font-size: 2em !important;
+}
+#load {
+  z-index: 10000;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #363636;
+}
+#load img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }</style>
 
 </head>
 
 <body>
-
+<div id="load">
+  <img src="https://www.dropbox.com/s/2eyg6awijozza8w/android-chrome-192x192.png">
+</div>
 <nav class="navbar navbar-inverse dis">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -196,6 +210,7 @@ body h2 {
   <script src='jquery.cookie.js'></script>
   <script src='jquery.finger.js'></script>
   <script src='timer.js'></script>
+  <script src='https://rawgithub.com/LeaVerou/prefixfree/gh-pages/prefixfree.min.js'></script>
 
 </body>
 
