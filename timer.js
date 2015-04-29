@@ -221,6 +221,7 @@ $(window).load(function(){
   $('#subet').click(function(){
     if($('#et').val().replace(/\d/g, '') == ':.' && $('#et').val().split(/:|\./g)[1].length <= 2 && $('#et').val().split(/:|\./g)[1].length > 0 && $('#et').val().split(/:|\./g)[2].length <= 3){
       times[sn].push($('#et').val());
+      $('input').blur().val('');
       updatestats();
     }
   });
