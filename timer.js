@@ -153,14 +153,12 @@ $('#reset').on('dblclick doubletap', function(){
   times[sn].length = 0;
   updatestats();
 });
-$('#resl').click(function(){
-  times[sn].pop();
-  updatestats();
-});
-$('.timeitem').click(function(){
-  $(this).remove();
-  times[sn].splice(times[sn][$('.timeitem').index($(this))], 1);
-  updatestats();
+$('.timeitem').each(function(){
+  $(this).on('dblclick doubletap', function(){
+    $(this).remove();
+    times[sn].splice(times[sn][$('.timeitem').index($(this))], 1);
+    updatestats();
+  });
 });
 
 //change events
