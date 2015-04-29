@@ -54,7 +54,7 @@ var st = "333";
 var sn = 1;
 var timer_obj = new startTimer(document.getElementById('time'));
 
-$(document).ready(function(){
+$(window).load(function(){
 	scramblers["222"].initialize(null, Math);
   scramblers["333"].initialize(null, Math);
   scramblers["333oh"].initialize(null, Math);
