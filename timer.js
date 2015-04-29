@@ -153,13 +153,19 @@ $('#reset').on('dblclick doubletap', function(){
   times[sn].length = 0;
   updatestats();
 });
-$('.timeitem.btn-default').click(function(){
-  $(this).addClass('btn-warning').removeClass('btn-default');
-  $('#delete').fadeIn('fast');
+
+//delete times
+$('.timeitem.btn-default').each(function(){
+	$(this).click(function(){
+    $(this).addClass('btn-warning').removeClass('btn-default');
+    $('#delete').fadeIn('fast');
+  });
 });
 $('.timeitem.btn-warning').click(function(){
-  $(this).removeClass('btn-warning').addClass('btn-default');
-  $('#delete').fadeOut('fast');
+  $(this).click(function(){
+    $(this).removeClass('btn-warning').addClass('btn-default');
+    $('#delete').fadeOut('fast');
+  });
 });
 $('#delete').on('dblclick doubletap', function(){
   $(this).fadeOut('fast');
