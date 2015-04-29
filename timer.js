@@ -49,84 +49,60 @@ var average_time = function(time_array) {
 var times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 var event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock'];
 
+//cookie get
+$.cookie.json = true;
+if($.cookie('times') != undefined && $.cookie('times').length == 15){
+  times = $.cookie('times');
+}
+
 //timer and scramble initialization
 var st = "333";
 var sn = 1;
 var timer_obj = new startTimer(document.getElementById('time'));
+scramblers["222"].initialize(null, Math);
+scramblers["333"].initialize(null, Math);
+scramblers["333oh"].initialize(null, Math);
+scramblers["333bf"].initialize(null, Math);
+scramblers["333ft"].initialize(null, Math);
+scramblers["444"].initialize(null, Math);
+scramblers["444bf"].initialize(null, Math);
+scramblers["555"].initialize(null, Math);
+scramblers["555bf"].initialize(null, Math);
+scramblers["666"].initialize(null, Math);
+scramblers["777"].initialize(null, Math);
+scramblers["minx"].initialize(null, Math);
+scramblers["pyram"].initialize(null, Math);
+scramblers["sq1"].initialize(null, Math);
+scramblers["clock"].initialize(null, Math);
+$('#scramble').html(scramblers["333"].getRandomScramble().scramble_string);
 
-$(window).load(function(){
-  $('html').fadeIn('fast');
-  scramblers["222"].initialize(null, Math);
-  scramblers["333"].initialize(null, Math);
-  scramblers["333oh"].initialize(null, Math);
-  scramblers["333bf"].initialize(null, Math);
-  scramblers["333ft"].initialize(null, Math);
-  scramblers["444"].initialize(null, Math);
-  scramblers["444bf"].initialize(null, Math);
-  scramblers["555"].initialize(null, Math);
-  scramblers["555bf"].initialize(null, Math);
-  scramblers["666"].initialize(null, Math);
-  scramblers["777"].initialize(null, Math);
-  scramblers["minx"].initialize(null, Math);
-  scramblers["pyram"].initialize(null, Math);
-  scramblers["sq1"].initialize(null, Math);
-  scramblers["clock"].initialize(null, Math);
-	
-	//cookie get
-  $.cookie.json = true;
-  if($.cookie('times') != undefined && $.cookie('times').length == 15){
-    times = $.cookie('times');
+//inspection time
+var ins;
+$('#ins').mouseup(function(){
+  $('#time').text('15');
+  var x = 14;
+  $('.dis').fadeTo('fast', 0.01);
+  $('button, a').blur().attr('disabled', 'true');
+  ins = setInterval(function(){
+    $('#time').text(x);
+    if(x == 0){
+      clearInterval(ins);
+      timer_obj.start();
+    } else {
+      x--;
+    }
+  }, 1000);
+});
+
+var record = false;
+//timer key events
+$(document).keydown(function(e){
+  if(e.keyCode == 32 && record == true){
+    timer_obj.end();
   }
-  
-  //scramble load
-  $('#scramble').html(scramblers["333"].getRandomScramble().scramble_string);
-  
-  //inspection time
-  var ins;
-  $('#ins').mouseup(function(){
-    $('#time').text('15');
-    var x = 14;
-    $('.dis').fadeTo('fast', 0.01);
-    $('button, a').blur().attr('disabled', 'true');
-    ins = setInterval(function(){
-      $('#time').text(x);
-      if(x == 0){
-        clearInterval(ins);
-        timer_obj.start();
-      } else {
-        x--;
-      }
-    }, 1000);
-  });
-  
-  var record = false;
-  //timer key events
-  $(document).keydown(function(e){
-    if(e.keyCode == 32 && record == true){
-      timer_obj.end();
-    }
-  });
-  $(document).keyup(function(e){
-    if(e.keyCode == 32){
-      if(record == false){
-        record = true;
-        clearInterval(ins);
-        timer_obj.start();
-        $('.dis').fadeTo('fast', 0.01);
-        $('.plus2, .dnf').fadeOut('fast');
-        $('button, a').blur().attr('disabled', 'true');
-      } else {
-        record = false;
-        $('.dis').fadeTo('fast', 1);
-        $('button, a').removeAttr('disabled');
-        times[sn].push($('#time').text());
-        $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
-      }
-    }
-  });
-  
-  //timer tap events
-  $('#time').on('touchend', function(){
+});
+$(document).keyup(function(e){
+  if(e.keyCode == 32){
     if(record == false){
       record = true;
       clearInterval(ins);
@@ -136,96 +112,103 @@ $(window).load(function(){
       $('button, a').blur().attr('disabled', 'true');
     } else {
       record = false;
-      $('.dis').fadeTo('fast', 1);
-      $('button, a').removeAttr('disabled');
+	    $('.dis').fadeTo('fast', 1);
+    	$('button, a').removeAttr('disabled');
       times[sn].push($('#time').text());
       $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
     }
-  });
-  $('#time').on('touchstart', function(){
-    if(record == true){
-      timer_obj.end();
-    }
-  });
-  
-  //stats
-  $('#stats').click(function(){
-    updatestats();
-  });
-  
-  //reset
-  $('#reset').on('dblclick doubletap', function(){
-    times[sn].length = 0;
-    updatestats();
-  });
-  
-  //delete times
-  $('.timeitem').each(function(){
-    $(this).click(function(){
-      $(this).toggleClass('btn-warning');
-      $('#delete').fadeToggle('fast');
-    });
-  });
-  $('#delete').on('dblclick doubletap', function(){
-    $(this).fadeOut('fast');
-    times[sn].splice($('.timeitem').index($('.btn-warning')), 1);
-    $('.timeitem.btn-warning').remove();
-    updatestats();
-  });
-  
-  //change events
-  $('#st li a:not(.nosel)').click(function(){
-    st = $(this).attr('class');
-    $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
-    sn = event.indexOf(st);
-  });
-  
-  //change scramble
-  $('#scramble').click(function(){
-    $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
-  });
-  
-  var isMobile = {
-      Android: function() {
-          return navigator.userAgent.match(/Android/i);
-      },
-      BlackBerry: function() {
-          return navigator.userAgent.match(/BlackBerry/i);
-      },
-      iOS: function() {
-          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-      },
-      Opera: function() {
-          return navigator.userAgent.match(/Opera Mini/i);
-      },
-      Windows: function() {
-          return navigator.userAgent.match(/IEMobile/i);
-      },
-      any: function() {
-          return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-      }
-  };
-  //mobile only: orientation stuff for modal
-  if(window.innerHeight < window.innerWidth && isMobile.any()){
-  	$('#mod').modal('show');
   }
-  $(window).on('orientationchange', function(){
-    if(window.innerHeight < window.innerWidth && isMobile.any()){
-      updatestats();
-      $('#mod').modal('show');
-    } else {
-      $('#mod').modal('hide');
+});
+
+//timer tap events
+$('#time').on('touchend', function(){
+  if(record == false){
+    record = true;
+    clearInterval(ins);
+    timer_obj.start();
+    $('.dis').fadeTo('fast', 0.01);
+    $('.plus2, .dnf').fadeOut('fast');
+    $('button, a').blur().attr('disabled', 'true');
+  } else {
+    record = false;
+    $('.dis').fadeTo('fast', 1);
+    $('button, a').removeAttr('disabled');
+    times[sn].push($('#time').text());
+    $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
+  }
+});
+$('#time').on('touchstart', function(){
+  if(record == true){
+    timer_obj.end();
+  }
+});
+
+//stats
+$('#stats').click(function(){
+  updatestats();
+});
+
+//reset
+$('#reset').on('dblclick doubletap', function(){
+  times[sn].length = 0;
+  updatestats();
+});
+$('#resl').click(function(){
+  times[sn].pop();
+  updatestats();
+});
+
+//change events
+$('#st li a:not(.nosel)').click(function(){
+  st = $(this).attr('class');
+  $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
+  sn = event.indexOf(st);
+});
+
+//change scramble
+$('#scramble').click(function(){
+  $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
+});
+
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
     }
-  });
-  
-  //time submitting
-  $('#subet').click(function(){
-    if($('#et').val().replace(/\d/g, '') == ':.' && $('#et').val().split(/:|\./g)[1].length <= 2 && $('#et').val().split(/:|\./g)[1].length > 0 && $('#et').val().split(/:|\./g)[2].length <= 3){
-      times[sn].push($('#et').val());
-      $('input').blur().val('');
-      updatestats();
-    }
-  });
+};
+//mobile only: orientation stuff for modal
+if(window.innerHeight < window.innerWidth && isMobile.any()){
+	$('#mod').modal('show');
+}
+$(window).on('orientationchange', function(){
+  if(window.innerHeight < window.innerWidth && isMobile.any()){
+    updatestats();
+    $('#mod').modal('show');
+  } else {
+    $('#mod').modal('hide');
+  }
+});
+
+//time submitting
+$('#subet').click(function(){
+  if($('#et').val().replace(/\d/g, '') == ':.' && $('#et').val().split(/:|\./g)[1].length <= 2 && $('#et').val().split(/:|\./g)[1].length > 0 && $('#et').val().split(/:|\./g)[2].length <= 3){
+    times[sn].push($('#et').val());
+    updatestats();
+  }
 });
 
 //cookie store
@@ -240,7 +223,7 @@ function updatestats(){
   var avg, avgt;
   var sort = times[sn].slice(0).sort();
   if(times[sn].length > 0){
-    $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
+    $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default">') + '</button>');
     $('#sm').text(mt);
     $('#pb').text(sort[0]);
     $('#pw').text(sort[times[sn].length - 1]);
