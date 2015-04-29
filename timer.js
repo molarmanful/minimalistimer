@@ -156,7 +156,7 @@ $('#reset').on('dblclick doubletap', function(){
 
 //delete times
 $('.timeitem').each(function(){
-	$(this).click(function(){
+  $(this).click(function(){
     $(this).toggleClass('btn-warning');
     $('#delete').fadeToggle('fast');
   });
