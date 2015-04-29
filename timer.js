@@ -157,6 +157,11 @@ $('#resl').click(function(){
   times[sn].pop();
   updatestats();
 });
+$('.timeitem').click(function(){
+  $(this).remove();
+  times[sn].splice(times[sn][$('.timeitem').index($(this))], 1);
+  updatestats();
+});
 
 //change events
 $('#st li a:not(.nosel)').click(function(){
@@ -223,7 +228,7 @@ function updatestats(){
   var avg, avgt;
   var sort = times[sn].slice(0).sort();
   if(times[sn].length > 0){
-    $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default">') + '</button>');
+    $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
     $('#sm').text(mt);
     $('#pb').text(sort[0]);
     $('#pw').text(sort[times[sn].length - 1]);
