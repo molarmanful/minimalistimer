@@ -163,8 +163,8 @@ $('.timeitem.btn-warning').click(function(){
 });
 $('#delete').on('dblclick doubletap', function(){
   $(this).fadeOut('fast');
-  $('.timeitem.btn-warning').remove();
   times[sn].splice($('.timeitem').index($('.btn-warning')), 1);
+  $('.timeitem.btn-warning').remove();
   updatestats();
 });
 
