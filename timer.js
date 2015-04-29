@@ -112,8 +112,8 @@ $(document).keyup(function(e){
       $('button, a').blur().attr('disabled', 'true');
     } else {
       record = false;
-	    $('.dis').fadeTo('fast', 1);
-    	$('button, a').removeAttr('disabled');
+      $('.dis').fadeTo('fast', 1);
+      $('button, a').removeAttr('disabled');
       times[sn].push($('#time').text());
       $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
     }
@@ -155,16 +155,10 @@ $('#reset').on('dblclick doubletap', function(){
 });
 
 //delete times
-$('.timeitem.btn-default').each(function(){
+$('.timeitem').each(function(){
 	$(this).click(function(){
-    $(this).addClass('btn-warning').removeClass('btn-default');
-    $('#delete').fadeIn('fast');
-  });
-});
-$('.timeitem.btn-warning').click(function(){
-  $(this).click(function(){
-    $(this).removeClass('btn-warning').addClass('btn-default');
-    $('#delete').fadeOut('fast');
+    $(this).toggleClass('btn-warning');
+    $('#delete').fadeToggle('fast');
   });
 });
 $('#delete').on('dblclick doubletap', function(){
