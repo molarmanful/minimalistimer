@@ -153,12 +153,19 @@ $('#reset').on('dblclick doubletap', function(){
   times[sn].length = 0;
   updatestats();
 });
-$('.timeitem').each(function(){
-  $(this).on('dblclick doubletap', function(){
-    $(this).remove();
-    times[sn].splice($('.timeitem').index($(this)), 1);
-    updatestats();
-  });
+$('.timeitem').click(function(){
+  $(this).addClass('btn-warning').removeClass('btn-default');
+  $('#delete').fadeIn('fast');
+});
+$('.timeitem.btn-warning').click(function(){
+  $(this).removeClass('btn-warning').addClass('btn-default');
+  $('#delete').fadeOut('fast');
+});
+$('#delete').click(function(){
+  $(this).fadeOut('fast');
+  $('.timeitem.btn-warning').remove();
+  times[sn].splice($('.timeitem').index($('.btn-warning')), 1);
+  updatestats();
 });
 
 //change events
