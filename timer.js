@@ -153,7 +153,7 @@ $('#reset').on('dblclick doubletap', function(){
   times[sn].length = 0;
   updatestats();
 });
-$('.timeitem').click(function(){
+$('.timeitem.btn-default').click(function(){
   $(this).addClass('btn-warning').removeClass('btn-default');
   $('#delete').fadeIn('fast');
 });
