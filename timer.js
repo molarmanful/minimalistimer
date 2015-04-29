@@ -161,7 +161,7 @@ $('.timeitem.btn-warning').click(function(){
   $(this).removeClass('btn-warning').addClass('btn-default');
   $('#delete').fadeOut('fast');
 });
-$('#delete').click(function(){
+$('#delete').on('dblclick doubletap', function(){
   $(this).fadeOut('fast');
   $('.timeitem.btn-warning').remove();
   times[sn].splice($('.timeitem').index($('.btn-warning')), 1);
