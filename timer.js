@@ -52,7 +52,7 @@ var event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '55
 //stored time get
 if(typeof(Storage) != 'undefined') {
   if(localStorage.getItem('times') != null){
-    times = JSON.parse(localStorage.getItem('times'));
+    times = JSON.parse(localStorage['times']);
   }
 } else {
   $.cookie.json = true;
@@ -220,7 +220,7 @@ $('#subet').click(function(){
 //store times
 window.onbeforeunload = function(){
   if(typeof(Storage) != 'undefined'){
-    localStorage.setItem('times', times);
+    localStorage['times'] = JSON.stringify(times);
   }
   $.cookie('times', JSON.stringify(times));
 };
