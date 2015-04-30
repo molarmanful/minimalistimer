@@ -222,7 +222,7 @@ window.onbeforeunload = function(){
   if(typeof(Storage) != 'undefined'){
     localStorage.setItem('times', times);
   }
-  $.cookie('times', times);
+  $.cookie('times', JSON.stringify(times));
 };
   
 //function for updating stats
