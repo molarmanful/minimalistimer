@@ -65,7 +65,7 @@ if(typeof(Storage) != 'undefined') {
 var sn = 1;
 var timer_obj = new startTimer(document.getElementById('time'));
 var scr = new Scrambo();
-$('#scramble').html(scr);
+$('#scramble').html(scr.get());
 
 //inspection time
 var ins;
