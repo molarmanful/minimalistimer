@@ -64,7 +64,7 @@ if(typeof(Storage) != 'undefined') {
 //timer and scramble initialization
 var sn = 1;
 var timer_obj = new startTimer(document.getElementById('time'));
-var scr = new Scrambo();
+var scr = new Scrambo().get();
 $('#scramble').html(scr);
 
 //inspection time
