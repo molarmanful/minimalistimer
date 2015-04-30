@@ -61,7 +61,6 @@ if(typeof(Storage) != 'undefined') {
   }
 }
 
-$('html').css('display', 'none').fadeIn('slow');
 //timer and scramble initialization
 var st = "333";
 var sn = 1;
