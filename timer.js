@@ -64,7 +64,7 @@ if(typeof(Storage) != 'undefined') {
 //timer and scramble initialization
 var sn = 1;
 var timer_obj = new startTimer(document.getElementById('time'));
-var scr = new Scrambo().get();
+var scr = new Scrambo();
 $('#scramble').html(scr);
 
 //inspection time
@@ -106,7 +106,7 @@ $(document).keyup(function(e){
 	    $('.dis').fadeTo('fast', 1);
     	$('button, a').removeAttr('disabled');
       times[sn].push($('#time').text());
-      $('#scramble').html(scr);
+      $('#scramble').html(scr.get());
     }
   }
 });
@@ -125,7 +125,7 @@ $('#time').on('touchend', function(){
     $('.dis').fadeTo('fast', 1);
     $('button, a').removeAttr('disabled');
     times[sn].push($('#time').text());
-    $('#scramble').html(scr);
+    $('#scramble').html(scr.get());
   }
 });
 $('#time').on('touchstart', function(){
@@ -152,13 +152,13 @@ $('#resl').click(function(){
 //change events
 $('#st li a:not(.nosel)').click(function(){
   scr.type($(this).attr('class'));
-  $('#scramble').html(scr);
+  $('#scramble').html(scr.get());
   sn = event.indexOf($(this).attr('class'));
 });
 
 //change scramble
 $('#scramble').click(function(){
-  $('#scramble').html(scr);
+  $('#scramble').html(scr.get());
 });
 
 var isMobile = {
