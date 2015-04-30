@@ -63,9 +63,15 @@ if(typeof(Storage) != 'undefined') {
 
 //timer and scramble initialization
 var sn = 1;
+var st = '333';
 var timer_obj = new startTimer(document.getElementById('time'));
-var scr = new Scrambo();
-$('#scramble').html(scr.get());
+$.each(event, function(i, v){
+	scramblers[v].initialize(null, Math);
+});
+var scr = function(){
+  return scramblers[st].getRandomScramble().scramble_string;
+};
+$('#scramble').html(scr);
 
 //inspection time
 var ins;
@@ -106,7 +112,7 @@ $(document).keyup(function(e){
 	    $('.dis').fadeTo('fast', 1);
     	$('button, a').removeAttr('disabled');
       times[sn].push($('#time').text());
-      $('#scramble').html(scr.get());
+      $('#scramble').html(scr);
     }
   }
 });
@@ -125,7 +131,7 @@ $('#time').on('touchend', function(){
     $('.dis').fadeTo('fast', 1);
     $('button, a').removeAttr('disabled');
     times[sn].push($('#time').text());
-    $('#scramble').html(scr.get());
+    $('#scramble').html(scr);
   }
 });
 $('#time').on('touchstart', function(){
@@ -151,14 +157,14 @@ $('#resl').click(function(){
 
 //change events
 $('#st li a:not(.nosel)').click(function(){
-  scr.type($(this).attr('class'));
-  $('#scramble').html(scr.get());
-  sn = event.indexOf($(this).attr('class'));
+  st = $(this).attr('class');
+  $('#scramble').html(scr);
+  sn = event.indexOf(st);
 });
 
 //change scramble
 $('#scramble').click(function(){
-  $('#scramble').html(scr.get());
+  $('#scramble').html(scr);
 });
 
 var isMobile = {
