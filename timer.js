@@ -52,7 +52,7 @@ var event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '55
 //stored time get
 if(typeof(Storage) != 'undefined') {
   if(localStorage.getItem('times') != null){
-    times = $.parseJSON(localStorage.getItem('times'));
+    times = JSON.parse(localStorage.getItem('times'));
   }
 } else {
   $.cookie.json = true;
