@@ -49,10 +49,16 @@ var average_time = function(time_array) {
 var times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 var event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock'];
 
-//cookie get
-$.cookie.json = true;
-if($.cookie('times') != undefined && $.cookie('times').length == 15){
-  times = $.cookie('times');
+//stored time get
+if(typeof(Storage) != 'undefined') {
+  if(localStorage.getItem('times') != null){
+    times = $.parseJSON(localStorage.getItem('times'));
+  }
+} else {
+  $.cookie.json = true;
+  if($.cookie('times') != undefined && $.cookie('times').length == 15){
+    times = $.cookie('times');
+  }
 }
 
 //timer and scramble initialization
@@ -211,8 +217,11 @@ $('#subet').click(function(){
   }
 });
 
-//cookie store
+//store times
 window.onbeforeunload = function(){
+  if(typeof(Storage) != 'undefined'){
+    localStorage.setItem('times', times);
+  }
   $.cookie('times', times);
 };
   
