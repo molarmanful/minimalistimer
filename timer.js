@@ -62,25 +62,10 @@ if(typeof(Storage) != 'undefined') {
 }
 
 //timer and scramble initialization
-var st = "333";
 var sn = 1;
 var timer_obj = new startTimer(document.getElementById('time'));
-scramblers["222"].initialize(null, Math);
-scramblers["333"].initialize(null, Math);
-scramblers["333oh"].initialize(null, Math);
-scramblers["333bf"].initialize(null, Math);
-scramblers["333ft"].initialize(null, Math);
-scramblers["444"].initialize(null, Math);
-scramblers["444bf"].initialize(null, Math);
-scramblers["555"].initialize(null, Math);
-scramblers["555bf"].initialize(null, Math);
-scramblers["666"].initialize(null, Math);
-scramblers["777"].initialize(null, Math);
-scramblers["minx"].initialize(null, Math);
-scramblers["pyram"].initialize(null, Math);
-scramblers["sq1"].initialize(null, Math);
-scramblers["clock"].initialize(null, Math);
-$('#scramble').html(scramblers["333"].getRandomScramble().scramble_string);
+var scr = new Scrambo();
+$('#scramble').html(scr);
 
 //inspection time
 var ins;
@@ -121,7 +106,7 @@ $(document).keyup(function(e){
 	    $('.dis').fadeTo('fast', 1);
     	$('button, a').removeAttr('disabled');
       times[sn].push($('#time').text());
-      $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
+      $('#scramble').html(scr);
     }
   }
 });
@@ -140,7 +125,7 @@ $('#time').on('touchend', function(){
     $('.dis').fadeTo('fast', 1);
     $('button, a').removeAttr('disabled');
     times[sn].push($('#time').text());
-    $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
+    $('#scramble').html(scr);
   }
 });
 $('#time').on('touchstart', function(){
@@ -166,14 +151,14 @@ $('#resl').click(function(){
 
 //change events
 $('#st li a:not(.nosel)').click(function(){
-  st = $(this).attr('class');
-  $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
-  sn = event.indexOf(st);
+  scr.type($(this).attr('class'));
+  $('#scramble').html(scr);
+  sn = event.indexOf($(this).attr('class'));
 });
 
 //change scramble
 $('#scramble').click(function(){
-  $('#scramble').html(scramblers[st].getRandomScramble().scramble_string);
+  $('#scramble').html(scr);
 });
 
 var isMobile = {
