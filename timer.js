@@ -1,4 +1,5 @@
 var startTimer=function(t){this.start_t=null,this.interval=null,this.DOM=t,this.toggle=function(){null==this.interval?this.start():this.end()},this.start=function(){this.start_t=new Date;var t=this,i=function(){t.update()};this.interval=setInterval(i,10)},this.end=function(){clearInterval(this.interval),this.interval=null},this.update=function(){var t=(new Date-this.start_t)/1e3,i=60>t?0:Math.floor(Math.floor(t)/60);t=(t%60).toFixed(3),this.DOM.innerHTML=i.toString()+":"+t}};
+function skewbScramble(r){function a(r){for(var a=arguments.length-1,f=r[arguments[a]],n=a;n>1;n--)r[arguments[n]]=r[arguments[n-1]];r[arguments[1]]=f}function f(r,a){return r[a>>3]>>((7&a)<<2)&15}function n(r,a,f,n){for(var o=0;n>o;o++){r[o]=[];for(var v=0;a>v;v++)r[o][v]=f(v,o)}}function o(r,a,n,o,v,t,e){for(var u=Array.isArray(v),i=0,s=n+7>>>3;s>i;i++)r[i]=-1;r[a>>3]^=15<<((7&a)<<2);for(var c=0;o>=c;c++)for(var m=c+1^15,g=0;n>g;g++)if(f(r,g)==c)for(var h=0;t>h;h++)for(var l=g,d=0;e>d;d++)l=u?v[h][l]:v(l,h),15==f(r,l)&&(r[l>>3]^=m<<((7&l)<<2))}function v(r,a,n,o,t){if(0==n)return 0==r&&0==a;if(f(s,r)>n||f(c,a)>n)return!1;for(var e=0;4>e;e++)if(e!=o)for(var u=r,i=a,h=0;2>h;h++)if(u=m[e][u],i=g[e][i],v(u,i,n-1,e,t))return t.push(2*e+(1-h)),!0;return!1}function t(r,f){var n=r%12;r=~~(r/12);for(var o=[],v=5517840,t=0,e=0;5>e;e++){var u=h[5-e],i=~~(r/u),r=r-i*u,t=t^i,i=i<<2;o[e]=v>>i&15,u=(1<<i)-1,v=(v&u)+(v>>4&~u)}for(0==(1&t)?o[5]=v:(o[5]=o[4],o[4]=v),0==f&&a(o,0,3,1),2==f&&a(o,1,5,2),1==f&&a(o,0,2,4),3==f&&a(o,3,4,5),r=0,v=5517840,e=0;4>e;e++)i=o[e]<<2,r*=6-e,r+=v>>i&15,v-=1118480<<i;return 12*r+l[n][f]}function e(r,a){for(var f=[],n=[],o=0;4>o;o++)f[o]=r%3,r=~~(r/3);for(var o=0;3>o;o++)n[o]=r%3,r=~~(r/3);n[3]=(6-n[0]-n[1]-n[2])%3,f[a]=(f[a]+1)%3;var v;if(0==a){var v=n[0];n[0]=n[2]+2,n[2]=n[1]+2,n[1]=v+2}else if(1==a){var v=n[0];n[0]=n[1]+2,n[1]=n[3]+2,n[3]=v+2}else if(2==a){var v=n[0];n[0]=n[3]+2,n[3]=n[2]+2,n[2]=v+2}else if(3==a){var v=n[1];n[1]=n[2]+2,n[2]=n[3]+2,n[3]=v+2}for(var o=2;o>=0;o--)r=3*r+n[o]%3;for(var o=3;o>=0;o--)r=3*r+f[o];return r}var u,i,s=[],c=[],m=[],g=[],h=[1,1,1,3,12,60,360],l=[[6,5,10,1],[9,7,4,2],[3,11,8,0],[10,1,6,5],[0,8,11,3],[7,9,2,4],[4,2,9,7],[11,3,0,8],[1,10,5,6],[8,0,3,11],[2,4,7,9],[5,6,1,10]],d=[0,1,2,0,2,1,1,2,0,2,1,0],b=r?0:8,p=[];n(m,4320,t,4),o(s,0,4320,7,m,4,2),n(g,2187,e,4),o(c,0,2187,6,g,4,2);do u=0|4320*Math.random(),i=0|2187*Math.random();while(0==u&&0==i||d[u%12]!=(i+~~(i/3)+~~(i/9)+~~(i/27))%3);for(;99>b&&!v(u,i,b,-1,p);b++);for(var w=[],y=["L","R","B","U"],e=0;e<p.length;e++){var A=p[e]>>1,M=1&p[e];if(2==A)for(var m=0;M>=m;m++){var j=y[0];y[0]=y[1],y[1]=y[3],y[3]=j}w.push(y[A]+(1==M?"'":""))}return w.join(" ")}
 
 var str_to_time = function(time_str) {
   var pieces = time_str.split(/:|\./g);
@@ -46,8 +47,8 @@ var average_time = function(time_array) {
   };
 };
 
-var times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
-var event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock'];
+var times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+var event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock', 'skewb'];
 
 //stored time get
 if(typeof(Storage) != 'undefined') {
@@ -158,8 +159,20 @@ $('#resl').click(function(){
 //change events
 $('#st li a:not(.nosel)').click(function(){
   st = $(this).attr('class');
+  scr = function(){
+    return scramblers[st].getRandomScramble().scramble_string;
+  };
   $('#scramble').html(scr);
   sn = event.indexOf(st);
+});
+
+//skewb change event
+$('.nosel').click(function(){
+  st = 'skewb';
+  scr = function(){
+    return skewbScramble(true);
+  }
+  sn = event.indexOf('skewb');
 });
 
 //change scramble
