@@ -38,17 +38,18 @@
   <script>
     function getStylesheet() {
       var currentTime = new Date().getHours();
-      if (0 <= currentTime && currentTime < 6) {
-       document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
-      }
-      if (6 <= currentTime && currentTime < 20) {
-       document.write("<link rel='stylesheet' href='https://bootswatch.com/lumen/bootstrap.min.css' type='text/css'>");
-      }
-      if (20 <= currentTime && currentTime <= 24) {
-       document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
-      }
-      if(new Date.getMonth() == 3 && new Date.getDate() == 1){
+      if(new Date().getMonth() == 3 && new Date().getDate() == 1){
         document.write("<link rel='stylesheet' href='https://code.divshot.com/geo-bootstrap/swatch/bootstrap.min.css' type='text/css'>");
+      } else {
+        if (0 <= currentTime && currentTime < 6) {
+          document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
+        }
+        if (6 <= currentTime && currentTime < 20) {
+          document.write("<link rel='stylesheet' href='https://bootswatch.com/lumen/bootstrap.min.css' type='text/css'>");
+        }
+        if (20 <= currentTime && currentTime <= 24) {
+          document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
+        }
       }
     }
     
