@@ -51,8 +51,10 @@
   
   getStylesheet();
   var fromHomescreen = window.navigator.standalone || window.external.msIsSiteMode();
-  if(!fromHomescreen) {
-    $('.alert').css('display', 'none');
+  var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+  $('.alert').css('display', 'none');
+  if(!fromHomescreen && !isAndroid) {
+    $('.alert').fadeIn();
   }
   -->
   </script>
