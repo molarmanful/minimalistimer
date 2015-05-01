@@ -36,28 +36,29 @@
   <link rel="apple-touch-startup-image" href="https://dl.dropboxusercontent.com/s/rbvvf4utv9l85qi/minimstart640x920.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone, retina -->
   
   <script>
-  <!--
-  function getStylesheet() {
-    var currentTime = new Date().getHours();
-    if (0 <= currentTime&&currentTime < 6) {
-     document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
+    function getStylesheet() {
+      var currentTime = new Date().getHours();
+      if (0 <= currentTime && currentTime < 6) {
+       document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
+      }
+      if (6 <= currentTime && currentTime < 20) {
+       document.write("<link rel='stylesheet' href='https://bootswatch.com/lumen/bootstrap.min.css' type='text/css'>");
+      }
+      if (20 <= currentTime && currentTime <= 24) {
+       document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
+      }
+      if(new Date.getMonth() == 3 && new Date.getDate() == 1){
+        document.write("<link rel='stylesheet' href='https://code.divshot.com/geo-bootstrap/swatch/bootstrap.min.css' type='text/css'>");
+      }
     }
-    if (6 <= currentTime&&currentTime < 20) {
-     document.write("<link rel='stylesheet' href='https://bootswatch.com/lumen/bootstrap.min.css' type='text/css'>");
+    
+    getStylesheet();
+    var fromHomescreen = window.navigator.standalone || window.external.msIsSiteMode();
+    var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+    $('.alert').css('display', 'none');
+    if(!fromHomescreen && !isAndroid) {
+      $('.alert').fadeIn();
     }
-    if (20 <= currentTime&&currentTime <= 24) {
-     document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
-    }
-  }
-  
-  getStylesheet();
-  var fromHomescreen = window.navigator.standalone || window.external.msIsSiteMode();
-  var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
-  $('.alert').css('display', 'none');
-  if(!fromHomescreen && !isAndroid) {
-    $('.alert').fadeIn();
-  }
-  -->
   </script>
   <noscript><link rel='stylesheet prefetch' href='https://bootswatch.com/lumen/bootstrap.min.css'></noscript>
   <link rel='stylesheet prefetch' href='https://rawgit.com/cubing/icons/master/cubing-icons.css'>
