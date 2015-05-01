@@ -174,6 +174,7 @@ $('.nosel').click(function(){
   scr = function(){
     return skewbScramble(true);
   }
+  $('#scramble').html(scr);
   sn = event.indexOf('skewb');
 });
 
