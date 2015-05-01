@@ -67,7 +67,9 @@ var sn = 1;
 var st = '333';
 var timer_obj = new startTimer(document.getElementById('time'));
 $.each(event, function(i, v){
-	scramblers[v].initialize(null, Math);
+	if(v != 'skewb'){
+	  scramblers[v].initialize(null, Math);
+	}
 });
 var scr = function(){
   return scramblers[st].getRandomScramble().scramble_string;
