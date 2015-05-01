@@ -50,6 +50,10 @@
   }
   
   getStylesheet();
+  var fromHomescreen = window.navigator.standalone || window.external.msIsSiteMode();
+  if(!fromHomescreen) {
+    $('.alert').css('display', 'none');
+  }
   -->
   </script>
   <noscript><link rel='stylesheet prefetch' href='https://bootswatch.com/lumen/bootstrap.min.css'></noscript>
