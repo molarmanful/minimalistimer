@@ -108,7 +108,6 @@ $(document).keyup(function(e){
       clearInterval(ins);
       timer_obj.start();
       $('.dis').fadeTo('fast', 0.01);
-      $('.plus2, .dnf').fadeOut('fast');
       $('button, a').blur().attr('disabled', 'true');
     } else {
       record = false;
@@ -127,7 +126,6 @@ $('#time').on('touchend', function(){
     clearInterval(ins);
     timer_obj.start();
     $('.dis').fadeTo('fast', 0.01);
-    $('.plus2, .dnf').fadeOut('fast');
     $('button, a').blur().attr('disabled', 'true');
   } else {
     record = false;
