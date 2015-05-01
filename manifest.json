@@ -2,7 +2,7 @@
   "name": "MinimalisTimer",
   "icons": [
     {
-      "src": "launcher-icon-0-75x.png",
+      "src": "https://dl.dropboxusercontent.com/s/5mujdkxlekvxfmh/android-chrome-36x36.png",
       "sizes": "36x36",
       "type": "image/png",
       "density": "0.75"
