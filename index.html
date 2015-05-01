@@ -33,8 +33,32 @@
   <meta name="MobileOptimized" content="320">
   <link rel="apple-touch-startup-image" href="https://dl.dropboxusercontent.com/s/rmgf0cabnm30s2c/minimstart640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
   <link rel="apple-touch-startup-image" href="https://dl.dropboxusercontent.com/s/rbvvf4utv9l85qi/minimstart640x920.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone, retina -->
-
-  <link rel='stylesheet prefetch' href='https://bootswatch.com/lumen/bootstrap.min.css'>
+  
+  <script>
+  <!--
+  function getStylesheet() {
+    var currentTime = new Date().getHours();
+    if (0 <= currentTime&&currentTime < 5) {
+     document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
+    }
+    if (5 <= currentTime&&currentTime < 11) {
+     document.write("<link rel='stylesheet' href='https://bootswatch.com/lumen/bootstrap.min.css' type='text/css'>");
+    }
+    if (11 <= currentTime&&currentTime < 16) {
+     document.write("<link rel='stylesheet' href='https://bootswatch.com/united/bootstrap.min.css' type='text/css'>");
+    }
+    if (16 <= currentTime&&currentTime < 22) {
+     document.write("<link rel='stylesheet' href='https://bootswatch.com/superhero/bootstrap.min.css' type='text/css'>");
+    }
+    if (22 <= currentTime&&currentTime <= 24) {
+     document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
+    }
+  }
+  
+  getStylesheet();
+  -->
+  </script>
+  <noscript><link rel='stylesheet prefetch' href='https://bootswatch.com/lumen/bootstrap.min.css'></noscript>
   <link rel='stylesheet prefetch' href='https://rawgit.com/cubing/icons/master/cubing-icons.css'>
   <link rel='stylesheet prefetch' href='https://rawgit.com/driftyco/ionicons/master/css/ionicons.min.css'>
   
