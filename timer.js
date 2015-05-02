@@ -216,20 +216,29 @@ $(window).on('orientationchange', function(){
     $('#mod').modal('hide');
   }
 });
-
 //time submitting
 $('#subet').click(function(){
   var v = $('#et').val().split(/:|\./g);
   var eva = $('#et').val();
-  if((eva.replace(/\d/g, '') == ':.' || eva.replace(/\d/g, '') == '.') && v[v.length - 2].length <= 2 && v[v.length - 2].length > 0 && v[v.length - 1].length <= 3){
-    if(!eva.match(':')){
-      eva = sectomin(parseFloat(eva));
-    }
+  function subt(){
     times[sn].push(eva);
     $('.input-group').removeClass('has-error');
     $('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').delay(1000).fadeOut('slow');
     updatestats();
-  } else {
+    $('#et').val('');
+  }
+  if(!eva.match(':')){
+    eva = sectomin(parseFloat(eva));
+    subt();
+  }
+  else if(eva.match(':').length == 1 && !eva.match('.') && v[1] > 2){
+    eva += '.000';
+    subt();
+  }
+  else if(eva.match(':').length == 1 && eva.match('.').length == 1 && v[1] > 2 && v[2] <= 3){
+    subt();
+  }
+  else {
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
     }
@@ -240,7 +249,6 @@ $('#subet').click(function(){
       $('.help').fadeIn('fast').addClass('text-danger').html('Invalid time entered.');
     }
   }
-  $('#et').val('');
 });
 
 //store times
