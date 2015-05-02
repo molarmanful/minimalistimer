@@ -46,12 +46,6 @@ var average_time = function(time_array) {
     milliseconds: milliseconds
   };
 };
-/**
- * Convert number of seconds into time object
- *
- * @param integer secs Number of seconds to convert
- * @return object
- */
 function stms(secs){
 	var divisor_for_minutes = secs % (60 * 60);
 	var minutes = Math.floor(divisor_for_minutes / 60);
