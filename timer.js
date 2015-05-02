@@ -235,7 +235,7 @@ $('#subet').click(function(){
   else if(eva.match(':').length == 1 && eva.match('.').length == 1 && v[1] > 2 && v[2] <= 3 && eva.match('.') && eva.match('.').length <= 1){
     subt(eva);
   }
-  if(eva.match(/[^0-9:.]/g)){
+  if(eva.match(/[^0-9:.]/g) && (isNaN(v[0]) || isNaN(v[1]))){
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
     }
