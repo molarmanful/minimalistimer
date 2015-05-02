@@ -253,7 +253,7 @@ function subt(x){
   $('#subet').removeClass('btn-danger');
   $('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').promise().done(function(){
     setTimeout(function(){
-      $(this).fadeOut('slow');
+      $('.help').fadeOut('slow');
     }, 1000);
   });
   updatestats();
