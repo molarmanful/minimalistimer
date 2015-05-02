@@ -245,6 +245,7 @@ $('#subet').click(function(){
     if(!$('.help').hasClass('text-danger')){
       $('.help').fadeIn('fast').addClass('text-danger').html('Invalid time entered.');
     }
+    times[sn].pop();
   }
 });
 function subt(x){
