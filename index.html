@@ -40,7 +40,14 @@
       var currentTime = new Date().getHours();
       if(new Date().getMonth() == 3 && new Date().getDate() == 1){
         document.write("<link rel='stylesheet' href='http://code.divshot.com/geo-bootstrap/swatch/bootstrap.min.css' type='text/css'>");
-      } else {
+      } 
+      else if(new Date().getMonth() == 1 && new Date().getDate() == 14){
+        document.write("<link rel='stylesheet' href='https://rawgit.com/thomaspark/bootswatch/bd6ae4e636ae05e883e67951d60bf584b83c1c72/cupid/bootstrap.min.css' type='text/css'>");
+      } 
+      else if(new Date().getMonth() == 2 && new Date().getDate() == 17){
+        document.write("<link rel='stylesheet' href='https://rawgit.com/thomaspark/bootswatch/6aee122a5c2c00048f35eb2bf5ff8dd085c9ad8a/shamrock/bootstrap.min.css' type='text/css'>");
+      }
+      else {
         if (0 <= currentTime && currentTime < 6) {
           document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
         }
