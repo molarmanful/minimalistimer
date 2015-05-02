@@ -239,11 +239,7 @@ $('#subet').click(function(){
     eva = stms(parseFloat(eva));
     subt(eva);
   }
-  else if(eva.match(':').length == 1 && !eva.match('.') && v[1] > 2 && eva.match('.') && eva.match('.').length <= 1){
-    eva += '.000';
-    subt(eva);
-  }
-  else if(eva.match(':').length == 1 && eva.match('.').length == 1 && v[1] > 2 && v[2] <= 3 && eva.match('.') && eva.match('.').length <= 1){
+  else {
     subt(eva);
   }
 });
