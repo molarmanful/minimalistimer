@@ -242,6 +242,7 @@ $('#subet').click(function(){
   else {
     subt(eva);
   }
+  $('#et').val('');
 });
 function subt(x){
   times[sn].push(x);
@@ -253,7 +254,6 @@ function subt(x){
     }, 1000);
   });
   updatestats();
-  $('#et').val('');
 }
 
 //store times
@@ -271,7 +271,7 @@ function updatestats(){
   var avg, avgt;
   var sort = times[sn].slice(0).sort();
   if(times[sn].length > 0){
-    $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default">') + '</button>');
+    $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
     $('#sm').text(mt);
     $('#pb').text(sort[0]);
     $('#pw').text(sort[times[sn].length - 1]);
