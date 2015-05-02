@@ -250,6 +250,7 @@ $('#subet').click(function(){
 function subt(x){
   times[sn].push(x);
   $('.input-group').removeClass('has-error');
+  $('#subet').removeClass('btn-danger');
   $('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').delay(1000).fadeOut('slow');
   updatestats();
   $('#et').val('');
