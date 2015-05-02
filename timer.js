@@ -216,21 +216,21 @@ $(window).on('orientationchange', function(){
 
 //time submitting
 $('#subet').click(function(){
+  $('#et').val('');
   if($('#et').val().replace(/\d/g, '') == ':.' && $('#et').val().split(/:|\./g)[1].length <= 2 && $('#et').val().split(/:|\./g)[1].length > 0 && $('#et').val().split(/:|\./g)[2].length <= 3){
     times[sn].push($('#et').val());
-    $('#et').val('');
-    $('.input-group').removeClass('has-error', 300);
+    $('.input-group').removeClass('has-error');
     $('.help').fadeIn('fast').switchClass('text-danger', 'text-success').html('Time submitted successfully.').delay(1000).fadeOut('slow');
     updatestats();
   } else {
     if(!$('.input-group').hasClass('has-error')){
-      $('.input-group').addClass('has-error', 300);
+      $('.input-group').addClass('has-error');
     }
-    if(!$('#subet').hasClass('.btn-danger')){
-      $('#subet').switchClass('btn-danger', 'btn-primary', 300);
+    if(!$('#subet').hasClass('btn-danger')){
+      $('#subet').switchClass('btn-danger', 'btn-primary');
     }
-    if(!$('.help').hasClass('.text-danger')){
-      $('.help').fadeIn('fast').switchClass('text-success', 'text-danger', 300).html('Invalid time entered.');
+    if(!$('.help').hasClass('text-danger')){
+      $('.help').fadeIn('fast').switchClass('text-success', 'text-danger').html('Invalid time entered.');
     }
   }
 });
