@@ -231,15 +231,15 @@ $('#subet').click(function(){
     updatestats();
     $('#et').val('');
   }
-  if(!eva.match(':') && eva.match('.').length <= 1){
+  if(!eva.match(':') && eva.match('.') && eva.match('.').length <= 1){
     eva = stms(parseFloat(eva));
     subt();
   }
-  else if(eva.match(':').length == 1 && !eva.match('.') && v[1] > 2 && eva.match('.').length <= 1){
+  else if(eva.match(':').length == 1 && !eva.match('.') && v[1] > 2 && eva.match('.') && eva.match('.').length <= 1){
     eva += '.000';
     subt();
   }
-  else if(eva.match(':').length == 1 && eva.match('.').length == 1 && v[1] > 2 && v[2] <= 3 && eva.match('.').length <= 1){
+  else if(eva.match(':').length == 1 && eva.match('.').length == 1 && v[1] > 2 && v[2] <= 3 && eva.match('.') && eva.match('.').length <= 1){
     subt();
   }
   else {
