@@ -46,6 +46,9 @@ var average_time = function(time_array) {
     milliseconds: milliseconds
   };
 };
+var sectomin = function(x){
+  return (Math.floor(x / 60)).toString() + ':' + (x - minutes * 60).toString();
+}
 
 var times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 var event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock', 'skewb'];
@@ -220,7 +223,7 @@ $('#subet').click(function(){
   var eva = $('#et').val();
   if((eva.replace(/\d/g, '') == ':.' || eva.replace(/\d/g, '') == '.') && v[v.length - 2].length <= 2 && v[v.length - 2].length > 0 && v[v.length - 1].length <= 3){
     if(!eva.match(':')){
-      eva = '0:' + eva;
+      eva = sectomin(parseInt(eva));
     }
     times[sn].push(eva);
     $('.input-group').removeClass('has-error');
