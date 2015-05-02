@@ -221,26 +221,19 @@ $(window).on('orientationchange', function(){
   }
 });
 //time submitting
-var v = $('#et').val().split(/:|\./g);
-var eva = $('#et').val();
-function subt(){
-  times[sn].push(eva);
-  $('.input-group').removeClass('has-error');
-  $('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').delay(1000).fadeOut('slow');
-  updatestats();
-  $('#et').val('');
-}
 $('#subet').click(function(){
+  var v = $('#et').val().split(/:|\./g);
+  var eva = $('#et').val();
   if(!eva.match(':') && eva.match('.') && eva.match('.').length <= 1){
     eva = stms(parseFloat(eva));
-    subt();
+    subt(eva);
   }
   else if(eva.match(':').length == 1 && !eva.match('.') && v[1] > 2 && eva.match('.') && eva.match('.').length <= 1){
     eva += '.000';
-    subt();
+    subt(eva);
   }
   else if(eva.match(':').length == 1 && eva.match('.').length == 1 && v[1] > 2 && v[2] <= 3 && eva.match('.') && eva.match('.').length <= 1){
-    subt();
+    subt(eva);
   }
   if(eva.match(/[^0-9:.]/g)){
     if(!$('.input-group').hasClass('has-error')){
@@ -254,6 +247,13 @@ $('#subet').click(function(){
     }
   }
 });
+function subt(x){
+  times[sn].push(x);
+  $('.input-group').removeClass('has-error');
+  $('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').delay(1000).fadeOut('slow');
+  updatestats();
+  $('#et').val('');
+}
 
 //store times
 window.onbeforeunload = function(){
