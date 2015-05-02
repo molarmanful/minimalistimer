@@ -242,7 +242,7 @@ $('#subet').click(function(){
   else if(eva.match(':').length == 1 && eva.match('.').length == 1 && v[1] > 2 && v[2] <= 3 && eva.match('.') && eva.match('.').length <= 1){
     subt();
   }
-  else {
+  if(eva.match(/[^0-9:.]/g)){
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
     }
