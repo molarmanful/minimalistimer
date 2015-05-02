@@ -224,7 +224,7 @@ $(window).on('orientationchange', function(){
 $('#subet').click(function(){
   var v = $('#et').val().split(/:|\./g);
   var eva = $('#et').val();
-  if(eva.match(/[^0-9:.]/g) && (isNaN(v[0]) || isNaN(v[1]))){
+  if(eva.match(/[^0-9:.]/g)){
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
     }
