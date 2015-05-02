@@ -47,7 +47,7 @@ var average_time = function(time_array) {
   };
 };
 var sectomin = function(x){
-  return (Math.floor(x / 60)).toString() + ':' + (x - minutes * 60).toString();
+  return (Math.floor(x / 60)).toString() + ':' + (x - (Math.floor(x / 60)) * 60).toString();
 }
 
 var times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
