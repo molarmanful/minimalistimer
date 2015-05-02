@@ -218,7 +218,12 @@ $(window).on('orientationchange', function(){
 $('#subet').click(function(){
   if($('#et').val().replace(/\d/g, '') == ':.' && $('#et').val().split(/:|\./g)[1].length <= 2 && $('#et').val().split(/:|\./g)[1].length > 0 && $('#et').val().split(/:|\./g)[2].length <= 3){
     times[sn].push($('#et').val());
+    $('.input-group').removeClass('has-error');
     updatestats();
+  } else {
+    if(!$('.input-group').hasClass('has-error')){
+      $('.input-group').addClass('has-error');
+    }
   }
 });
 
