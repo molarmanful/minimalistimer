@@ -46,8 +46,18 @@ var average_time = function(time_array) {
     milliseconds: milliseconds
   };
 };
-var sectomin = function(x){
-  return (Math.floor(x / 60)).toString() + ':' + (x - (Math.floor(x / 60)) * 60).toString();
+/**
+ * Convert number of seconds into time object
+ *
+ * @param integer secs Number of seconds to convert
+ * @return object
+ */
+function stms(secs){
+	var divisor_for_minutes = secs % (60 * 60);
+	var minutes = Math.floor(divisor_for_minutes / 60);
+	var divisor_for_seconds = divisor_for_minutes % 60;
+	var seconds = Math.round(divisor_for_seconds * 1000) / 1000;
+	return minutes.toString() + ':' + seconds.toString();
 }
 
 var times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
@@ -227,8 +237,8 @@ $('#subet').click(function(){
     updatestats();
     $('#et').val('');
   }
-  if(!eva.match(':')){
-    eva = sectomin(parseFloat(eva));
+  if(!eva.match(':') && eva.match('.') <= 1){
+    eva = stms(parseFloat(eva));
     subt();
   }
   else if(eva.match(':').length == 1 && !eva.match('.') && v[1] > 2){
