@@ -221,16 +221,16 @@ $(window).on('orientationchange', function(){
   }
 });
 //time submitting
+var v = $('#et').val().split(/:|\./g);
+var eva = $('#et').val();
+function subt(){
+  times[sn].push(eva);
+  $('.input-group').removeClass('has-error');
+  $('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').delay(1000).fadeOut('slow');
+  updatestats();
+  $('#et').val('');
+}
 $('#subet').click(function(){
-  var v = $('#et').val().split(/:|\./g);
-  var eva = $('#et').val();
-  function subt(){
-    times[sn].push(eva);
-    $('.input-group').removeClass('has-error');
-    $('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').delay(1000).fadeOut('slow');
-    updatestats();
-    $('#et').val('');
-  }
   if(!eva.match(':') && eva.match('.') && eva.match('.').length <= 1){
     eva = stms(parseFloat(eva));
     subt();
