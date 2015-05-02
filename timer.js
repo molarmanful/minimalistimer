@@ -216,9 +216,13 @@ $(window).on('orientationchange', function(){
 
 //time submitting
 $('#subet').click(function(){
-  $('#et').val('');
-  if($('#et').val().replace(/\d/g, '') == ':.' && $('#et').val().split(/:|\./g)[1].length <= 2 && $('#et').val().split(/:|\./g)[1].length > 0 && $('#et').val().split(/:|\./g)[2].length <= 3){
-    times[sn].push($('#et').val());
+  var v = $('#et').val().split(/:|\./g);
+  var eva = $('#et').val();
+  if((eva.replace(/\d/g, '') == ':.' || eva.replace(/\d/g, '') == '.') v[v.length - 2].length <= 2 && v[v.length - 2].length > 0 && v[v.length - 1].length <= 3){
+    if(!eva.match(':')){
+      eva = '0:' + eva;
+    }
+    times[sn].push(eva);
     $('.input-group').removeClass('has-error');
     $('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').delay(1000).fadeOut('slow');
     updatestats();
@@ -233,6 +237,7 @@ $('#subet').click(function(){
       $('.help').fadeIn('fast').addClass('text-danger').html('Invalid time entered.');
     }
   }
+  $('#et').val('');
 });
 
 //store times
