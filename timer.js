@@ -220,10 +220,17 @@ $('#subet').click(function(){
     times[sn].push($('#et').val());
     $('#et').val('');
     $('.input-group').removeClass('has-error');
+    $('.help').fadeIn('fast').toggleClass('text-danger text-success').html('Time submitted successfully.').delay(1000).fadeOut('slow');
     updatestats();
   } else {
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
+    }
+    if(!$('#subet').hasClass('.btn-danger')){
+      $('#subet').toggleClass('btn-danger btn-primary');
+    }
+    if(!$('.help').hasClass('.text-danger')){
+      $('.help').fadeIn('fast').toggleClass('text-danger text-success').html('Invalid time entered.');
     }
   }
 });
