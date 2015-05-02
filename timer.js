@@ -224,17 +224,6 @@ $(window).on('orientationchange', function(){
 $('#subet').click(function(){
   var v = $('#et').val().split(/:|\./g);
   var eva = $('#et').val();
-  if(!eva.match(':') && eva.match('.') && eva.match('.').length <= 1){
-    eva = stms(parseFloat(eva));
-    subt(eva);
-  }
-  else if(eva.match(':').length == 1 && !eva.match('.') && v[1] > 2 && eva.match('.') && eva.match('.').length <= 1){
-    eva += '.000';
-    subt(eva);
-  }
-  else if(eva.match(':').length == 1 && eva.match('.').length == 1 && v[1] > 2 && v[2] <= 3 && eva.match('.') && eva.match('.').length <= 1){
-    subt(eva);
-  }
   if(eva.match(/[^0-9:.]/g) && (isNaN(v[0]) || isNaN(v[1]))){
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
@@ -245,7 +234,17 @@ $('#subet').click(function(){
     if(!$('.help').hasClass('text-danger')){
       $('.help').fadeIn('fast').addClass('text-danger').html('Invalid time entered.');
     }
-    times[sn].pop();
+  }
+  else if(!eva.match(':') && eva.match('.') && eva.match('.').length <= 1){
+    eva = stms(parseFloat(eva));
+    subt(eva);
+  }
+  else if(eva.match(':').length == 1 && !eva.match('.') && v[1] > 2 && eva.match('.') && eva.match('.').length <= 1){
+    eva += '.000';
+    subt(eva);
+  }
+  else if(eva.match(':').length == 1 && eva.match('.').length == 1 && v[1] > 2 && v[2] <= 3 && eva.match('.') && eva.match('.').length <= 1){
+    subt(eva);
   }
 });
 function subt(x){
