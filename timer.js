@@ -218,7 +218,7 @@ $(window).on('orientationchange', function(){
 $('#subet').click(function(){
   var v = $('#et').val().split(/:|\./g);
   var eva = $('#et').val();
-  if((eva.replace(/\d/g, '') == ':.' || eva.replace(/\d/g, '') == '.') v[v.length - 2].length <= 2 && v[v.length - 2].length > 0 && v[v.length - 1].length <= 3){
+  if((eva.replace(/\d/g, '') == ':.' || eva.replace(/\d/g, '') == '.') && v[v.length - 2].length <= 2 && v[v.length - 2].length > 0 && v[v.length - 1].length <= 3){
     if(!eva.match(':')){
       eva = '0:' + eva;
     }
