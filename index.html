@@ -1,240 +1,229 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-
-  <meta charset="UTF-8">
-
-  <title>MinimalisTimer</title>
-  
-  <meta name="description" content="Improve your Rubik's Cube skills with a simple yet highly functional timer.">
-  <meta name="keywords" content="timer, rubik's cube, simple timer, simple rubik's cube timer, cube, cube timer, minimalistimer">
-  <meta name="robots" content="index, nofollow">
-  <link rel="manifest" href="manifest.json">
-  
-  <meta property="og:title" content="MinimalisTimer">
-  <meta property="og:type" content="website">
-  <meta property="og:description" content="Improve your Rubik's Cube skills with a simple yet highly functional timer.">
-  <meta property="og:image" content="https://dl.dropboxusercontent.com/s/wff2drn6ixmbpam/favicon-194x194.png">
-  
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@molarmanful">
-  <meta name="twitter:title" content="MinimalisTimer">
-  <meta name="twitter:description" content="Improve your Rubik's Cube skills with a simple yet highly functional timer.">
-  <meta name="twitter:image" content="https://dl.dropboxusercontent.com/s/wff2drn6ixmbpam/favicon-194x194.png">
-  
-  <link rel="author" href="https://plus.google.com/+BenPangMolarmanful"/>
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="apple-touch-fullscreen" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="MinimalisTimer">
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <link rel="apple-touch-startup-image" href="https://dl.dropboxusercontent.com/s/rmgf0cabnm30s2c/minimstart640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
-  <link rel="apple-touch-startup-image" href="https://dl.dropboxusercontent.com/s/rbvvf4utv9l85qi/minimstart640x920.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone, retina -->
-  
-  <script>
-    function getStylesheet() {
-      var currentTime = new Date().getHours();
-      if(new Date().getMonth() == 3 && new Date().getDate() == 1){
-        document.write("<link rel='stylesheet' href='http://code.divshot.com/geo-bootstrap/swatch/bootstrap.min.css' type='text/css'>");
-      } 
-      else if(new Date().getMonth() == 1 && new Date().getDate() == 14){
-        document.write("<link rel='stylesheet' href='https://rawgit.com/thomaspark/bootswatch/bd6ae4e636ae05e883e67951d60bf584b83c1c72/cupid/bootstrap.min.css' type='text/css'>");
-      } 
-      else if(new Date().getMonth() == 2 && new Date().getDate() == 17){
-        document.write("<link rel='stylesheet' href='https://rawgit.com/thomaspark/bootswatch/6aee122a5c2c00048f35eb2bf5ff8dd085c9ad8a/shamrock/bootstrap.min.css' type='text/css'>");
-      }
-      else {
-        if (0 <= currentTime && currentTime < 6) {
-          document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
+  <head>
+    <meta charset="UTF-8">
+    <title>MinimalisTimer</title>
+    <meta name="description" content="Improve your Rubik's Cube skills with a simple yet highly functional timer.">
+    <meta name="keywords" content="timer, rubik's cube, simple timer, simple rubik's cube timer, cube, cube timer, minimalistimer">
+    <meta name="robots" content="index, nofollow">
+    <link rel="manifest" href="manifest.json">
+    <meta property="og:title" content="MinimalisTimer">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Improve your Rubik's Cube skills with a simple yet highly functional timer.">
+    <meta property="og:image" content="https://dl.dropboxusercontent.com/s/wff2drn6ixmbpam/favicon-194x194.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@molarmanful">
+    <meta name="twitter:title" content="MinimalisTimer">
+    <meta name="twitter:description" content="Improve your Rubik's Cube skills with a simple yet highly functional timer.">
+    <meta name="twitter:image" content="https://dl.dropboxusercontent.com/s/wff2drn6ixmbpam/favicon-194x194.png">
+    <link rel="author" href="https://plus.google.com/+BenPangMolarmanful"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="MinimalisTimer">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <link rel="apple-touch-startup-image" href="https://dl.dropboxusercontent.com/s/rmgf0cabnm30s2c/minimstart640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
+    <link rel="apple-touch-startup-image" href="https://dl.dropboxusercontent.com/s/rbvvf4utv9l85qi/minimstart640x920.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone, retina -->
+    <script>
+      function getStylesheet() {
+        var currentTime = new Date().getHours();
+        if(new Date().getMonth() == 3 && new Date().getDate() == 1){
+          document.write("<link rel='stylesheet' href='http://code.divshot.com/geo-bootstrap/swatch/bootstrap.min.css' type='text/css'>");
+        } 
+        else if(new Date().getMonth() == 1 && new Date().getDate() == 14){
+          document.write("<link rel='stylesheet' href='https://rawgit.com/thomaspark/bootswatch/bd6ae4e636ae05e883e67951d60bf584b83c1c72/cupid/bootstrap.min.css' type='text/css'>");
+        } 
+        else if(new Date().getMonth() == 2 && new Date().getDate() == 17){
+          document.write("<link rel='stylesheet' href='https://rawgit.com/thomaspark/bootswatch/6aee122a5c2c00048f35eb2bf5ff8dd085c9ad8a/shamrock/bootstrap.min.css' type='text/css'>");
         }
-        if (6 <= currentTime && currentTime < 20) {
-          document.write("<link rel='stylesheet' href='https://bootswatch.com/lumen/bootstrap.min.css' type='text/css'>");
-        }
-        if (20 <= currentTime && currentTime <= 24) {
-          document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
+        else {
+          if (0 <= currentTime && currentTime < 6) {
+            document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
+          }
+          if (6 <= currentTime && currentTime < 20) {
+            document.write("<link rel='stylesheet' href='https://bootswatch.com/lumen/bootstrap.min.css' type='text/css'>");
+          }
+          if (20 <= currentTime && currentTime <= 24) {
+            document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
+          }
         }
       }
-    }
-    
-    getStylesheet();
-    var fromHomescreen = window.navigator.standalone || window.external.msIsSiteMode();
-    var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
-    $('.alert').css('display', 'none');
-    if(!fromHomescreen && !isAndroid) {
-      $('.alert').fadeIn();
-    }
-  </script>
-  <noscript><link rel='stylesheet prefetch' href='https://bootswatch.com/lumen/bootstrap.min.css'></noscript>
-  <link rel='stylesheet prefetch' href='https://rawgit.com/cubing/icons/master/cubing-icons.css'>
-  <link rel='stylesheet prefetch' href='https://rawgit.com/driftyco/ionicons/master/css/ionicons.min.css'>
-  
-  <link rel="icon" href="https://dl.dropboxusercontent.com/s/hkgrbf95zf0dcef/favicon-32x32.png" type="image/png" />
-  <link rel="shortcut icon" href="https://dl.dropboxusercontent.com/s/9ds63a2rytzet54/favicon.ico" />
-  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
-  <link rel="apple-touch-icon-precomposed" href="https://dl.dropboxusercontent.com/s/0k14cnrsgjy4l7w/apple-touch-icon-57x57.png"><!-- 57×57px -->
-  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://dl.dropboxusercontent.com/s/ry1c1ffc37ef0fz/apple-touch-icon-72x72.png">
-  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
-  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://dl.dropboxusercontent.com/s/5sbozn3b91d8gr7/apple-touch-icon-76x76.png">
-  <!-- For iPhone with @2× display running iOS ≤ 6: -->
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://dl.dropboxusercontent.com/s/1be1e8r3z3b2xrn/apple-touch-icon-114x114.png">
-  <!-- For iPhone with @2× display running iOS ≥ 7: -->
-  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://dl.dropboxusercontent.com/s/nahnzoy38t3c5s3/apple-touch-icon-120x120.png">
-  <!-- For iPad with @2× display running iOS ≤ 6: -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://dl.dropboxusercontent.com/s/0dhdp1imu9x11vs/apple-touch-icon-144x144.png">
-  <!-- For iPad with @2× display running iOS ≥ 7: -->
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://dl.dropboxusercontent.com/s/36yc95oyp8bco7m/apple-touch-icon-152x152.png">
-  <!-- For iPhone 6 Plus with @3× display: -->
-  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://dl.dropboxusercontent.com/s/brj7sr6s63dnehe/apple-touch-icon-180x180.png">
-  <!-- For Chrome for Android: -->
-  <link rel="icon" sizes="192x192" href="https://dl.dropboxusercontent.com/s/wff2drn6ixmbpam/favicon-194x194.png">
-  <meta name="msapplication-TileColor" content="#363636">
-  <meta name="msapplication-TileImage" content="https://dl.dropboxusercontent.com/s/ptkes7psnnfqwja/mstile-144x144.png">
-  <meta name="theme-color" content="#363636">
-
-  <style>body .jumbotron h1 {
-  font-size: 14.3vw;
-}
-body .jumbotron #time {
-  width: 100%;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-body .jumbotron #scramble {
-  font-size: 3.3vw;
-}
-body .ionicon.ion-navicon-round {
-  font-size: 1.5em;
-}
-body #dt,
-body #dtc,
-body .plus2,
-body .dnf {
-  display: none;
-}
-body h2 {
-  font-size: 2em !important;
-}</style>
-
-</head>
-
-<body>
-
-<nav class="navbar navbar-inverse dis">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button data-toggle="collapse" data-target="#m" class="navbar-toggle collapsed">
-        <div class="ionicon ion-navicon-round"></div>
-      </button><span class="navbar-brand"><span class="ionicon ion-cube"></span> MinimalisTimer
-        <noscript>(needs Javascript)</noscript></span>
-    </div>
-    <div id="m" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown"><a role="button" data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle">Event <span class="caret"></span></a>
-          <ul id="st" role="menu" class="dropdown-menu">
-            <li><a class="222"><span class="cubing-icon icon-222"></span> 2x2x2</a></li>
-            <li><a class="333"><span class="cubing-icon icon-333"></span> 3x3x3</a></li>
-            <li><a class="333oh"><span class="cubing-icon icon-333oh"></span> 3x3x3 OH</a></li>
-            <li><a class="333bf"><span class="cubing-icon icon-333bf"></span> 3x3x3 BLD</a></li>
-            <li><a class="333ft"><span class="cubing-icon icon-333ft"></span> 3x3x3 Feet</a></li>
-            <li><a class="444"><span class="cubing-icon icon-444"></span> 4x4x4</a></li>
-            <li><a class="444bf"><span class="cubing-icon icon-444bf"></span> 4x4x4 BLD</a></li>
-            <li><a class="555"><span class="cubing-icon icon-555"></span> 5x5x5</a></li>
-            <li><a class="555bf"><span class="cubing-icon icon-555bf"></span> 5x5x5 BLD</a></li>
-            <li><a class="666"><span class="cubing-icon icon-666"></span> 6x6x6</a></li>
-            <li><a class="777"><span class="cubing-icon icon-777"></span> 7x7x7</a></li>
-            <li><a class="minx"><span class="cubing-icon icon-minx"></span> Megaminx</a></li>
-            <li><a class="pyram"><span class="cubing-icon icon-pyram"></span> Pyraminx</a></li>
-            <li><a class="skewb"><span class="cubing-icon icon-skewb"></span> Skewb</a></li>
-            <li><a class="sq1"><span class="cubing-icon icon-sq1"></span> Square-1</a></li>
-            <li><a class="clock"><span class="cubing-icon icon-clock"></span> Clock</a></li>
-          </ul>
-        </li>
-        <li><a id="stats" data-toggle="modal" data-target="#mod" class="hidden-sm hidden-xs">Statistics</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<div class="container text-center">
-  <div class="jumbotron text-center">
-    <h1 id="time">0:0.000</h1>
-    <button id="ins" class="btn btn-success btn-lg btn-block dis">Start WCA (15-sec) Inspection</button>
-    <hr class="dis"/>
-    <p id="scramble" class="dis"></p>
-  </div>
-  <p class="text-center dis hidden-sm hidden-xs">Press the <kbd>spacebar</kbd> to star/stop the timer. Click the scramble to change it.</p>
-  <p class="text-center dis hidden-md hidden-lg">Press the display to start/stop the timer. Tap the scramble to change it. Change device orientation to landscape to show statistics.</p>
-  <div class="alert alert-info alert-dismissible hidden-md hidden-lg dis" role="alert">
-    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
-    <strong><span class="ionicon ion-ios-lightbulb"></span> Pro Tip!</strong> Add this timer to your home screen to transform it into a web app.
-  </div>
-  <br>
-  <br>
-</div>
-<nav class="navbar navbar-default navbar-fixed-bottom dis hidden-xs">
-  <div class="container-fluid">
-    <p class="navbar-text"><span class="glyphicon glyphicon-copyright-mark"></span> 2015 MIT License. Made with love by <a href="https://github.com/molarmanful" target="_blank">Ben Pang (Molarmanful)</a>.</p>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="http://www.molarmanful.com/cubing-blog//the-story-of-the-creation-of-a-nice-looking-online-timer" target="_blank"><span class="ionicon ion-ios-book"></span> Backstory</a></li>
-      <li><a href="https://github.com/molarmanful/minimalistimer" target="_blank"><span class="ionicon ion-social-github"></span> Source Code</a></li>
-    </ul>
-  </div>
-</nav>
-<div id="mod" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button data-dismiss="modal" aria-label="Close" class="close hidden-sm hidden-xs"><span aria-hidden="true">&times;</span></button>
-        <h2>Statistics</h2>
-      </div>
-      <div class="modal-body">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Submit time in form of 1:2.345 or 12.345" id="et">
-          <span class="input-group-btn">
-            <button id="subet" class="btn btn-primary" type="button">Submit time for this event</button>
-          </span>
+      getStylesheet();
+    </script>
+    <noscript><link rel='stylesheet prefetch' href='https://bootswatch.com/lumen/bootstrap.min.css'></noscript>
+    <link rel='stylesheet prefetch' href='https://rawgit.com/cubing/icons/master/cubing-icons.css'>
+    <link rel='stylesheet prefetch' href='https://rawgit.com/driftyco/ionicons/master/css/ionicons.min.css'>
+    <link rel="icon" href="https://dl.dropboxusercontent.com/s/hkgrbf95zf0dcef/favicon-32x32.png" type="image/png" />
+    <link rel="shortcut icon" href="https://dl.dropboxusercontent.com/s/9ds63a2rytzet54/favicon.ico" />
+    <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="https://dl.dropboxusercontent.com/s/0k14cnrsgjy4l7w/apple-touch-icon-57x57.png"><!-- 57×57px -->
+    <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://dl.dropboxusercontent.com/s/ry1c1ffc37ef0fz/apple-touch-icon-72x72.png">
+    <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://dl.dropboxusercontent.com/s/5sbozn3b91d8gr7/apple-touch-icon-76x76.png">
+    <!-- For iPhone with @2× display running iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://dl.dropboxusercontent.com/s/1be1e8r3z3b2xrn/apple-touch-icon-114x114.png">
+    <!-- For iPhone with @2× display running iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://dl.dropboxusercontent.com/s/nahnzoy38t3c5s3/apple-touch-icon-120x120.png">
+    <!-- For iPad with @2× display running iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://dl.dropboxusercontent.com/s/0dhdp1imu9x11vs/apple-touch-icon-144x144.png">
+    <!-- For iPad with @2× display running iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://dl.dropboxusercontent.com/s/36yc95oyp8bco7m/apple-touch-icon-152x152.png">
+    <!-- For iPhone 6 Plus with @3× display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://dl.dropboxusercontent.com/s/brj7sr6s63dnehe/apple-touch-icon-180x180.png">
+    <!-- For Chrome for Android: -->
+    <link rel="icon" sizes="192x192" href="https://dl.dropboxusercontent.com/s/wff2drn6ixmbpam/favicon-194x194.png">
+    <meta name="msapplication-TileColor" content="#363636">
+    <meta name="msapplication-TileImage" content="https://dl.dropboxusercontent.com/s/ptkes7psnnfqwja/mstile-144x144.png">
+    <meta name="theme-color" content="#363636">
+    <style>
+      .iphone-standalone body {
+        padding-top: 20px;
+      }
+      body .jumbotron h1 {
+        font-size: 14.3vw;
+      }
+      body .jumbotron #time {
+        width: 100%;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      body .jumbotron #scramble {
+        font-size: 3.3vw;
+      }
+      body .ionicon.ion-navicon-round {
+        font-size: 1.5em;
+      }
+      body #dt,
+      body #dtc,
+      body .plus2,
+      body .dnf {
+        display: none;
+      }
+      body h2 {
+        font-size: 2em !important;
+      }
+      body .alert{
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse dis">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button data-toggle="collapse" data-target="#m" class="navbar-toggle collapsed">
+            <div class="ionicon ion-navicon-round"></div>
+          </button><span class="navbar-brand"><span class="ionicon ion-cube"></span> MinimalisTimer
+            <noscript>(needs Javascript)</noscript></span>
         </div>
-        <p class="help text-success" style="display: none"></p>
-        <br/>
-        <button id="reset" class="btn btn-danger btn-sm">Double-click to delete ALL times for this event</button>
-        <button id="resl" class="btn btn-danger btn-sm">Click to delete last time for this event</button>
-        <hr/>
-        <p>Times:<br/><span id="timelist">None submitted.</span></p>
-        <hr/>
-        <p>Best Time: <span id="pb">DNF</span></p>
-        <p>Worst Time: <span id="pw">DNF</span></p>
-        <hr/>
-        <p>Current Average of 5: <span id="aof">DNF</span></p>
-        <p>Current Average of 12: <span id="aot">DNF</span></p>
-        <p>Current Average of 100: <span id="aoh">DNF</span></p>
-        <hr/>
-        <p>Session Average: <span id="sa">DNF</span></p>
-        <p>Session Mean: <span id="sm">DNF</span></p>
+        <div id="m" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown"><a role="button" data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle">Event <span class="caret"></span></a>
+              <ul id="st" role="menu" class="dropdown-menu">
+                <li><a class="222"><span class="cubing-icon icon-222"></span> 2x2x2</a></li>
+                <li><a class="333"><span class="cubing-icon icon-333"></span> 3x3x3</a></li>
+                <li><a class="333oh"><span class="cubing-icon icon-333oh"></span> 3x3x3 OH</a></li>
+                <li><a class="333bf"><span class="cubing-icon icon-333bf"></span> 3x3x3 BLD</a></li>
+                <li><a class="333ft"><span class="cubing-icon icon-333ft"></span> 3x3x3 Feet</a></li>
+                <li><a class="444"><span class="cubing-icon icon-444"></span> 4x4x4</a></li>
+                <li><a class="444bf"><span class="cubing-icon icon-444bf"></span> 4x4x4 BLD</a></li>
+                <li><a class="555"><span class="cubing-icon icon-555"></span> 5x5x5</a></li>
+                <li><a class="555bf"><span class="cubing-icon icon-555bf"></span> 5x5x5 BLD</a></li>
+                <li><a class="666"><span class="cubing-icon icon-666"></span> 6x6x6</a></li>
+                <li><a class="777"><span class="cubing-icon icon-777"></span> 7x7x7</a></li>
+                <li><a class="minx"><span class="cubing-icon icon-minx"></span> Megaminx</a></li>
+                <li><a class="pyram"><span class="cubing-icon icon-pyram"></span> Pyraminx</a></li>
+                <li><a class="skewb"><span class="cubing-icon icon-skewb"></span> Skewb</a></li>
+                <li><a class="sq1"><span class="cubing-icon icon-sq1"></span> Square-1</a></li>
+                <li><a class="clock"><span class="cubing-icon icon-clock"></span> Clock</a></li>
+              </ul>
+            </li>
+            <li><a id="stats" data-toggle="modal" data-target="#mod" class="hidden-sm hidden-xs">Statistics</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button data-dismiss="modal" class="btn btn-default hidden-sm hidden-xs">Close</button>
+    </nav>
+    <div class="container text-center">
+      <div class="jumbotron text-center">
+        <h1 id="time">0:0.000</h1>
+        <button id="ins" class="btn btn-success btn-lg btn-block dis">Start WCA (15-sec) Inspection</button>
+        <hr class="dis"/>
+        <p id="scramble" class="dis"></p>
+      </div>
+      <p class="text-center dis hidden-sm hidden-xs">Press the <kbd>spacebar</kbd> to star/stop the timer. Click the scramble to change it.</p>
+      <p class="text-center dis hidden-md hidden-lg">Press the display to start/stop the timer. Tap the scramble to change it. Change device orientation to landscape to show statistics.</p>
+      <div class="alert alert-info alert-dismissible hidden-md hidden-lg dis" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+        <strong><span class="ionicon ion-ios-lightbulb"></span> Pro Tip!</strong> Add this timer to your home screen to transform it into a web app.
+      </div>
+      <br>
+      <br>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom dis hidden-xs">
+      <div class="container-fluid">
+        <p class="navbar-text"><span class="glyphicon glyphicon-copyright-mark"></span> 2015 MIT License. Made with love by <a href="https://github.com/molarmanful" target="_blank">Ben Pang (Molarmanful)</a>.</p>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://www.molarmanful.com/cubing-blog//the-story-of-the-creation-of-a-nice-looking-online-timer" target="_blank"><span class="ionicon ion-ios-book"></span> Backstory</a></li>
+          <li><a href="https://github.com/molarmanful/minimalistimer" target="_blank"><span class="ionicon ion-social-github"></span> Source Code</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="mod" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button data-dismiss="modal" aria-label="Close" class="close hidden-sm hidden-xs"><span aria-hidden="true">&times;</span></button>
+            <h2>Statistics</h2>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Submit time in form of 1:2.345 or 12.345" id="et">
+              <span class="input-group-btn">
+                <button id="subet" class="btn btn-primary" type="button">Submit time for this event</button>
+              </span>
+            </div>
+            <p class="help text-success" style="display: none"></p>
+            <br/>
+            <button id="reset" class="btn btn-danger btn-sm">Double-click to delete ALL times for this event</button>
+            <button id="resl" class="btn btn-danger btn-sm">Click to delete last time for this event</button>
+            <hr/>
+            <p>Times:<br/><span id="timelist">None submitted.</span></p>
+            <hr/>
+            <p>Best Time: <span id="pb">DNF</span></p>
+            <p>Worst Time: <span id="pw">DNF</span></p>
+            <hr/>
+            <p>Current Average of 5: <span id="aof">DNF</span></p>
+            <p>Current Average of 12: <span id="aot">DNF</span></p>
+            <p>Current Average of 100: <span id="aoh">DNF</span></p>
+            <hr/>
+            <p>Session Average: <span id="sa">DNF</span></p>
+            <p>Session Mean: <span id="sm">DNF</span></p>
+          </div>
+          <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-default hidden-sm hidden-xs">Close</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-  <script src='jquery.min.js'></script>
-  <script src="https://rawgit.com/cubing/jsss/master/scramble_222.js"></script>
-  <script src="https://rawgit.com/cubing/jsss/master/scramble_333.js"></script>
-  <script src="https://rawgit.com/cubing/jsss/master/scramble_NNN.js"></script>
-  <script src="https://rawgit.com/cubing/jsss/master/scramble_minx.js"></script>
-  <script src="https://rawgit.com/cubing/jsss/master/scramble_pyram.js"></script>
-  <script src="https://rawgit.com/cubing/jsss/master/scramble_sq1.js"></script>
-  <script src="https://rawgit.com/cubing/jsss/master/scramble_clock.js"></script>
-  <script src='skewb.js'></script>
-  <script src='timer.js'></script>
-
-</body>
-
+    <script src='jquery.min.js'></script>
+    <script src="https://rawgit.com/cubing/jsss/master/scramble_222.js"></script>
+    <script src="https://rawgit.com/cubing/jsss/master/scramble_333.js"></script>
+    <script src="https://rawgit.com/cubing/jsss/master/scramble_NNN.js"></script>
+    <script src="https://rawgit.com/cubing/jsss/master/scramble_minx.js"></script>
+    <script src="https://rawgit.com/cubing/jsss/master/scramble_pyram.js"></script>
+    <script src="https://rawgit.com/cubing/jsss/master/scramble_sq1.js"></script>
+    <script src="https://rawgit.com/cubing/jsss/master/scramble_clock.js"></script>
+    <script src='skewb.js'></script>
+    <script src='timer.js'></script>
+    <script>
+      if($.browser.standalone() || screen.height - document.documentElement.clientHeight < 40){
+        $('.alert').fadeIn();
+      }
+    </script>
+  </body>
 </html>
