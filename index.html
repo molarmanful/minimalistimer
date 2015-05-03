@@ -79,9 +79,6 @@
     <meta name="msapplication-TileImage" content="https://dl.dropboxusercontent.com/s/ptkes7psnnfqwja/mstile-144x144.png">
     <meta name="theme-color" content="#363636">
     <style>
-      .iphone-standalone body {
-        padding-top: 20px;
-      }
       body .jumbotron h1 {
         font-size: 14.3vw;
       }
@@ -221,7 +218,7 @@
     <script src='skewb.js'></script>
     <script src='timer.js'></script>
     <script>
-      if($.browser.standalone() || screen.height - document.documentElement.clientHeight < 40){
+      if(navigator.standalone || screen.height - document.documentElement.clientHeight < 40){
         $('.alert').fadeIn();
       }
     </script>
