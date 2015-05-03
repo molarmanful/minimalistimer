@@ -104,9 +104,6 @@
       body h2 {
         font-size: 2em !important;
       }
-      body .alert{
-        display: none;
-      }
     </style>
   </head>
   <body>
@@ -140,7 +137,9 @@
                 <li><a class="clock"><span class="cubing-icon icon-clock"></span> Clock</a></li>
               </ul>
             </li>
-            <li><a id="stats" data-toggle="modal" data-target="#mod" class="hidden-sm hidden-xs">Statistics</a></li>
+            <li class="hidden-sm hidden-xs"><a id="stats" data-toggle="modal" data-target="#mod">Statistics</a></li>
+            <li class="hidden-lg hidden-md hidden-sm"><a href="http://www.molarmanful.com/cubing-blog//the-story-of-the-creation-of-a-nice-looking-online-timer" target="_blank"><span class="ionicon ion-ios-book"></span> Backstory</a></li>
+            <li class="hidden-lg hidden-md hidden-sm"><a href="https://github.com/molarmanful/minimalistimer" target="_blank"><span class="ionicon ion-social-github"></span> Source Code</a></li>
           </ul>
         </div>
       </div>
@@ -154,14 +153,10 @@
       </div>
       <p class="text-center dis hidden-sm hidden-xs">Press the <kbd>spacebar</kbd> to star/stop the timer. Click the scramble to change it.</p>
       <p class="text-center dis hidden-md hidden-lg">Press the display to start/stop the timer. Tap the scramble to change it. Change device orientation to landscape to show statistics.</p>
-      <div class="alert alert-info alert-dismissible hidden-md hidden-lg dis" role="alert">
-        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
-        <strong><span class="ionicon ion-ios-lightbulb"></span> Pro Tip!</strong> Add this timer to your home screen to transform it into a web app.
-      </div>
       <br>
       <br>
     </div>
-    <nav class="navbar navbar-default navbar-fixed-bottom dis">
+    <nav class="navbar navbar-default navbar-fixed-bottom hidden-xs dis">
       <div class="container-fluid">
         <p class="navbar-text"><span class="glyphicon glyphicon-copyright-mark"></span> 2015 MIT License. Made with love by <a href="https://github.com/molarmanful" target="_blank">Ben Pang (Molarmanful)</a>.</p>
         <ul class="nav navbar-nav navbar-right">
@@ -217,10 +212,5 @@
     <script src="https://rawgit.com/cubing/jsss/master/scramble_clock.js"></script>
     <script src='skewb.js'></script>
     <script src='timer.js'></script>
-    <script>
-      if(navigator.standalone || screen.height - document.documentElement.clientHeight < 40){
-        $('.alert').fadeIn();
-      }
-    </script>
   </body>
 </html>
