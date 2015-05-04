@@ -101,12 +101,12 @@ $('#ins').mouseup(function(){
 var record = false;
 //timer key events
 $(document).keydown(function(e){
-  if(e.keyCode == 32 && record == true){
+  if(e.keyCode == 32 && record == true && !$("element").data('bs.modal').isShown){
     timer_obj.end();
   }
 });
 $(document).keyup(function(e){
-  if(e.keyCode == 32){
+  if(e.keyCode == 32 && !$("element").data('bs.modal').isShown){
     if(record == false){
       record = true;
       clearInterval(ins);
@@ -115,8 +115,8 @@ $(document).keyup(function(e){
       $('button, a').blur().attr('disabled', 'true');
     } else {
       record = false;
-	    $('.dis').fadeTo('fast', 1);
-    	$('button, a').removeAttr('disabled');
+      $('.dis').fadeTo('fast', 1);
+      $('button, a').removeAttr('disabled');
       times[sn].push($('#time').text());
       $('#scramble').html(scr);
     }
