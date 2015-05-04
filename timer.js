@@ -211,7 +211,7 @@ $(window).on('orientationchange', function(){
 $('#subet').click(function(){
   var v = $('#et').val().split(/:|\./g);
   var eva = $('#et').val();
-  if(eva.match(/[^0-9:.]/g)){
+  if(eva.match(/^\s+$/g)){
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
     }
@@ -219,7 +219,18 @@ $('#subet').click(function(){
       $('#subet').addClass('btn-danger');
     }
     if(!$('.help').hasClass('text-danger')){
-      $('.help').fadeIn('fast').addClass('text-danger').html('Invalid time entered.');
+      $('.help').fadeIn('fast').addClass('text-danger').html('Please enter a time.');
+    }
+  }
+  else if(eva.match(/[^0-9:.]/g)){
+    if(!$('.input-group').hasClass('has-error')){
+      $('.input-group').addClass('has-error');
+    }
+    if(!$('#subet').hasClass('btn-danger')){
+      $('#subet').addClass('btn-danger');
+    }
+    if(!$('.help').hasClass('text-danger')){
+      $('.help').fadeIn('fast').addClass('text-danger').html('Please enter a valid time.');
     }
   }
   else if(!eva.match(':') && eva.match('.') && eva.match('.').length <= 1){
