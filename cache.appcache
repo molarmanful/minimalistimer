@@ -1,22 +1,16 @@
-CACHE MANIFEST
-#version 1
+header('Content-Type: text/cache-manifest');
+  echo "CACHE MANIFEST\n";
 
-#style sheets
-https://bootswatch.com/lumen/bootstrap.min.css
-https://rawgit.com/cubing/icons/master/cubing-icons.css
-https://rawgit.com/driftyco/ionicons/master/css/ionicons.min.css
+  $hashes = "";
 
-#javascript files
-jquery.min.js
-https://rawgit.com/cubing/jsss/master/scramble_222.js
-https://rawgit.com/cubing/jsss/master/scramble_333.js
-https://rawgit.com/cubing/jsss/master/scramble_NNN.js
-https://rawgit.com/cubing/jsss/master/scramble_minx.js
-https://rawgit.com/cubing/jsss/master/scramble_pyram.js
-https://rawgit.com/cubing/jsss/master/scramble_sq1.js
-https://rawgit.com/cubing/jsss/master/scramble_clock.js
-skewb.js
-timer.js
-
-NETWORK:
-*
+  $dir = new RecursiveDirectoryIterator(".");
+  foreach(new RecursiveIteratorIterator($dir) as $file) {
+    if ($file->IsFile() &&
+        $file != "./any.appcache" &&
+        substr($file->getFilename(), 0, 1) != ".")
+    {
+      echo $file . "\n";
+      $hashes .= md5_file($file);
+    }
+  }
+  echo "# Hash: " . md5($hashes) . "\n";
