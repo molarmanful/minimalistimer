@@ -223,7 +223,7 @@ $('#subet').click(function(){
     	$('.help').html('Please enter a time.');
     }
   }
-  else if(eva.match(/[^0-9:.]/g)){
+  else if(eva.match(/[^0-9:.]/g) || parseInt(eva) == 0){
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
     }
