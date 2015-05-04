@@ -1,1 +1,5 @@
-AddType application/x-httpd-php .appcache
+AddType text/cache-manifest .appcache
+
+<FilesMatch "\.(appcache)$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
