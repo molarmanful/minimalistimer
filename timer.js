@@ -50,7 +50,7 @@ function stms(secs){
 	var minutes = Math.floor(divisor_for_minutes / 60);
 	var divisor_for_seconds = divisor_for_minutes % 60;
 	var seconds = Math.round(divisor_for_seconds * 1000) / 1000;
-	return minutes.toString() + ':' + seconds.toString();
+	return minutes.toString() + ':' + seconds.toString().toFixed(3);
 }
 
 var times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
