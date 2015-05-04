@@ -50,7 +50,7 @@ function stms(secs){
 	var minutes = Math.floor(divisor_for_minutes / 60);
 	var divisor_for_seconds = divisor_for_minutes % 60;
 	var seconds = Math.round(divisor_for_seconds * 1000) / 1000;
-	return minutes.toString() + ':' + seconds.toString().toFixed(3);
+	return minutes.toString() + ':' + seconds.toString();
 }
 
 var times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
@@ -209,7 +209,6 @@ $(window).on('orientationchange', function(){
 });
 //time submitting
 $('#subet').click(function(){
-  var v = $('#et').val().split(/:|\./g);
   var eva = $('#et').val();
   if(eva.match(/^\s+$/g)){
     if(!$('.input-group').hasClass('has-error')){
@@ -237,7 +236,7 @@ $('#subet').click(function(){
     	$('.help').html('Please enter a valid time.');
     }
   }
-  else if(!eva.match(':') && eva.match('.') && eva.match('.').length <= 1){
+  else if(!eva.match(':')){
     eva = stms(parseFloat(eva));
     subt(eva);
   }
@@ -268,6 +267,10 @@ window.onbeforeunload = function(){
   
 //function for updating stats
 function updatestats(){
+  $.each(times[sn], function(i, v){
+    var val = v.split(':');
+    times[sn][i] = val[0] + ':' + parseFloat(val[1]).toFixed(3).toString();
+  });
   var m = average_time(str_array_to_time_array(times[sn]));
   var mt = m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
   var avg, avgt;
