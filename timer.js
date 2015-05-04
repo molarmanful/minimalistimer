@@ -101,12 +101,12 @@ $('#ins').mouseup(function(){
 var record = false;
 //timer key events
 $(document).keydown(function(e){
-  if(e.keyCode == 32 && record == true && !$("element").data('bs.modal').isShown){
+  if(e.keyCode == 32 && record == true && !$('#myModal').is(':visible')){
     timer_obj.end();
   }
 });
 $(document).keyup(function(e){
-  if(e.keyCode == 32 && !$("element").data('bs.modal').isShown){
+  if(e.keyCode == 32 && !$('#myModal').is(':visible')){
     if(record == false){
       record = true;
       clearInterval(ins);
