@@ -29,32 +29,14 @@
     <script>
       function getStylesheet() {
         var currentTime = new Date().getHours();
-        //april fools
-        if(new Date().getMonth() == 3 && new Date().getDate() == 1){
-          document.write("<link rel='stylesheet' href='http://code.divshot.com/geo-bootstrap/swatch/bootstrap.min.css' type='text/css'>");
+        if (0 <= currentTime && currentTime < 6) {
+          document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
         }
-        //valentines day
-        else if(new Date().getMonth() == 1 && new Date().getDate() == 14){
-          document.write("<link rel='stylesheet' href='https://rawgit.com/thomaspark/bootswatch/bd6ae4e636ae05e883e67951d60bf584b83c1c72/cupid/bootstrap.min.css' type='text/css'>");
+        if (6 <= currentTime && currentTime < 20) {
+          document.write("<link rel='stylesheet' href='https://bootswatch.com/lumen/bootstrap.min.css' type='text/css'>");
         }
-        //halloween
-        else if(new Date().getMonth() == 9 && new Date().getDate() == 31){
-          document.write("<link rel='stylesheet' href='https://bootswatch.com/united/bootstrap.min.css' type='text/css'>");
-        }
-        //new year
-        else if((new Date().getMonth() == 0 && new Date().getDate() == 1)){
-          document.write("<link rel='stylesheet' href='https://bootswatch.com/simplex/bootstrap.min.css' type='text/css'>");
-        }
-        else {
-          if (0 <= currentTime && currentTime < 6) {
-            document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
-          }
-          if (6 <= currentTime && currentTime < 20) {
-            document.write("<link rel='stylesheet' href='https://bootswatch.com/lumen/bootstrap.min.css' type='text/css'>");
-          }
-          if (20 <= currentTime && currentTime <= 24) {
-            document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
-          }
+        if (20 <= currentTime && currentTime <= 24) {
+          document.write("<link rel='stylesheet' href='https://bootswatch.com/cyborg/bootstrap.min.css' type='text/css'>");
         }
       }
       getStylesheet();
