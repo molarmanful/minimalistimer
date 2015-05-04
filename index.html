@@ -29,14 +29,21 @@
     <script>
       function getStylesheet() {
         var currentTime = new Date().getHours();
-        if(new Date().getMonth() == 9 && new Date().getDate() == 26){
+        //april fools
+        if(new Date().getMonth() == 3 && new Date().getDate() == 1){
           document.write("<link rel='stylesheet' href='http://code.divshot.com/geo-bootstrap/swatch/bootstrap.min.css' type='text/css'>");
-        } 
+        }
+        //valentines day
         else if(new Date().getMonth() == 1 && new Date().getDate() == 14){
           document.write("<link rel='stylesheet' href='https://rawgit.com/thomaspark/bootswatch/bd6ae4e636ae05e883e67951d60bf584b83c1c72/cupid/bootstrap.min.css' type='text/css'>");
-        } 
-        else if(new Date().getMonth() == 2 && new Date().getDate() == 17){
-          document.write("<link rel='stylesheet' href='https://rawgit.com/thomaspark/bootswatch/6aee122a5c2c00048f35eb2bf5ff8dd085c9ad8a/shamrock/bootstrap.min.css' type='text/css'>");
+        }
+        //halloween
+        else if(new Date().getMonth() == 9 && new Date().getDate() == 31){
+          document.write("<link rel='stylesheet' href='https://bootswatch.com/united/bootstrap.min.css' type='text/css'>");
+        }
+        //new year
+        else if((new Date().getMonth() == 0 && new Date().getDate() == 1)){
+          document.write("<link rel='stylesheet' href='https://bootswatch.com/simplex/bootstrap.min.css' type='text/css'>");
         }
         else {
           if (0 <= currentTime && currentTime < 6) {
@@ -107,7 +114,7 @@
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-inverse dis">
+    <nav class="navbar navbar-inverse dis theme">
       <div class="container-fluid">
         <div class="navbar-header">
           <button data-toggle="collapse" data-target="#m" class="navbar-toggle collapsed">
@@ -212,5 +219,10 @@
     <script src="https://rawgit.com/cubing/jsss/master/scramble_clock.js"></script>
     <script src='skewb.js'></script>
     <script src='timer.js'></script>
+    <script>
+      if(new Date().getMonth() == 9 && new Date().getDate() == 31){
+        $('.theme').toggleClass('navbar-inverse navbar-default');
+      }
+    </script>
   </body>
 </html>
