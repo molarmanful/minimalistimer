@@ -220,6 +220,8 @@ $('#subet').click(function(){
     }
     if(!$('.help').hasClass('text-danger')){
       $('.help').fadeIn('fast').addClass('text-danger').html('Please enter a time.');
+    } else {
+    	$('.help').html('Please enter a time.');
     }
   }
   else if(eva.match(/[^0-9:.]/g)){
@@ -231,6 +233,8 @@ $('#subet').click(function(){
     }
     if(!$('.help').hasClass('text-danger')){
       $('.help').fadeIn('fast').addClass('text-danger').html('Please enter a valid time.');
+    } else {
+    	$('.help').html('Please enter a valid time.');
     }
   }
   else if(!eva.match(':') && eva.match('.') && eva.match('.').length <= 1){
