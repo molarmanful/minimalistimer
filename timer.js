@@ -331,7 +331,7 @@ function updatestats(){
   var avg, avgt;
   var ndt = times[sn].slice(0);
   $.each(ndt, function(i, v){
-    if(v.match('DNF')){
+    if(v.match(/DNF\(/)){
       ndt.splice(i, 1);
     }
   });
