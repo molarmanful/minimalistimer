@@ -150,49 +150,6 @@ $('#stats').click(function(){
   updatestats();
 });
 
-//penalties
-$('#pen').click(function(){
-  if($(this).text() == 'No penalty'){
-    $(this).text('+2');
-    $('#sel').text($('#sel').text().split(':')[0] + ':' + (parseFloat($('#sel').text().split(':')[1]) + 2).toString());
-    times[sn][$('#sel').index()] = pt;
-    updatestats();
-  }
-  else if($(this).text() == '+2'){
-    $(this).text('DNF');
-    $('#sel').text('DNF');
-    times[sn][$('#sel').index()] = 'DNF';
-    updatestats();
-  }
-  else {
-    $(this).text('No penalty');
-    $('#sel').text(orig);
-    times[sn][$('#sel').index()] = orig;
-    updatestats();
-  }
-});
-$('.p2').click(function(){
-  var orig = times[sn].slice(0)[$('#sel').index()];
-  $(this).toggleClass('btn-warning');
-  if($(this).hasClass('btn-warning')){
-    var to = str_to_time(orig);
-    $('#sel').text(to.minutes.toString() + ':' + (to.seconds + 2).toString() + '.' + to.milliseconds.toString());
-  } else {
-    var to = str_to_time(orig);
-    $('#sel').text(to.minutes.toString() + ':' + (to.seconds - 2).toString() + '.' + to.milliseconds.toString());
-  }
-});
-$('.dnf').click(function(){
-  var orig = times[sn].slice(0)[$('#sel').index()];
-  $(this).toggleClass('btn-danger');
-  if($(this).hasClass('btn-danger')){
-    $('#sel').text('DNF(' + orig + ')');
-  } else {
-    var to = str_to_time(orig);
-    $('#sel').text('DNF(' + orig + ')');
-  }
-});
-
 //reset
 $('#reset').on('dblclick doubletap', function(){
   times[sn].length = 0;
@@ -200,12 +157,11 @@ $('#reset').on('dblclick doubletap', function(){
 });
 $('#resl').click(function(){
   times[sn].pop();
-  $('.tdp').fadeOut('fast');
   updatestats();
 });
 
 //change events
-$('#st li a').click(function(){
+$('#st li a:not(.nosel)').click(function(){
   st = $(this).attr('class');
   scr = function(){
     return scramblers[st].getRandomScramble().scramble_string;
@@ -251,11 +207,9 @@ $(window).on('orientationchange', function(){
     $('#mod').modal('hide');
   }
 });
-
 //time submitting
 $('#subet').click(function(){
   var eva = $('#et').val();
-  //blank
   if(eva.match(/^\s+$/g)){
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
@@ -269,8 +223,7 @@ $('#subet').click(function(){
     	$('.help').html('Please enter a time.');
     }
   }
-  //invalid
-  else if((eva.match(/[^0-9:.]/g) && !eva.match(/dnf/ig)) || parseInt(eva) == 0){
+  else if(eva.match(/[^0-9:.]/g) || parseInt(eva) == 0){
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
     }
@@ -280,19 +233,13 @@ $('#subet').click(function(){
     if(!$('.help').hasClass('text-danger')){
       $('.help').fadeIn('fast').addClass('text-danger').html('Please enter a valid time.');
     } else {
-      $('.help').html('Please enter a valid time.');
+    	$('.help').html('Please enter a valid time.');
     }
   }
-  //no minutes
-  else if(!eva.match(':') && !eva.match(/dnf/ig)){
+  else if(!eva.match(':')){
     eva = stms(parseFloat(eva));
     subt(eva);
   }
-  //dnf
-  else if(eva.match(/dnf/ig)){
-    subt('DNF');
-  }
-  //minutes
   else {
     subt(eva);
   }
@@ -321,107 +268,60 @@ window.onbeforeunload = function(){
 //function for updating stats
 function updatestats(){
   $.each(times[sn], function(i, v){
-    if(!v.match('DNF')){
-      var val = v.split(':');
-      times[sn][i] = val[0] + ':' + parseFloat(val[1]).toFixed(3).toString();
-    }
+    var val = v.split(':');
+    times[sn][i] = val[0] + ':' + parseFloat(val[1]).toFixed(3).toString();
   });
   var m = average_time(str_array_to_time_array(times[sn]));
   var mt = m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
   var avg, avgt;
-  var ndt = times[sn].slice(0);
-  $.each(ndt, function(i, v){
-    if(v.match(/DNF\(/)){
-      ndt.splice(i, 1);
-    }
-  });
-  var sort = ndt.slice(0).sort();
-  
-  if(ndt.length == 0 || isdnf(0)){
-    $('#timelist').text('None submitted.');
-    $('#sm, #sa').text('DNF');
-  }
-  if(ndt.length > 0){
+  var sort = times[sn].slice(0).sort();
+  if(times[sn].length > 0){
     $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
-    $('.timeitem').each(function(){
-      if($(this).text().match('DNF')){
-        $(this).addClass('btn-danger dnf');
-      }
-    });
-    $('.timeitem:not(#sel, .dnf)').click(function(){
-      if(!$('#sel').length){
-        $('#pen').text('No penalty');
-        $('.tdp').fadeIn('fast');
-        $(this).addClass('btn-primary');
-        $('.timeitem').removeAttr('id');
-        $(this).attr('id', 'sel');
-      }
-    });
-    $('#sel').click(function(){
-      $('.tdp').fadeOut('fast');
-      $(this).removeClass('btn-primary');
-      $(this).removeAttr('id');
-    });
     $('#sm').text(mt);
     $('#pb').text(sort[0]);
-    $('#pw').text(sort[sort.length - 1]);
-  } 
-  
-  if(times[sn].length > 2){
-    var dup = ndt.slice(0);
-    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
-    avg = average_time(str_array_to_time_array(dup));
-    avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
-    $('#sa').text(avgt);
-  }
-  if(times[sn].length < 3){
-    $('#sa').text('DNF');
-  }
-  
-  if(times[sn].length > 4){
-    var dup = ndt.slice(times[sn].length - 5);
-    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
-    avg = average_time(str_array_to_time_array(dup));
-    avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
-    $('#aof').text(avgt);
-  }
-  if(times[sn].length < 5 || isdnf(times[sn].length - 5)){
-    $('#aof').text('DNF');
-  }
-  
-  if(times[sn].length > 11){
-    var dup = ndt.slice(times[sn].length - 12);
-    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
-    avg = average_time(str_array_to_time_array(dup));
-    avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
-    $('#aot').text(avgt);
-  }
-  if(times[sn].length < 12 || isdnf(times[sn].length - 12)){
-    $('#aot').text('DNF');
-  }
-  
-  if(times[sn].length > 99){
-    var dup = ndt.slice(times[sn].length - 100);
-    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
-    avg = average_time(str_array_to_time_array(dup));
-    avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
-    $('#aoh').text(avgt);
-  }
-  if(times[sn].length < 100 || isdnf(times[sn].length - 100)){
-    $('#aoh').text('DNF');
-  }
-}
-function isdnf(x){
-  var y = times[sn].slice(x);
-  var z = 0;
-  $.each(y, function(i, v){
-    if(v.match('DNF')){
-      z++;
+    $('#pw').text(sort[times[sn].length - 1]);
+    if(times[sn].length > 2){
+      var dup = times[sn].slice(0);
+      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+      avg = average_time(str_array_to_time_array(dup));
+      avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
+      $('#sa').text(avgt);
     }
-    if(z > 1){
-      return true;
-    } else {
-      return false;
+    if(times[sn].length < 3){
+      $('#sa').text('DNF');
     }
-  });
+    if(times[sn].length > 4){
+      var dup = times[sn].slice(times[sn].length - 5);
+      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+      avg = average_time(str_array_to_time_array(dup));
+      avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
+      $('#aof').text(avgt);
+    }
+    if(times[sn].length < 5){
+      $('#aof').text('DNF');
+    }
+    if(times[sn].length > 11){
+      var dup = times[sn].slice(times[sn].length - 12);
+      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+      avg = average_time(str_array_to_time_array(dup));
+      avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
+      $('#aot').text(avgt);
+    }
+    if(times[sn].length < 12){
+      $('#aot').text('DNF');
+    }
+    if(times[sn].length > 99){
+      var dup = times[sn].slice(times[sn].length - 100);
+      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+      avg = average_time(str_array_to_time_array(dup));
+      avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
+      $('#aoh').text(avgt);
+    }
+    if(times[sn].length < 100){
+      $('#aoh').text('DNF');
+    }
+  } else {
+    $('#timelist').text('None submitted.');
+    $('.modal-body span:not(#timelist, .input-group-btn)').text('DNF');
+  }
 }
