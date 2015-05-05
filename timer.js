@@ -250,7 +250,7 @@ $('#subet').click(function(){
     }
   }
   //invalid
-  else if(eva.match(/[^0-9:.]/g) || !eva.match(/dnf/ig) || parseInt(eva) == 0){
+  else if((eva.match(/[^0-9:.]/g) && !eva.match(/dnf/ig)) || parseInt(eva) == 0){
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
     }
@@ -301,8 +301,10 @@ window.onbeforeunload = function(){
 //function for updating stats
 function updatestats(){
   $.each(times[sn], function(i, v){
-    var val = v.split(':');
-    times[sn][i] = val[0] + ':' + parseFloat(val[1]).toFixed(3).toString();
+    if(v != 'DNF'){
+      var val = v.split(':');
+      times[sn][i] = val[0] + ':' + parseFloat(val[1]).toFixed(3).toString();
+    }
   });
   var m = average_time(str_array_to_time_array(times[sn]));
   var mt = m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
