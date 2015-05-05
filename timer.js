@@ -152,28 +152,25 @@ $('#stats').click(function(){
 
 //penalties
 $('#pen').click(function(){
-  var orig = times[sn][$('#sel').index()];
+  var orig = times[sn].slice(0)[$('#sel').index()];
   if($(this).text() == 'No penalty'){
-    pt = $('#sel').text().split(':')[0] + ':' + (parseFloat($('#sel').text().split(':')[1]) + 2).toString();
     $(this).text('+2');
-    $('#sel').text(pt);
+    $('#sel').text($('#sel').text().split(':')[0] + ':' + (parseFloat($('#sel').text().split(':')[1]) + 2).toString());
     times[sn][$('#sel').index()] = pt;
+    updatestats();
   }
   else if($(this).text() == '+2'){
     $(this).text('DNF');
     $('#sel').text('DNF');
     times[sn][$('#sel').index()] = 'DNF';
+    updatestats();
   }
   else {
     $(this).text('No penalty');
     $('#sel').text(orig);
     times[sn][$('#sel').index()] = orig;
+    updatestats();
   }
-});
-$('#sel').click(function(){
-  $('.tdp').fadeOut('fast');
-  $(this).removeClass('btn-primary');
-  $(this).removeAttr('id');
 });
 
 //reset
@@ -317,12 +314,24 @@ function updatestats(){
   }
   if(times[sn].length > 0){
     $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
-    $('.timeitem:not(#sel)').click(function(){
-      $('#pen').text('No penalty');
-      $('.tdp').fadeIn('fast');
-      $(this).addClass('btn-primary');
-      $('.timeitem').removeAttr('id');
-      $(this).attr('id', 'sel');
+    $('.timeitem').each(function(){
+      if($(this).text() == 'DNF'){
+        $(this).addClass('btn-danger dnf');
+      }
+    });
+    $('.timeitem:not(#sel, dnf)').click(function(){
+      if(!$('#sel').length){
+        $('#pen').text('No penalty');
+        $('.tdp').fadeIn('fast');
+        $(this).addClass('btn-primary');
+        $('.timeitem').removeAttr('id');
+        $(this).attr('id', 'sel');
+      }
+    });
+    $('#sel').click(function(){
+      $('.tdp').fadeOut('fast');
+      $(this).removeClass('btn-primary');
+      $(this).removeAttr('id');
     });
     $('#sm').text(mt);
     $('#pb').text(sort[0]);
@@ -330,7 +339,7 @@ function updatestats(){
   } 
   if(times[sn].length > 2){
     var dup = times[sn].slice(0);
-    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
     avg = average_time(str_array_to_time_array(dup));
     avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
     $('#sa').text(avgt);
@@ -340,7 +349,7 @@ function updatestats(){
   }
   if(times[sn].length > 4){
     var dup = times[sn].slice(times[sn].length - 5);
-    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
     avg = average_time(str_array_to_time_array(dup));
     avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
     $('#aof').text(avgt);
@@ -350,7 +359,7 @@ function updatestats(){
   }
   if(times[sn].length > 11){
     var dup = times[sn].slice(times[sn].length - 12);
-    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
     avg = average_time(str_array_to_time_array(dup));
     avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
     $('#aot').text(avgt);
@@ -360,7 +369,7 @@ function updatestats(){
   }
   if(times[sn].length > 99){
     var dup = times[sn].slice(times[sn].length - 100);
-    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
     avg = average_time(str_array_to_time_array(dup));
     avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
     $('#aoh').text(avgt);
