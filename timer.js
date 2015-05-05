@@ -152,7 +152,6 @@ $('#stats').click(function(){
 
 //penalties
 $('#pen').click(function(){
-  var orig = times[sn].slice(0)[$('#sel').index()];
   if($(this).text() == 'No penalty'){
     $(this).text('+2');
     $('#sel').text($('#sel').text().split(':')[0] + ':' + (parseFloat($('#sel').text().split(':')[1]) + 2).toString());
@@ -172,6 +171,27 @@ $('#pen').click(function(){
     updatestats();
   }
 });
+$('.p2').click(function(){
+  var orig = times[sn].slice(0)[$('#sel').index()];
+  $(this).toggleClass('btn-warning');
+  if($(this).hasClass('btn-warning')){
+    var to = str_to_time(orig);
+    $('#sel').text(to.minutes.toString() + ':' + (to.seconds + 2).toString() + '.' + to.milliseconds.toString());
+  } else {
+    var to = str_to_time(orig);
+    $('#sel').text(to.minutes.toString() + ':' + (to.seconds - 2).toString() + '.' + to.milliseconds.toString());
+  }
+});
+$('.dnf').click(function(){
+  var orig = times[sn].slice(0)[$('#sel').index()];
+  $(this).toggleClass('btn-danger');
+  if($(this).hasClass('btn-danger')){
+    $('#sel').text('DNF(' + orig + ')');
+  } else {
+    var to = str_to_time(orig);
+    $('#sel').text('DNF(' + orig + ')');
+  }
+});
 
 //reset
 $('#reset').on('dblclick doubletap', function(){
@@ -185,7 +205,7 @@ $('#resl').click(function(){
 });
 
 //change events
-$('#st li a:not(.nosel)').click(function(){
+$('#st li a').click(function(){
   st = $(this).attr('class');
   scr = function(){
     return scramblers[st].getRandomScramble().scramble_string;
@@ -301,7 +321,7 @@ window.onbeforeunload = function(){
 //function for updating stats
 function updatestats(){
   $.each(times[sn], function(i, v){
-    if(v != 'DNF'){
+    if(!v.match('DNF')){
       var val = v.split(':');
       times[sn][i] = val[0] + ':' + parseFloat(val[1]).toFixed(3).toString();
     }
@@ -310,17 +330,21 @@ function updatestats(){
   var mt = m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
   var avg, avgt;
   var ndt = times[sn].slice(0);
-  ndt.splice(times[sn].indexOf('DNF'), 1);
+  $.each(ndt, function(i, v){
+    if(v.match('DNF')){
+      ndt.splice(i, 1);
+    }
+  });
   var sort = ndt.slice(0).sort();
   
   if(ndt.length == 0 || isdnf(0)){
     $('#timelist').text('None submitted.');
-    $('#sm, #sa, #sm, #aof, #aot, #aoh').text('DNF');
+    $('#sm, #sa').text('DNF');
   }
   if(ndt.length > 0){
     $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
     $('.timeitem').each(function(){
-      if($(this).text() == 'DNF'){
+      if($(this).text().match('DNF')){
         $(this).addClass('btn-danger dnf');
       }
     });
@@ -350,13 +374,13 @@ function updatestats(){
     avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
     $('#sa').text(avgt);
   }
-  if(times[sn].length < 3 || isdnf(0)){
+  if(times[sn].length < 3){
     $('#sa').text('DNF');
   }
   
   if(times[sn].length > 4){
     var dup = ndt.slice(times[sn].length - 5);
-    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
+    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
     avg = average_time(str_array_to_time_array(dup));
     avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
     $('#aof').text(avgt);
@@ -367,7 +391,7 @@ function updatestats(){
   
   if(times[sn].length > 11){
     var dup = ndt.slice(times[sn].length - 12);
-    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
+    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
     avg = average_time(str_array_to_time_array(dup));
     avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
     $('#aot').text(avgt);
@@ -378,7 +402,7 @@ function updatestats(){
   
   if(times[sn].length > 99){
     var dup = ndt.slice(times[sn].length - 100);
-    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
+    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
     avg = average_time(str_array_to_time_array(dup));
     avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
     $('#aoh').text(avgt);
@@ -391,7 +415,7 @@ function isdnf(x){
   var y = times[sn].slice(x);
   var z = 0;
   $.each(y, function(i, v){
-    if(v == 'DNF'){
+    if(v.match('DNF')){
       z++;
     }
     if(z > 1){
