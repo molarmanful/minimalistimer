@@ -309,12 +309,15 @@ function updatestats(){
   var m = average_time(str_array_to_time_array(times[sn]));
   var mt = m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
   var avg, avgt;
-  var sort = times[sn].slice(0).sort();
-  if(times[sn].length == 0 || isdnf(0) || (times[sn].length == 1 && times[sn][0] == 'DNF')){
+  var ndt = times[sn].slice(0);
+  ndt.splice(times[sn].indexOf('DNF'), 1);
+  var sort = ndt.slice(0).sort();
+  
+  if(ndt.length == 0 || isdnf(0)){
     $('#timelist').text('None submitted.');
     $('#sm, #pb, #pw, #sa, #sm, #aof, #aot, #aoh').text('DNF');
   }
-  if(times[sn].length > 0){
+  if(ndt.length > 0){
     $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
     $('.timeitem').each(function(){
       if($(this).text() == 'DNF'){
@@ -336,12 +339,13 @@ function updatestats(){
       $(this).removeAttr('id');
     });
     $('#sm').text(mt);
-    $('#pb').text(sort[0]);
-    $('#pw').text(sort[times[sn].length - 1]);
+    $('#pb').text(Math.min.apply(Math, ndt));
+    $('#pw').text(Math.max.apply(Math, ndt));
   } 
+  
   if(times[sn].length > 2){
-    var dup = times[sn].slice(0);
-    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
+    var dup = ndt.slice(0);
+    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
     avg = average_time(str_array_to_time_array(dup));
     avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
     $('#sa').text(avgt);
@@ -349,8 +353,9 @@ function updatestats(){
   if(times[sn].length < 3 || isdnf(0)){
     $('#sa').text('DNF');
   }
+  
   if(times[sn].length > 4){
-    var dup = times[sn].slice(times[sn].length - 5);
+    var dup = ndt.slice(times[sn].length - 5);
     dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
     avg = average_time(str_array_to_time_array(dup));
     avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
@@ -359,8 +364,9 @@ function updatestats(){
   if(times[sn].length < 5 || isdnf(times[sn].length - 5)){
     $('#aof').text('DNF');
   }
+  
   if(times[sn].length > 11){
-    var dup = times[sn].slice(times[sn].length - 12);
+    var dup = ndt.slice(times[sn].length - 12);
     dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
     avg = average_time(str_array_to_time_array(dup));
     avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
@@ -369,8 +375,9 @@ function updatestats(){
   if(times[sn].length < 12 || isdnf(times[sn].length - 12)){
     $('#aot').text('DNF');
   }
+  
   if(times[sn].length > 99){
-    var dup = times[sn].slice(times[sn].length - 100);
+    var dup = ndt.slice(times[sn].length - 100);
     dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1).splice(dup.indexOf('DNF'), 1);
     avg = average_time(str_array_to_time_array(dup));
     avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
