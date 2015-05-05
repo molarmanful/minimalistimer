@@ -183,6 +183,7 @@ $('#reset').on('dblclick doubletap', function(){
 });
 $('#resl').click(function(){
   times[sn].pop();
+  $('.tdp').fadeOut('fast');
   updatestats();
 });
 
