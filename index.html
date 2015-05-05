@@ -84,6 +84,12 @@
       body .ionicon.ion-navicon-round {
         font-size: 1.5em;
       }
+      body #dt,
+      body #dtc,
+      body .plus2,
+      body .dnf {
+        display: none;
+      }
       body h2 {
         font-size: 2em !important;
       }
@@ -165,13 +171,7 @@
             <p class="help text-success" style="display: none"></p>
             <br/>
             <button id="reset" class="btn btn-danger btn-sm">Double-click to delete ALL times for this event</button>
-            <div class="btn-toolbar btn-toolbar-sm tdp" style="display: none">
-              <button id="resl" class="btn btn-danger">Delete</button>
-              <div class="btn-group">
-                <button class="btn btn-default p2">+2</button>
-                <button class="btn btn-default dnf">DNF</button>
-              </div>
-            </div>
+            <button id="resl" class="btn btn-danger btn-sm">Click to delete last time for this event</button>
             <hr/>
             <p>Times:<br/><span id="timelist">None submitted.</span></p>
             <hr/>
