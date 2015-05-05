@@ -161,12 +161,12 @@ $('#pen').click(function(){
   }
   else if($(this).text() == '+2'){
     $(this).text('DNF');
-    $('#sel').text(pt);
+    $('#sel').text('DNF');
     times[sn][$('#sel').index()] = 'DNF';
   }
   else {
     $(this).text('No penalty');
-    $('#sel').text('DNF');
+    $('#sel').text(orig);
     times[sn][$('#sel').index()] = orig;
   }
 });
