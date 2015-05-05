@@ -1,7 +1,7 @@
 var startTimer=function(t){this.start_t=null,this.interval=null,this.DOM=t,this.toggle=function(){null==this.interval?this.start():this.end()},this.start=function(){this.start_t=new Date;var t=this,i=function(){t.update()};this.interval=setInterval(i,10)},this.end=function(){clearInterval(this.interval),this.interval=null},this.update=function(){var t=(new Date-this.start_t)/1e3,i=60>t?0:Math.floor(Math.floor(t)/60);t=(t%60).toFixed(3),this.DOM.innerHTML=i.toString()+":"+t}};
 
 var str_to_time = function(time_str) {
-  var pieces = time_str.split(/:|\.|+/g);
+  var pieces = time_str.split(/:|\./g);
   return {
     minutes: parseInt(pieces[0], 10),
     seconds: parseInt(pieces[1], 10),
