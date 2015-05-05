@@ -1,7 +1,7 @@
 var startTimer=function(t){this.start_t=null,this.interval=null,this.DOM=t,this.toggle=function(){null==this.interval?this.start():this.end()},this.start=function(){this.start_t=new Date;var t=this,i=function(){t.update()};this.interval=setInterval(i,10)},this.end=function(){clearInterval(this.interval),this.interval=null},this.update=function(){var t=(new Date-this.start_t)/1e3,i=60>t?0:Math.floor(Math.floor(t)/60);t=(t%60).toFixed(3),this.DOM.innerHTML=i.toString()+":"+t}};
 
 var str_to_time = function(time_str) {
-  var pieces = time_str.split(/:|\./g);
+  var pieces = time_str.split(/:|\.|+/g);
   return {
     minutes: parseInt(pieces[0], 10),
     seconds: parseInt(pieces[1], 10),
@@ -243,9 +243,11 @@ $(window).on('orientationchange', function(){
     $('#mod').modal('hide');
   }
 });
+
 //time submitting
 $('#subet').click(function(){
   var eva = $('#et').val();
+  //blank
   if(eva.match(/^\s+$/g)){
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
@@ -259,7 +261,8 @@ $('#subet').click(function(){
     	$('.help').html('Please enter a time.');
     }
   }
-  else if(eva.match(/[^0-9:.]/g) || parseInt(eva) == 0){
+  //invalid
+  else if(eva.match(/[^0-9:.]/g) || !eva.match(/dnf/ig) || parseInt(eva) == 0){
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
     }
@@ -269,13 +272,19 @@ $('#subet').click(function(){
     if(!$('.help').hasClass('text-danger')){
       $('.help').fadeIn('fast').addClass('text-danger').html('Please enter a valid time.');
     } else {
-    	$('.help').html('Please enter a valid time.');
+      $('.help').html('Please enter a valid time.');
     }
   }
-  else if(!eva.match(':')){
+  //no minutes
+  else if(!eva.match(':') && !eva.match(/dnf/ig)){
     eva = stms(parseFloat(eva));
     subt(eva);
   }
+  //dnf
+  else if(eva.match(/dnf/ig)){
+    subt('DNF');
+  }
+  //minutes
   else {
     subt(eva);
   }
