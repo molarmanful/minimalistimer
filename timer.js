@@ -321,7 +321,7 @@ function updatestats(){
         $(this).addClass('btn-danger dnf');
       }
     });
-    $('.timeitem:not(#sel, dnf)').click(function(){
+    $('.timeitem:not(#sel, .dnf)').click(function(){
       if(!$('#sel').length){
         $('#pen').text('No penalty');
         $('.tdp').fadeIn('fast');
