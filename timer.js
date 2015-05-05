@@ -149,18 +149,6 @@ $('#time').on('touchstart', function(){
 $('#stats').click(function(){
   updatestats();
 });
-$('.timeitem').click(function(){
-  $('#pen').text('No penalty');
-  $('.tdp').fadeIn('fast');
-  $(this).addClass('btn-primary');
-  $('.timeitem').removeAttr('id');
-  $(this).attr('id', 'sel');
-});
-$('#sel').click(function(){
-  $('.tdp').fadeOut('fast');
-  $(this).removeClass('btn-primary');
-  $(this).removeAttr('id');
-});
 
 //penalties
 $('#pen').click(function(){
@@ -326,6 +314,18 @@ function updatestats(){
   }
   if(times[sn].length > 0){
     $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
+    $('.timeitem').click(function(){
+      $('#pen').text('No penalty');
+      $('.tdp').fadeIn('fast');
+      $(this).addClass('btn-primary');
+      $('.timeitem').removeAttr('id');
+      $(this).attr('id', 'sel');
+    });
+    $('#sel').click(function(){
+      $('.tdp').fadeOut('fast');
+      $(this).removeClass('btn-primary');
+      $(this).removeAttr('id');
+    });
     $('#sm').text(mt);
     $('#pb').text(sort[0]);
     $('#pw').text(sort[times[sn].length - 1]);
