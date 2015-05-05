@@ -315,7 +315,7 @@ function updatestats(){
   
   if(ndt.length == 0 || isdnf(0)){
     $('#timelist').text('None submitted.');
-    $('#sm, #pb, #pw, #sa, #sm, #aof, #aot, #aoh').text('DNF');
+    $('#sm, #sa, #sm, #aof, #aot, #aoh').text('DNF');
   }
   if(ndt.length > 0){
     $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
@@ -339,8 +339,8 @@ function updatestats(){
       $(this).removeAttr('id');
     });
     $('#sm').text(mt);
-    $('#pb').text(Math.min.apply(Math, ndt));
-    $('#pw').text(Math.max.apply(Math, ndt));
+    $('#pb').text(sort[0]);
+    $('#pw').text(sort[sort.length - 1]);
   } 
   
   if(times[sn].length > 2){
