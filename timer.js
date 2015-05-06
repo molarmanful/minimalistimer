@@ -144,6 +144,19 @@ $('#time').on('touchstart', function(){
     timer_obj.end();
   }
 });
+//timer knock to stop (mobile only)
+var shake = new Shake();
+shake.start();
+window.addEventListener('shake', function(){
+  if($('#kts').is(':checked') && record = true){
+    timer_obj.end();
+    record = false;
+    $('.dis').fadeTo('fast', 1);
+    $('button, a').removeAttr('disabled');
+    times[sn].push($('#time').text());
+    $('#scramble').html(scr);
+  }
+}, false);
 
 //stats
 $('#stats').click(function(){
