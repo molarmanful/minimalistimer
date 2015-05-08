@@ -282,7 +282,7 @@ function updatestats(){
     $('#pw').text(sort[times[sn].length - 1]);
     if(times[sn].length > 2){
       var dup = times[sn].slice(0);
-      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+      dup.splice(dup.indexOf(sort[times[sn].length - 1]), 1).splice(dup.indexOf(sort[0]), 1);
       avg = average_time(str_array_to_time_array(dup));
       avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
       $('#sa').text(avgt);
@@ -292,7 +292,7 @@ function updatestats(){
     }
     if(times[sn].length > 4){
       var dup = times[sn].slice(times[sn].length - 5);
-      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+      dup.splice(dup.indexOf(sort[times[sn].length - 1]), 1).splice(dup.indexOf(sort[0]), 1);
       avg = average_time(str_array_to_time_array(dup));
       avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
       $('#aof').text(avgt);
@@ -302,7 +302,7 @@ function updatestats(){
     }
     if(times[sn].length > 11){
       var dup = times[sn].slice(times[sn].length - 12);
-      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+      dup.splice(dup.indexOf(sort[times[sn].length - 1]), 1).splice(dup.indexOf(sort[0]), 1);
       avg = average_time(str_array_to_time_array(dup));
       avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
       $('#aot').text(avgt);
@@ -312,7 +312,7 @@ function updatestats(){
     }
     if(times[sn].length > 99){
       var dup = times[sn].slice(times[sn].length - 100);
-      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+      dup.splice(dup.indexOf(sort[times[sn].length - 1]), 1).splice(dup.indexOf(sort[0]), 1);
       avg = average_time(str_array_to_time_array(dup));
       avgt = avg.minutes.toString() + ':' + avg.seconds.toString() + '.' + avg.milliseconds.toString();
       $('#aoh').text(avgt);
