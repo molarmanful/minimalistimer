@@ -224,10 +224,6 @@ window.onbeforeunload = function(){
   
 //function for updating stats
 function updatestats(){
-  $.each(times[sn], function(i, v){
-    var val = v.split(':');
-    times[sn][i] = val[0] + ':' + parseFloat(val[1]).toFixed(3).toString();
-  });
   var sort = times[sn].slice(0).sort();
   if(times[sn].length > 0){
     $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
