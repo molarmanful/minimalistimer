@@ -228,12 +228,10 @@ function updatestats(){
     var val = v.split(':');
     times[sn][i] = val[0] + ':' + parseFloat(val[1]).toFixed(3).toString();
   });
-  var m = average_time(str_array_to_time_array(times[sn]));
-  var mt = m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
   var sort = times[sn].slice(0).sort();
   if(times[sn].length > 0){
     $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
-    $('#sm').text(mt);
+    $('#sm').text(jChester.solveTimeToStopwatchFormat({millis: st(times[sn]).average(), decimals: 3}));
     $('#pb').text(sort[0]);
     $('#pw').text(sort[times[sn].length - 1]);
     if(times[sn].length > 2){
