@@ -231,7 +231,7 @@ function updatestats(){
   var sort = times[sn].slice(0).sort();
   if(times[sn].length > 0){
     $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
-    $('#sm').text(jChester.solveTimeToStopwatchFormat({millis: st(times[sn]).average(), decimals: 3}));
+    $('#sm').text(jChester.solveTimeToStopwatchFormat({millis: st(sort).average(), decimals: 3}));
     $('#pb').text(sort[0]);
     $('#pw').text(sort[times[sn].length - 1]);
     if(times[sn].length > 2){
