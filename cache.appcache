@@ -14,19 +14,8 @@ cubingicons.css
 #ionicons
 ionicons.css
 
-#lumen files
-https://bootswatch.com/lumen/bootstrap.min.css
-https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic
-https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGPS42wKzre0cxmO5m5GyTsY.ttf
-https://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlEY6Fu39Tt9XkmtSosaMoEA.ttf
-https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGLlcMrNrsnL9dgADnXgYJjs.ttf
-https://fonts.gstatic.com/s/sourcesanspro/v9/M2Jd71oPJhLKp0zdtTvoMzpKUtbt71woJ25xl7KOGD0.ttf
-https://bootswatch.com/fonts/glyphicons-halflings-regular.eot
-https://bootswatch.com/fonts/glyphicons-halflings-regular.eot?#iefix
-https://bootswatch.com/fonts/glyphicons-halflings-regular.woff2
-https://bootswatch.com/fonts/glyphicons-halflings-regular.woff
-https://bootswatch.com/fonts/glyphicons-halflings-regular.ttf
-https://bootswatch.com/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular
+#bootstrap
+bootstrap.css
 
 NETWORK:
 *
