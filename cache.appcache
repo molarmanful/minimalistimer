@@ -22,3 +22,6 @@ https://cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/fonts/ionicons.woff
 
 NETWORK:
 *
+
+FALLBACK:
+offline.html
