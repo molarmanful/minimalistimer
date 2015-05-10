@@ -1,0 +1,21 @@
+CACHE MANIFEST
+#version 1
+CACHE:
+index.html
+
+#scripts
+jquery.min.js
+scrambler.js
+timer.js
+
+#cubing icons
+cubing-icons.css
+
+#ionicon files
+https://cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/css/ionicons.min.css
+https://cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/fonts/ionicons.eot
+https://cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/fonts/ionicons.svg
+https://cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/fonts/ionicons.ttf
+https://cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/fonts/ionicons.woff
+NETWORK:
+*
