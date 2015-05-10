@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#1
+#0
 CACHE:
 index.html
 
@@ -16,6 +16,7 @@ ionicons.css
 
 #bootstrap
 bootstrap.css
+bootstrap1.css
 
 NETWORK:
 *
