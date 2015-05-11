@@ -128,7 +128,7 @@ $('#st li a:not(.nosel)').click(function(){
     return scramblers[st].getRandomScramble().scramble_string;
   };
   $('#scramble').html(scr);
-  sn = event.indexOf(st);
+  sn = event.indexOf(stt);
 });
 
 //change scramble
