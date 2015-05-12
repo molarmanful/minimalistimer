@@ -51,6 +51,7 @@ $('#ins').mouseup(function(){
   ins = setInterval(function(){
     $('#time').text(x);
     if(x == 0){
+      record = true;
       clearInterval(ins);
       timer_obj.start();
     } else {
