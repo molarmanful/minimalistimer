@@ -40,7 +40,7 @@ var scr = function(){
   return scramblers[st].getRandomScramble().scramble_string;
 };
 $('#scramble').html(scr);
-$('.navbar-brand').html('<span class="cubing-icon icon-333"></span> 3x3x3');
+$('.navbar-brand .type').html('<span class="cubing-icon icon-333"></span> 3x3x3');
 
 //inspection time
 var ins;
