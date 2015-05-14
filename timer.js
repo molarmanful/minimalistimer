@@ -18,7 +18,7 @@ var times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 var event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock', 'skewb'];
 
 //just some loading effects
-$('html').fadeIn('fast');
+$('html').fadeIn('slow');
 
 //stored time get
 if(typeof(Storage) != 'undefined') {
