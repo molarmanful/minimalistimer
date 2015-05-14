@@ -15,7 +15,7 @@ Array.prototype.average = function(){
 };
 
 var times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
-var event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock', 'skewb'];
+var ev = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock', 'skewb'];
 
 //stored time get
 if(typeof(Storage) != 'undefined') {
@@ -33,7 +33,7 @@ if(typeof(Storage) != 'undefined') {
 var st = '333';
 var sn = 1;
 var timer_obj = new startTimer(document.getElementById('time'));
-$.each(event, function(i, v){
+$.each(ev, function(i, v){
   scramblers[v].initialize(null, Math);
 });
 var scr = function(){
@@ -133,7 +133,7 @@ $('#resl').click(function(){
 //change events
 $('#st li a').click(function(){
   st = $(this).attr('class');
-  sn = $.inArray(st, event);
+  sn = $.inArray(st, ev);
   scr = function(){
     return scramblers[st].getRandomScramble().scramble_string;
   };
