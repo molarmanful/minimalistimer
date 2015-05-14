@@ -30,8 +30,10 @@ if(typeof(Storage) != 'undefined') {
 }
 
 //timer and scramble initialization
-var sn = 1;
 var st = '333';
+var sn = function(){
+	return event.indexOf(st);
+};
 var timer_obj = new startTimer(document.getElementById('time'));
 $.each(event, function(i, v){
   scramblers[v].initialize(null, Math);
@@ -137,7 +139,6 @@ $('#st li a').click(function(){
     return scramblers[st].getRandomScramble().scramble_string;
   };
   $('#scramble').html(scr);
-  sn = event.indexOf(st);
   $('.navbar-brand .type').html($(this).html());
 });
 
