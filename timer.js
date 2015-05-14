@@ -31,7 +31,7 @@ if(typeof(Storage) != 'undefined') {
 
 //remove help text
 setTimeout(function(){
-	$('#ht').fadeOut('fast').remove();
+	$('.ht').fadeOut('fast').remove();
 }, 5000);
 
 //timer and scramble initialization
