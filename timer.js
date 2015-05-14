@@ -131,7 +131,7 @@ $('#st li a').click(function(){
   };
   $('#scramble').html(scr);
   sn = event.indexOf(st);
-  $('.navbar-brand').html($(this).html());
+  $('.navbar-brand .type').html($(this).html());
 });
 
 //change scramble
