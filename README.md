@@ -5,8 +5,9 @@ Built on jQuery, Bootstrap, jQuery Cookie, jQuery Finger, Mark 2, Bootswatch the
 
 ## Features
 - Offline support
-- Time Storage
-- Time Statistics
+- Theater mode
+- Time storage
+- Time statistics
 - All WCA timed events
 - Mobile-optimized
 - WCA Inspection
