@@ -41,6 +41,19 @@ var scr = function(){
 };
 $('#scramble').html(scr);
 
+//fade out navs after startup
+setTimeout(function(){
+  $('nav').fadeTo(0.01, 'slow');
+  $('.navbar-brand').html('<span class="cubing-icon icon-333"></span> 3x3x3');
+}, 1000);
+
+//nav hover
+$('nav').hover(function(){
+  $('nav').fadeTo(1, 'fast');
+}, function(){
+  $('nav').fadeTo(0.01, 'slow');
+});
+
 //inspection time
 var ins;
 $('#ins').mouseup(function(){
@@ -123,13 +136,14 @@ $('#resl').click(function(){
 });
 
 //change events
-$('#st li a:not(.nosel)').click(function(){
+$('#st li a').click(function(){
   st = $(this).attr('class');
   scr = function(){
     return scramblers[st].getRandomScramble().scramble_string;
   };
   $('#scramble').html(scr);
   sn = event.indexOf(st);
+  $('.navbar-brand').html($(this).html());
 });
 
 //change scramble
