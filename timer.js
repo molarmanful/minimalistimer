@@ -32,7 +32,7 @@ if(typeof(Storage) != 'undefined') {
 //timer and scramble initialization
 var st = '333';
 var sn = function(){
-	return event.indexOf(st);
+	return $.inArray(st, event);
 };
 var timer_obj = new startTimer(document.getElementById('time'));
 $.each(event, function(i, v){
