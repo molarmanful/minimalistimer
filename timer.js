@@ -42,6 +42,13 @@ var scr = function(){
 $('#scramble').html(scr);
 $('.navbar-brand .type').html('<span class="cubing-icon icon-333"></span> 3x3x3');
 
+//no spacebar scrolls allowed!
+$(document).keydown(function(e) {
+  if(e.keyCode == 32) {
+    return false;
+  }
+});
+
 //inspection time
 var ins;
 $('#ins').mouseup(function(){
