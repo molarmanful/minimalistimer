@@ -89,7 +89,7 @@ $(document).keyup(function(e){
       record = false;
       $('.dis').fadeTo('fast', 1);
       $('button, a').removeAttr('disabled');
-      times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($('#time').text())));
+      times[sn()].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($('#time').text())));
       $('#scramble').html(scr);
     }
   }
@@ -107,7 +107,7 @@ $('#time').on('touchend', function(){
     record = false;
     $('.dis').fadeTo('fast', 1);
     $('button, a').removeAttr('disabled');
-    times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($('#time').text())));
+    times[sn()].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($('#time').text())));
     $('#scramble').html(scr);
   }
 });
@@ -124,11 +124,11 @@ $('#stats').click(function(){
 
 //reset
 $('#reset').on('dblclick doubletap', function(){
-  times[sn].length = 0;
+  times[sn()].length = 0;
   updatestats();
 });
 $('#resl').click(function(){
-  times[sn].pop();
+  times[sn()].pop();
   updatestats();
 });
 
@@ -214,7 +214,7 @@ $('#subet').click(function(){
   $('#et').val('');
 });
 function subt(x){
-  times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime(x)));
+  times[sn()].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime(x)));
   $('.input-group').removeClass('has-error');
   $('#subet').removeClass('btn-danger');
   $('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').promise().done(function(){
@@ -235,46 +235,46 @@ window.onbeforeunload = function(){
   
 //function for updating stats
 function updatestats(){
-  var sort = times[sn].slice(0).sort();
-  if(times[sn].length > 0){
-    $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
+  var sort = times[sn()].slice(0).sort();
+  if(times[sn()].length > 0){
+    $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn()].join('</button><button class="btn btn-default timeitem">') + '</button>');
     $('#sm').text(jChester.solveTimeToStopwatchFormat({millis: stt(sort).average(), decimals: 3}));
     $('#pb').text(sort[0]);
-    $('#pw').text(sort[times[sn].length - 1]);
-    if(times[sn].length > 2){
-      var dup = times[sn].slice(0);
-      dup.splice(dup.indexOf(sort[times[sn].length - 1]), 1)
+    $('#pw').text(sort[times[sn()].length - 1]);
+    if(times[sn()].length > 2){
+      var dup = times[sn()].slice(0);
+      dup.splice(dup.indexOf(sort[times[sn()].length - 1]), 1)
       dup.splice(dup.indexOf(sort[0]), 1);
       $('#sa').text(jChester.solveTimeToStopwatchFormat({millis: stt(dup).average(), decimals: 3}));
     }
-    if(times[sn].length < 3){
+    if(times[sn()].length < 3){
       $('#sa').text('DNF');
     }
-    if(times[sn].length > 4){
-      var dup = times[sn].slice(times[sn].length - 5);
-      dup.splice(dup.indexOf(sort[times[sn].length - 1]), 1)
+    if(times[sn()].length > 4){
+      var dup = times[sn()].slice(times[sn()].length - 5);
+      dup.splice(dup.indexOf(sort[times[sn()].length - 1]), 1)
       dup.splice(dup.indexOf(sort[0]), 1);
       $('#aof').text(jChester.solveTimeToStopwatchFormat({millis: stt(dup).average(), decimals: 3}));
     }
-    if(times[sn].length < 5){
+    if(times[sn()].length < 5){
       $('#aof').text('DNF');
     }
-    if(times[sn].length > 11){
-      var dup = times[sn].slice(times[sn].length - 12);
-      dup.splice(dup.indexOf(sort[times[sn].length - 1]), 1)
+    if(times[sn()].length > 11){
+      var dup = times[sn()].slice(times[sn()].length - 12);
+      dup.splice(dup.indexOf(sort[times[sn()].length - 1]), 1)
       dup.splice(dup.indexOf(sort[0]), 1);
       $('#aot').text(jChester.solveTimeToStopwatchFormat({millis: stt(dup).average(), decimals: 3}));
     }
-    if(times[sn].length < 12){
+    if(times[sn()].length < 12){
       $('#aot').text('DNF');
     }
-    if(times[sn].length > 99){
-      var dup = times[sn].slice(times[sn].length - 100);
-      dup.splice(dup.indexOf(sort[times[sn].length - 1]), 1)
+    if(times[sn()].length > 99){
+      var dup = times[sn()].slice(times[sn()].length - 100);
+      dup.splice(dup.indexOf(sort[times[sn()].length - 1]), 1)
       dup.splice(dup.indexOf(sort[0]), 1);
       $('#aoh').text(jChester.solveTimeToStopwatchFormat({millis: stt(dup).average(), decimals: 3}));
     }
-    if(times[sn].length < 100){
+    if(times[sn()].length < 100){
       $('#aoh').text('DNF');
     }
   } else {
