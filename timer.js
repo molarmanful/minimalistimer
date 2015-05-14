@@ -43,15 +43,15 @@ $('#scramble').html(scr);
 
 //fade out navs after startup
 setTimeout(function(){
-  $('nav').fadeTo(0.01, 'slow');
+  $('nav').fadeTo('slow', 0.01);
   $('.navbar-brand').html('<span class="cubing-icon icon-333"></span> 3x3x3');
 }, 1000);
 
 //nav hover
 $('nav').hover(function(){
-  $('nav').fadeTo(1, 'fast');
+  $('nav').fadeTo('fast', 1);
 }, function(){
-  $('nav').fadeTo(0.01, 'slow');
+  $('nav').fadeTo('slow', 0.01);
 });
 
 //inspection time
