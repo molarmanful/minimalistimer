@@ -142,10 +142,6 @@
         <hr class="dis"/>
         <p id="scramble" class="dis"></p>
       </div>
-      <p class="text-center ht dis hidden-sm hidden-xs">Press the <kbd>spacebar</kbd> to star/stop the timer. Click the scramble to change it.</p>
-      <p class="text-center ht dis hidden-md hidden-lg">Press the display to start/stop the timer. Tap the scramble to change it. Change device orientation to landscape to show statistics.</p>
-      <br>
-      <br>
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom hidden-xs dis">
       <div class="container-fluid">
@@ -186,6 +182,23 @@
             <hr/>
             <p>Session Average: <span id="sa">DNF</span></p>
             <p>Session Mean: <span id="sm">DNF</span></p>
+          </div>
+          <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-default hidden-sm hidden-xs">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="helpmod" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button data-dismiss="modal" aria-label="Close" class="close hidden-sm hidden-xs"><span aria-hidden="true">&times;</span></button>
+            <h2>Help</h2>
+          </div>
+          <div class="modal-body">
+            <p class="text-center ht dis hidden-sm hidden-xs">Press the <kbd>spacebar</kbd> to star/stop the timer. Click the scramble to change it.</p>
+            <p class="text-center ht dis hidden-md hidden-lg">Press the display to start/stop the timer. Tap the scramble to change it. Change device orientation to landscape to show statistics.</p>
           </div>
           <div class="modal-footer">
             <button data-dismiss="modal" class="btn btn-default hidden-sm hidden-xs">Close</button>
