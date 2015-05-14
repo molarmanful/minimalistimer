@@ -29,11 +29,6 @@ if(typeof(Storage) != 'undefined') {
   }
 }
 
-//remove help text
-setTimeout(function(){
-	$('.ht').fadeOut('fast').remove();
-}, 5000);
-
 //timer and scramble initialization
 var sn = 1;
 var st = '333';
