@@ -18,15 +18,9 @@ var times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 var ev = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock', 'skewb'];
 
 //stored time get
-if(typeof(Storage) != 'undefined') {
-  if(localStorage.getItem('times') != null){
-    times = JSON.parse(localStorage['times']);
-  }
-} else {
-  $.cookie.json = true;
-  if($.cookie('times') != undefined && $.cookie('times').length == 15){
-    times = $.cookie('times');
-  }
+$.cookie.json = true;
+if($.cookie('times') != undefined && $.cookie('times').length == 15){
+  times = $.cookie('times');
 }
 
 //timer and scramble initialization
@@ -226,9 +220,6 @@ function subt(x){
 
 //store times
 window.onbeforeunload = function(){
-  if(typeof(Storage) != 'undefined'){
-    localStorage['times'] = JSON.stringify(times);
-  }
   $.cookie('times', JSON.stringify(times));
 };
   
