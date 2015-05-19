@@ -19,12 +19,12 @@ var ev = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf
 
 //stored time get
 if(typeof(Storage) != 'undefined') {
-  if(localStorage.getItem('times') != null){
+  if(localStorage.getItem('times') != null && JSON.parse(localStorage['times']).length == ev.length){
     times = JSON.parse(localStorage['times']);
   }
 } else {
   $.cookie.json = true;
-  if($.cookie('times') != undefined && $.cookie('times').length == 15){
+  if($.cookie('times') != undefined && $.cookie('times').length == ev.length){
     times = $.cookie('times');
   }
 }
