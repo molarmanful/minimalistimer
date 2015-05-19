@@ -124,10 +124,12 @@ $('#stats').click(function(){
 $('#reset').on('dblclick doubletap', function(){
   times[sn].length = 0;
   updatestats();
+  $('#time').text('0:0.000');
 });
 $('#resl').click(function(){
   times[sn].pop();
   updatestats();
+  $('#time').text('0:0.000');
 });
 
 //change events
@@ -139,6 +141,7 @@ $('#st li a').click(function(){
   };
   $('#scramble').html(scr);
   $('.navbar-brand .type').html($(this).html());
+  $('#time').text('0:0.000');
 });
 
 //change scramble
