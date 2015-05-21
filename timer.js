@@ -123,13 +123,13 @@ $('#stats').click(function(){
 //reset
 $('#reset').on('dblclick doubletap', function(){
   times[sn].length = 0;
-  updatestats();
   $('#time').text('0:0.000');
+  updatestats();
 });
 $('#resl').click(function(){
   times[sn].pop();
-  updatestats();
   $('#time').text('0:0.000');
+  updatestats();
 });
 
 //change events
