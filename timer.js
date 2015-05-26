@@ -14,7 +14,7 @@ Array.prototype.average = function(){
   return j ? sum / j : 0;
 };
 
-var times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+var times = [];
 var ev = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock', 'skewb'];
 
 //stored time get
@@ -27,6 +27,9 @@ if(typeof(Storage) != 'undefined') {
   if($.cookie('times') != undefined && $.cookie('times').length == ev.length){
     times = $.cookie('times');
   }
+}
+while(times.length < ev.length){
+  times.push([]);
 }
 
 //timer and scramble initialization
