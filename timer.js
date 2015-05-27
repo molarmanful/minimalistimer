@@ -240,7 +240,7 @@ window.onbeforeunload = function(){
   
 //function for updating stats
 function updatestats(){
-  var sort = times[sn].slice(0).sort();
+  var sort = times[sn].slice(0).sort(function(c, d){return c - d});
   if(times[sn].length > 0){
     $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
     $('#sm').text(jChester.solveTimeToStopwatchFormat({millis: stt(sort).average(), decimals: 3}));
