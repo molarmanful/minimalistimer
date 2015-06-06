@@ -142,6 +142,7 @@ $('#st li a').click(function(){
   scr = function(){
     return scramblers[st].getRandomScramble().scramble_string;
   };
+  updatestats();
   $('#scramble').html(scr);
   $('.navbar-brand .type').html($(this).html());
   $('#time').text('0:0.000');
