@@ -94,7 +94,7 @@ $(document).keyup(function(e){
       $('#scramble').html(scr);
     }
   }
-  else if((e.ctrlKey && e.keyCode == 73) && !$('.modal').is(':visible')){
+  else if(e.ctrlKey && !$('.modal').is(':visible')){
     $('#time').text('15');
     var x = 14;
     $('.dis').fadeTo('fast', 0.01);
