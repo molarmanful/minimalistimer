@@ -129,6 +129,7 @@
               </ul>
             </li>
             <li class="hidden-sm hidden-xs"><a id="stats" data-toggle="modal" data-target="#mod"><span class="ionicon ion-ion-stats-bars"></span> Statistics</a></li>
+            <li><a data-toggle="modal" data-target="#setmod"><span class="ionicon ion-ion-android-settings"></span> Settings</a></li>
             <li class="hidden-lg hidden-md hidden-sm"><a data-toggle="modal" data-target="#helpmod"><span class="ionicon ion-ion-help-circled"></span> Help</a></li>
             <li class="hidden-lg hidden-md hidden-sm"><a href="http://www.molarmanful.com/cubing-blog//the-story-of-the-creation-of-a-nice-looking-online-timer" target="_blank"><span class="ionicon ion-ion-ios-book"></span> Backstory</a></li>
             <li class="hidden-lg hidden-md hidden-sm"><a href="https://github.com/molarmanful/minimalistimer" target="_blank"><span class="ionicon ion-ion-social-github"></span> Source Code</a></li>
@@ -210,7 +211,7 @@
         </div>
       </div>
     </div>
-    <div id="set" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+    <div id="setmod" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -218,7 +219,13 @@
             <h2>Settings</h2>
           </div>
           <div class="modal-body">
-            
+            <input type="checkbox" id="dmask"> Display masking
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="URL to custom Bootstrap CSS theme" id="cssurl">
+              <span class="input-group-btn">
+                <button id="subcss" class="btn btn-primary" type="button">Submit URL</button>
+              </span>
+            </div>
           </div>
           <div class="modal-footer">
             <button data-dismiss="modal" class="btn btn-default">Close</button>
