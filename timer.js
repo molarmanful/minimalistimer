@@ -74,12 +74,12 @@ $('#ins').mouseup(function(){
 var record = false;
 //timer key events
 $(document).keydown(function(e){
-  if(e.keyCode == 32 && record == true && !$('#myModal').is(':visible')){
+  if(e.keyCode == 32 && record == true && !$('.modal').is(':visible')){
     timer_obj.end();
   }
 });
 $(document).keyup(function(e){
-  if(e.keyCode == 32 && !$('#myModal').is(':visible')){
+  if(e.keyCode == 32 && !$('.modal').is(':visible')){
     if(record == false){
       record = true;
       clearInterval(ins);
@@ -93,6 +93,22 @@ $(document).keyup(function(e){
       times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($('#time').text())));
       $('#scramble').html(scr);
     }
+  }
+  else if(e.ctrlKey && !$('.modal').is(':visible')){
+    $('#time').text('15');
+    var x = 14;
+    $('.dis').fadeTo('fast', 0.01);
+    $('button, a').blur().attr('disabled', 'true');
+    ins = setInterval(function(){
+      $('#time').text(x);
+      if(x == 0){
+        record = true;
+        clearInterval(ins);
+        timer_obj.start();
+      } else {
+        x--;
+      }
+    }, 1000);
   }
 });
 
