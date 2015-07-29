@@ -40,15 +40,7 @@ var timer_obj = new startTimer(document.getElementById('time'));
 $.each(ev, function(i, v){
   scramblers[v].initialize(null, Math);
 });
-var scr = function(){
-	var scrstr = scramblers[st].getRandomScramble().scramble_string;
-	if(st == '333bf'){
-	  wg = scrstr.trim().split(/\s/g)[scrstr.length - 1];
-	  scrstr[scrstr.length - 1] = wg[0] + 'w' + wg[1];
-	  scrstr = scrstr.join(' ');
-	}
-  return scrstr;
-};
+s
 $('#scramble').html(scr);
 $('.navbar-brand .type').html('<span class="cubing-icon icon-333"></span> 3x3x3');
 
@@ -164,9 +156,6 @@ $('#resl').click(function(){
 $('#st li a').click(function(){
   st = $(this).attr('class');
   sn = $.inArray(st, ev);
-  scr = function(){
-    return scramblers[st].getRandomScramble().scramble_string;
-  };
   updatestats();
   $('#scramble').html(scr);
   $('.navbar-brand .type').html($(this).html());
