@@ -74,12 +74,12 @@ $('#ins').mouseup(function(){
 var record = false;
 //timer key events
 $(document).keydown(function(e){
-  if(e.keyCode == 32 && record == true && !$('#myModal').is(':visible')){
+  if(e.keyCode == 32 && record == true && !$('.modal').is(':visible')){
     timer_obj.end();
   }
 });
 $(document).keyup(function(e){
-  if(e.keyCode == 32 && !$('#myModal').is(':visible')){
+  if(e.keyCode == 32 && !$('.modal').is(':visible')){
     if(record == false){
       record = true;
       clearInterval(ins);
@@ -94,7 +94,7 @@ $(document).keyup(function(e){
       $('#scramble').html(scr);
     }
   }
-  else if((e.ctrlKey || e.metaKey) && !$('#myModal').is(':visible')){
+  else if((e.ctrlKey && e.keyCode == 73) && !$('.modal').is(':visible')){
     $('#time').text('15');
     var x = 14;
     $('.dis').fadeTo('fast', 0.01);
