@@ -94,6 +94,22 @@ $(document).keyup(function(e){
       $('#scramble').html(scr);
     }
   }
+  else if((e.ctrlKey || e.metaKey) && !$('#myModal').is(':visible')){
+    $('#time').text('15');
+    var x = 14;
+    $('.dis').fadeTo('fast', 0.01);
+    $('button, a').blur().attr('disabled', 'true');
+    ins = setInterval(function(){
+      $('#time').text(x);
+      if(x == 0){
+        record = true;
+        clearInterval(ins);
+        timer_obj.start();
+      } else {
+        x--;
+      }
+    }, 1000);
+  }
 });
 
 //timer tap events
