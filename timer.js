@@ -40,7 +40,6 @@ var timer_obj = new startTimer(document.getElementById('time'));
 $.each(ev, function(i, v){
   scramblers[v].initialize(null, Math);
 });
-s
 $('#scramble').html(scr);
 $('.navbar-brand .type').html('<span class="cubing-icon icon-333"></span> 3x3x3');
 
