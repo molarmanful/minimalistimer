@@ -41,7 +41,13 @@ $.each(ev, function(i, v){
   scramblers[v].initialize(null, Math);
 });
 var scr = function(){
-  return scramblers[st].getRandomScramble().scramble_string;
+	var scrstr = scramblers[st].getRandomScramble().scramble_string;
+	if(st == '333bf'){
+	  wg = scrstr.split(' ')[scrstr.length - 1];
+	  scrstr[scrstr.length - 1] = wg[0] + 'w' + wg[1];
+	  scrstr = scrstr.join(' ');
+	}
+  return scrstr;
 };
 $('#scramble').html(scr);
 $('.navbar-brand .type').html('<span class="cubing-icon icon-333"></span> 3x3x3');
