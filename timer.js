@@ -43,7 +43,7 @@ $.each(ev, function(i, v){
 var scr = function(){
 	var scrstr = scramblers[st].getRandomScramble().scramble_string;
 	if(st == '333bf'){
-	  wg = scrstr.split(' ')[scrstr.length - 1];
+	  wg = scrstr.trim().split(/\s/g)[scrstr.length - 1];
 	  scrstr[scrstr.length - 1] = wg[0] + 'w' + wg[1];
 	  scrstr = scrstr.join(' ');
 	}
