@@ -318,6 +318,6 @@ function updatestats(){
     }
   } else {
     $('#timelist').text('None submitted.');
-    $('.modal-body span:not(#timelist, .input-group-btn)').text('DNF');
+    $('#mod .modal-body span:not(#timelist, .input-group-btn)').text('DNF');
   }
 }
