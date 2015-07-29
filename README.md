@@ -10,7 +10,9 @@ Built on jQuery, Bootstrap, jQuery Cookie, jQuery Finger, Mark 2, Bootswatch the
 - Time statistics
 - All WCA timed events
 - Mobile-optimized
-- WCA Inspection
+- WCA inspection
+- Display masking
+- Theme customization
 
 ## Pro Tips
 - On mobile devices, add MinimalisTimer to your homescreen to turn it into an app.
