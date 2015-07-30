@@ -290,7 +290,7 @@ function updatestats(){
   $('#timelist').html('');
   if(times[sn].length > 0){
   	$.each(times[sn], function(i,v){
-  	  $('#timelist').append('<button class="btn btn-default timeitem" data-toggle="tooltip" title="' + scrambles[sn][i] + '">' + v + '</button>');
+  	  $('#timelist').append('<button class="btn btn-default timeitem" data-toggle="popover" title="Scramble for Solve ' + (i + 1) + '" data-content="' + scrambles[sn][i] + '">' + v + '</button>');
   	});
     $('#sm').text(jChester.solveTimeToStopwatchFormat({millis: stt(sort).average(), decimals: 3}));
     $('#pb').text(sort[0]);
