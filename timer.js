@@ -53,7 +53,7 @@ $.each(ev, function(i, v){
 var scr = function(){
   scramble = scramblers[st].getRandomScramble().scramble_string;
   if(st == '333bf'){
-    for(var a=3,x=Math.random,r,rm='';a--;r=' xyz'[0|x()*4],rm+=r+(r!=' '?" '2"[0|x()*3]:'')+' ');
+    for(var a=y=r=rm='',x=Math.random;a++<3;rm+=r+" '2"[0|x(y=r)*3]+' ')for(;r==y;r=' xyz'[0|x()*4]);
     scramble += ' ' + rm;
   }
   return scramble;
