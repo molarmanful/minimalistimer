@@ -54,7 +54,7 @@ var scr = function(){
   scramble = scramblers[st].getRandomScramble().scramble_string;
   if(st == '333bf'){
   	var rotmove = ['x','y','z',''][0|Math.random() * 4];
-    scramble += ' ' + rotmove + (rotmove != '' && ['',"'",'2'][0|Math.random() * 3]);
+    scramble += ' ' + rotmove + (rotmove != '' && ['',"'",'2'][0|Math.random() * 3]) + ' ' + rotmove + (rotmove != '' && ['',"'",'2'][0|Math.random() * 3]);
   }
   return scramble;
 };
