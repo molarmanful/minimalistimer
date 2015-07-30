@@ -335,5 +335,5 @@ function updatestats(){
     $('#timelist').text('None submitted.');
     $('#mod .modal-body span:not(#timelist, .input-group-btn)').text('DNF');
   }
-  $('[data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="popover"]').popover();
 }
