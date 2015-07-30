@@ -40,6 +40,9 @@ var timer_obj = new startTimer(document.getElementById('time'));
 $.each(ev, function(i, v){
   scramblers[v].initialize(null, Math);
 });
+var scr = function(){
+  return scramblers[st].getRandomScramble().scramble_string;
+};
 $('#scramble').html(scr);
 $('.navbar-brand .type').html('<span class="cubing-icon icon-333"></span> 3x3x3');
 
@@ -155,6 +158,9 @@ $('#resl').click(function(){
 $('#st li a').click(function(){
   st = $(this).attr('class');
   sn = $.inArray(st, ev);
+  scr = function(){
+    return scramblers[st].getRandomScramble().scramble_string;
+  };
   updatestats();
   $('#scramble').html(scr);
   $('.navbar-brand .type').html($(this).html());
@@ -306,6 +312,6 @@ function updatestats(){
     }
   } else {
     $('#timelist').text('None submitted.');
-    $('#mod .modal-body span:not(#timelist, .input-group-btn)').text('DNF');
+    $('.modal-body span:not(#timelist, .input-group-btn)').text('DNF');
   }
 }
