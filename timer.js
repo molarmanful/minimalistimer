@@ -53,10 +53,7 @@ $.each(ev, function(i, v){
 var scr = function(){
   scramble = scramblers[st].getRandomScramble().scramble_string;
   if(st == '333bf'){
-    var scarray = scramble.trim().split(/\s/g).filter(Boolean);
-    var last = scarray[scarray.length - 1][0] + 'w' + [scarray[scarray.length - 1][0]];
-    scarray[scarray.length - 1] = last;
-    scramble = scarray.join();
+    scramble += ' ' + ['x','y','z'][0|Math.random()*3] + ['',"'",'2'][0|Math.random()*3];
   }
   return scramble;
 };
@@ -290,9 +287,10 @@ window.onbeforeunload = function(){
 //function for updating stats
 function updatestats(){
   var sort = times[sn].slice(0).sort(function(c, d){return c - d});
+  $('#timelist').html('');
   if(times[sn].length > 0){
   	$.each(times[sn], function(i,v){
-  	  $('#timelist').append('<button class="btn btn-default timeitem" data-toggle="tooltip" title=' + scrambles[sn][i] + '>' + v + '</button>');
+  	  $('#timelist').append('<button class="btn btn-default timeitem" data-toggle="tooltip" title="' + scrambles[sn][i] + '">' + v + '</button>');
   	});
     $('#sm').text(jChester.solveTimeToStopwatchFormat({millis: stt(sort).average(), decimals: 3}));
     $('#pb').text(sort[0]);
