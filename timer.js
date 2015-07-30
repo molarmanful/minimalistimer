@@ -16,6 +16,7 @@ Array.prototype.average = function(){
 };
 
 var times = [];
+var scrambles = [];
 var ev = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock', 'skewb'];
 
 //stored time get
@@ -23,14 +24,23 @@ if(typeof(Storage) != 'undefined') {
   if(localStorage.getItem('times') != null && JSON.parse(localStorage['times']).length == ev.length){
     times = JSON.parse(localStorage['times']);
   }
+  if(localStorage.getItem('scrambles') != null && JSON.parse(localStorage['scrambles']).length == ev.length){
+    scrambles = JSON.parse(localStorage['scrambles']);
+  }
 } else {
   $.cookie.json = true;
   if($.cookie('times') != undefined && $.cookie('times').length == ev.length){
     times = $.cookie('times');
   }
+  if($.cookie('scrambles') != undefined && $.cookie('scrambles').length == ev.length){
+    times = $.cookie('scrambles');
+  }
 }
 while(times.length < ev.length){
   times.push([]);
+}
+while(scrambles.length < ev.length){
+  scrambles.push([]);
 }
 
 //timer and scramble initialization
@@ -43,7 +53,7 @@ $.each(ev, function(i, v){
 var scr = function(){
   scramble = scramblers[st].getRandomScramble().scramble_string;
   if(st == '333bf'){
-    var scarray = scramble.trim.split(/\s/g).filter(Boolean);
+    var scarray = scramble.trim().split(/\s/g).filter(Boolean);
     var last = scarray[scarray.length - 1][0] + 'w' + [scarray[scarray.length - 1][0]];
     scarray[scarray.length - 1] = last;
     scramble = scarray.join();
@@ -100,6 +110,7 @@ $(document).keyup(function(e){
       $('.dis').fadeTo('fast', 1);
       $('button, a').removeAttr('disabled');
       times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($('#time').text())));
+      scrambles[sn].push(scramble);
       $('#scramble').html(scr);
     }
   }
@@ -134,6 +145,7 @@ $('#time').on('touchend', function(){
     $('.dis').fadeTo('fast', 1);
     $('button, a').removeAttr('disabled');
     times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($('#time').text())));
+    scrambles[sn].push(scramble);
     $('#scramble').html(scr);
   }
 });
@@ -152,11 +164,13 @@ $('#stats').click(function(){
 //reset
 $('#reset').on('dblclick doubletap', function(){
   times[sn].length = 0;
+  scrambles[sn].length = 0;
   $('#time').text('0:0.000');
   updatestats();
 });
 $('#resl').click(function(){
   times[sn].pop();
+  scrambles[sn].pop();
   $('#time').text('0:0.000');
   updatestats();
 });
@@ -244,6 +258,7 @@ $('#subet').click(function(){
 });
 function subt(x){
   times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime(x)));
+  scrambles.push('Submitted by Text');
   $('.input-group').removeClass('has-error');
   $('#subet').removeClass('btn-danger');
   $('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').promise().done(function(){
@@ -266,15 +281,19 @@ $('#subcss').click(function(){
 window.onbeforeunload = function(){
   if(typeof(Storage) != 'undefined'){
     localStorage['times'] = JSON.stringify(times);
+    localStorage['scrambles'] = JSON.stringify(scrambles);
   }
   $.cookie('times', JSON.stringify(times));
+  $.cookie('scrambles', JSON.stringify(scrambles));
 };
   
 //function for updating stats
 function updatestats(){
   var sort = times[sn].slice(0).sort(function(c, d){return c - d});
   if(times[sn].length > 0){
-    $('#timelist').html('<button class="btn btn-default timeitem">' + times[sn].join('</button><button class="btn btn-default timeitem">') + '</button>');
+  	$.each(times[sn], function(i,v){
+  	  $('#timelist').append('<button class="btn btn-default timeitem" data-toggle="tooltip" title=' + scrambles[sn][i] + '>' + v + '</button>');
+  	});
     $('#sm').text(jChester.solveTimeToStopwatchFormat({millis: stt(sort).average(), decimals: 3}));
     $('#pb').text(sort[0]);
     $('#pw').text(sort[times[sn].length - 1]);
