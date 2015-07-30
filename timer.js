@@ -53,8 +53,8 @@ $.each(ev, function(i, v){
 var scr = function(){
   scramble = scramblers[st].getRandomScramble().scramble_string;
   if(st == '333bf'){
-    for(var a=y=r=rm='',x=Math.random;a++<3;rm+=r+" '2"[0|x(y=r)*3]+' ')for(;r==y;r=' xyz'[0|x()*4]);
-    scramble += ' ' + rm;
+    var tb = [Math.round(Math.random()),Math.round(Math.random()),Math.round(Math.random())];
+    scramble += ' ' + (tb[0] == 1 && ['x','x2',"x'",''][0|Math.random()*4]) + (tb[1] == 1 && ['y','y2',"y'",''][0|Math.random()*4]) + (tb[2] == 1 && ['z','z2',"z'",''][0|Math.random()*4]);
   }
   return scramble;
 };
