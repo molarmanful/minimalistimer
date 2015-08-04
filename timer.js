@@ -256,7 +256,7 @@ $('#subet').click(function(){
 });
 function subt(x){
   times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime(x)));
-  scrambles.push($('#scramble').html());
+  scrambles.push(scramble);
   $('.input-group').removeClass('has-error');
   $('#subet').removeClass('btn-danger');
   $('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').promise().done(function(){
