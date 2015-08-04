@@ -8,7 +8,7 @@ Built on jQuery, Bootstrap, jQuery Cookie, jQuery Finger, Mark 2, Bootswatch the
 - Theater mode
 - Time storage
 - Time statistics
-- All WCA timed events
+- All WCA timed events (except for MBLD)
 - Mobile-optimized
 - WCA inspection
 - Display masking
