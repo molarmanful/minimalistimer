@@ -96,6 +96,10 @@
       textarea {
         font-family: monospace !important;
       }
+      #contextMenu {
+        position: absolute;
+        display:none;
+      }
       @media (min-width: 979px) {
         body ul.nav li.dropdown:hover > ul.dropdown-menu {
           display: block;
@@ -239,6 +243,14 @@
           </div>
         </div>
       </div>
+    </div>
+    <div id="contextMenu" class="dropdown clearfix">
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;position:static;margin-bottom:5px;">
+        <li><b id="node"></b></li>
+        <li class="divider"></li>
+        <li id="nodeid"></li>
+        <li id="nodeclass"></li>
+      </ul>
     </div>
     <script src='jquery.js'></script>
     <script src='scrambler.js'></script>
