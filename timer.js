@@ -28,6 +28,9 @@ if(typeof(Storage) != 'undefined') {
   if(localStorage.getItem('scrambles') != null && JSON.parse(localStorage['scrambles']).length == ev.length){
     scrambles = JSON.parse(localStorage['scrambles']);
   }
+  if(localStorage.getItem('csstxt') != null){
+    $('#csstxt').val(localStorage['csstxt']);
+  }
 } else {
   $.cookie.json = true;
   if($.cookie('times') != undefined && $.cookie('times').length == ev.length){
@@ -35,6 +38,9 @@ if(typeof(Storage) != 'undefined') {
   }
   if($.cookie('scrambles') != undefined && $.cookie('scrambles').length == ev.length){
     times = $.cookie('scrambles');
+  }
+  if($.cookie('csstxt') != undefined){
+    $('#csstxt').val($.cookie('csstxt'));
   }
 }
 while(times.length < ev.length){
@@ -263,7 +269,6 @@ function subt(x){
 //submit bootstrap theme
 $('#subcss').click(function(){
   $('style#ccss').html($('#csstxt').val());
-  $('#csstxt').val('');
 });
 
 //store times
@@ -271,9 +276,11 @@ window.onbeforeunload = function(){
   if(typeof(Storage) != 'undefined'){
     localStorage['times'] = JSON.stringify(times);
     localStorage['scrambles'] = JSON.stringify(scrambles);
+    localStorage['csstxt'] = $('#csstxt').val();
   }
   $.cookie('times', JSON.stringify(times));
   $.cookie('scrambles', JSON.stringify(scrambles));
+  $.cookie('csstxt', $('#csstxt').val());
 };
   
 //function for updating stats
