@@ -287,13 +287,13 @@ window.onbeforeunload = function(){
   
 //function for updating stats
 function updatestats(){
-  var sort = times[sn].slice(0).sort(function(c, d){return c - d});
+  var sort = stt(times[sn].slice(0)).sort(function(a,b){return a - b});
   $('#timelist').html('');
   if(times[sn].length > 0){
   	$.each(times[sn], function(i,v){
   	  $('#timelist').append('<button class="btn btn-default timeitem" data-toggle="popover" title="Scramble for Solve ' + (i + 1) + '" data-content="' + scrambles[sn][i] + '">' + v + '</button>');
   	});
-    $('#sm').text(jChester.solveTimeToStopwatchFormat({millis: stt(sort).average(), decimals: 3}));
+    $('#sm').text(jChester.solveTimeToStopwatchFormat({millis: sort.average(), decimals: 3}));
     $('#pb').text(sort[0]);
     $('#pw').text(sort[times[sn].length - 1]);
     if(times[sn].length > 2){
