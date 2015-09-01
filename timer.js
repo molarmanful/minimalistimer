@@ -269,10 +269,8 @@ function subt(x){
 
 //submit bootstrap theme
 $('#subcss').click(function(){
-  if(!$('#cssurl').val().match(/^\s+$/g)){
-    $('head').append('<link rel="stylesheet" href=' + $('#cssurl').val() + '>');
-    $('#cssurl').val('');
-  }
+  $('style#ccss').html($('#csstxt').val());
+  $('#csstxt').val('');
 });
 
 //store times
