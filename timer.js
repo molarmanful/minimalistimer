@@ -294,8 +294,8 @@ function updatestats(){
       $('#timelist').append('<button class="btn btn-default timeitem" data-toggle="popover" title="Scramble for Solve ' + (i + 1) + '" data-content="' + scrambles[sn][i] + '">' + v + '</button>');
     });
     $('#sm').text(jChester.solveTimeToStopwatchFormat({millis: sort.average(), decimals: 3}));
-    $('#pb').text(jChester.solveTimeToStopwatchFormat({sort[0], decimals: 3}));
-    $('#pw').text(jChester.solveTimeToStopwatchFormat({sort[times[sn].length - 1], decimals: 3}));
+    $('#pb').text(jChester.solveTimeToStopwatchFormat({millis: sort[0], decimals: 3}));
+    $('#pw').text(jChester.solveTimeToStopwatchFormat({millis: sort[times[sn].length - 1], decimals: 3}));
     if(times[sn].length > 2){
       var dup = times[sn].slice(0);
       dup.splice(dup.indexOf(sort[times[sn].length - 1]), 1)
