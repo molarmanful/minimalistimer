@@ -30,6 +30,7 @@ if(typeof(Storage) != 'undefined') {
   }
   if(localStorage.getItem('csstxt') != null){
     $('#csstxt').val(localStorage['csstxt']);
+    $('#ccss').html(localStorage['csstxt']);
   }
 } else {
   $.cookie.json = true;
