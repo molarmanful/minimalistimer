@@ -280,6 +280,21 @@ $('#subcode').click(function(){
   eval($('#jstxt').val());
 });
 
+//indent for code
+$(document).delegate('#textbox', 'keydown', function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode == 9) {
+    e.preventDefault();
+    var start = $(this).get(0).selectionStart;
+    var end = $(this).get(0).selectionEnd;
+    $(this).val($(this).val().substring(0, start)
+                + "    "
+                + $(this).val().substring(end));
+    $(this).get(0).selectionStart =
+    $(this).get(0).selectionEnd = start + 1;
+  }
+});
+
 //store times
 window.onbeforeunload = function(){
   if(typeof(Storage) != 'undefined'){
