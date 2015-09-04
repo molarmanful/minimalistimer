@@ -274,13 +274,9 @@ function subt(x){
   updatestats();
 }
 
-//submit css
-$('#subcss').click(function(){
+//submit code
+$('#subcode').click(function(){
   $('style#ccss').html($('#csstxt').val());
-});
-
-//submit js
-$('#subjs').click(function(){
   eval($('#jstxt').val());
 });
 
