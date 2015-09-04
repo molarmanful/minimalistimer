@@ -14,5 +14,6 @@ Built on jQuery, Bootstrap, jQuery Cookie, jQuery Finger, Mark 2, Bootswatch the
 - Display masking
 - CSS/JS customization
 
-## Pro Tips
+## Pro Tips!
 - On mobile devices, add MinimalisTimer to your homescreen to turn it into an app.
+- On mobile devices, going into landscape mode pulls up the stats.
