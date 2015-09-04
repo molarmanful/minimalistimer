@@ -281,7 +281,7 @@ $('#subcode').click(function(){
 });
 
 //indent for code
-$(document).delegate('#textbox', 'keydown', function(e) {
+$(document).delegate('textarea', 'keydown', function(e) {
   var keyCode = e.keyCode || e.which;
   if (keyCode == 9) {
     e.preventDefault();
