@@ -12,7 +12,7 @@ Built on jQuery, Bootstrap, jQuery Cookie, jQuery Finger, Mark 2, Bootswatch the
 - Mobile-optimized
 - WCA inspection
 - Display masking
-- CSS customization
+- CSS/JS customization
 
 ## Pro Tips
 - On mobile devices, add MinimalisTimer to your homescreen to turn it into an app.
