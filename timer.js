@@ -229,8 +229,8 @@ $(window).on('orientationchange', function(){
 });
 //time submitting
 $('#subet').click(function(){
-  var eva = $('#et').val();
-  if(eva.match(/^\s+$/g)){
+  var eva = $('#et').val().trim();
+  if(eva.length == 0){
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
     }
