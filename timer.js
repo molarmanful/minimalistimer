@@ -4,7 +4,7 @@ var startTimer=function(t){this.start_t=null,this.interval=null,this.DOM=t,this.
 var randomInt=function(){function n(){var n="WARNING: randomInt is falling back to Math.random for random number generation.";console.warn?console.warn(n):console.log(n),e=!0}function o(n){if("number"!=typeof n||0>n||Math.floor(n)!==n)throw new Error("randomInt.below() not called with a positive integer value.");if(n>t)throw new Error("Called randomInt.below() with max == "+n+", which is larger than Javascript can handle with integer precision.")}function r(n){o(n);var e=a(),i=Math.floor(t/n)*n;return i>e?e%n:r(n)}var a,t=9007199254740992,e=!1,i=window.crypto||window.msCrypto||window.cryptoUint32;if(i)a=function(){var n=2097152,o=new Uint32Array(2);return i.getRandomValues(o),o[0]*n+(o[1]>>21)};else{var l="ERROR: randomInt could not find a suitable crypto.getRandomValues() function.";console.error?console.error(l):console.log(l),a=function(){if(e)return Math.floor(Math.random()*t);throw new Error("randomInt cannot get random values.")}}return{below:r,enableInsecureMathRandomFallback:n}}();
 
 var stt = function(a) {
-  return a.map(function(s) {
+  return a.map(function(s){
     return jChester.stopwatchFormatToSolveTime(s).millis.toFixed(3);
   });
 };
@@ -230,20 +230,11 @@ $(window).on('orientationchange', function(){
 //time submitting
 $('#subet').click(function(){
   var eva = $('#et').val();
-  if(eva.match(/^\s+$/g)){
-    if(!$('.input-group').hasClass('has-error')){
-      $('.input-group').addClass('has-error');
-    }
-    if(!$('#subet').hasClass('btn-danger')){
-      $('#subet').addClass('btn-danger');
-    }
-    if(!$('.help').hasClass('text-danger')){
-      $('.help').fadeIn('fast').addClass('text-danger').html('Please enter a time.');
-    } else {
-    	$('.help').html('Please enter a time.');
-    }
+  try {
+    jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime(eva))
+    subt(eva);
   }
-  else if(eva.match(/[^0-9:.]/g) || parseInt(eva) == 0){
+  catch(e){
     if(!$('.input-group').hasClass('has-error')){
       $('.input-group').addClass('has-error');
     }
@@ -256,10 +247,9 @@ $('#subet').click(function(){
     	$('.help').html('Please enter a valid time.');
     }
   }
-  else {
-    subt(eva);
+  finally {
+    $('#et').val('');
   }
-  $('#et').val('');
 });
 function subt(x){
   times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime(x)));
@@ -278,21 +268,6 @@ function subt(x){
 $('#subcode').click(function(){
   $('style#ccss').html($('#csstxt').val());
   eval($('#jstxt').val());
-});
-
-//indent for code
-$(document).delegate('textarea', 'keydown', function(e) {
-  var keyCode = e.keyCode || e.which;
-  if (keyCode == 9) {
-    e.preventDefault();
-    var start = $(this).get(0).selectionStart;
-    var end = $(this).get(0).selectionEnd;
-    $(this).val($(this).val().substring(0, start)
-                + "    "
-                + $(this).val().substring(end));
-    $(this).get(0).selectionStart =
-    $(this).get(0).selectionEnd = start + 1;
-  }
 });
 
 //store times
