@@ -227,12 +227,21 @@ $(window).on('orientationchange', function(){
     $('#mod').modal('hide');
   }
 });
+
 //time submitting
 $('#subet').click(function(){
   var eva = $('#et').val();
   try {
-    jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime(eva))
-    subt(eva);
+    times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime(eva)));
+		scrambles[sn].push(scramble);
+		$('.input-group').removeClass('has-error');
+		$('#subet').removeClass('btn-danger');
+		$('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').promise().done(function(){
+		  setTimeout(function(){
+		    $('.help').fadeOut('slow');
+		  }, 1000);
+		});
+		updatestats();
   }
   catch(e){
     if(!$('.input-group').hasClass('has-error')){
@@ -251,18 +260,6 @@ $('#subet').click(function(){
     $('#et').val('');
   }
 });
-function subt(x){
-  times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime(x)));
-  scrambles[sn].push(scramble);
-  $('.input-group').removeClass('has-error');
-  $('#subet').removeClass('btn-danger');
-  $('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').promise().done(function(){
-    setTimeout(function(){
-      $('.help').fadeOut('slow');
-    }, 1000);
-  });
-  updatestats();
-}
 
 //submit code
 $('#subcode').click(function(){
