@@ -5,7 +5,7 @@ var randomInt=function(){function n(){var n="WARNING: randomInt is falling back 
 
 var stt = function(a) {
   return a.map(function(s){
-    return jChester.stopwatchFormatToSolveTime(s).millis.toFixed(3);
+    return jChester.stopwatchFormatToSolveTime(s).millis;
   });
 };
 Array.prototype.average = function(){
@@ -283,7 +283,7 @@ window.onbeforeunload = function(){
   
 //function for updating stats
 function updatestats(){
-  var sort = stt(times[sn].slice(0)).sort(function(a,b){return a - b});
+  var sort = stt(times[sn]).sort(function(a,b){return a - b});
   $('#timelist').html('');
   if(times[sn].length > 0){
     $.each(times[sn], function(i,v){
