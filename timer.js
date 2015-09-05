@@ -114,7 +114,7 @@ $(document).keyup(function(e){
       record = false;
       $('.dis').fadeTo('fast', 1);
       $('button, a').removeAttr('disabled');
-      times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($('#time').text())));
+      times[sn].push(jChester.solveTimeToStopwatchFormat({millis:jChester.stopwatchFormatToSolveTime($('time').text()),decimals:3}));
       scrambles[sn].push(scramble);
       $('#scramble').html(scr);
     }
@@ -149,7 +149,7 @@ $('#time').on('touchend', function(){
     record = false;
     $('.dis').fadeTo('fast', 1);
     $('button, a').removeAttr('disabled');
-    times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($('#time').text())));
+    times[sn].push(jChester.solveTimeToStopwatchFormat({millis:jChester.stopwatchFormatToSolveTime($('time').text()),decimals:3}));
     scrambles[sn].push(scramble);
     $('#scramble').html(scr);
   }
@@ -232,14 +232,14 @@ $(window).on('orientationchange', function(){
 $('#subet').click(function(){
   var eva = $('#et').val();
   try {
-    times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime(eva)));
+    times[sn].push(jChester.solveTimeToStopwatchFormat({millis:jChester.stopwatchFormatToSolveTime(eva),decimals:3}));
 		scrambles[sn].push(scramble);
 		$('.input-group').removeClass('has-error');
 		$('#subet').removeClass('btn-danger');
 		$('.help').fadeIn('fast').removeClass('text-danger').html('Time submitted successfully.').promise().done(function(){
-		  setTimeout(function(){
-		    $('.help').fadeOut('slow');
-		  }, 1000);
+  	  setTimeout(function(){
+  	    $('.help').fadeOut('slow');
+  	  }, 1000);
 		});
 		updatestats();
   }
