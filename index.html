@@ -207,25 +207,32 @@
             <h2>Settings</h2>
           </div>
           <div class="modal-body">
-            Events:
-            <ul id="st" role="menu" class="list-unstyled">
-              <li><a class="222"><span class="cubing-icon icon-222"></span> 2x2x2</a></li>
-              <li><a class="333"><span class="cubing-icon icon-333"></span> 3x3x3</a></li>
-              <li><a class="333oh"><span class="cubing-icon icon-333oh"></span> 3x3x3 OH</a></li>
-              <li><a class="333bf"><span class="cubing-icon icon-333bf"></span> 3x3x3 BLD</a></li>
-              <li><a class="333ft"><span class="cubing-icon icon-333ft"></span> 3x3x3 Feet</a></li>
-              <li><a class="444"><span class="cubing-icon icon-444"></span> 4x4x4</a></li>
-              <li><a class="444bf"><span class="cubing-icon icon-444bf"></span> 4x4x4 BLD</a></li>
-              <li><a class="555"><span class="cubing-icon icon-555"></span> 5x5x5</a></li>
-              <li><a class="555bf"><span class="cubing-icon icon-555bf"></span> 5x5x5 BLD</a></li>
-              <li><a class="666"><span class="cubing-icon icon-666"></span> 6x6x6</a></li>
-              <li><a class="777"><span class="cubing-icon icon-777"></span> 7x7x7</a></li>
-              <li><a class="minx"><span class="cubing-icon icon-minx"></span> Megaminx</a></li>
-              <li><a class="pyram"><span class="cubing-icon icon-pyram"></span> Pyraminx</a></li>
-              <li><a class="skewb"><span class="cubing-icon icon-skewb"></span> Skewb</a></li>
-              <li><a class="sq1"><span class="cubing-icon icon-sq1"></span> Square-1</a></li>
-              <li><a class="clock"><span class="cubing-icon icon-clock"></span> Clock</a></li>
-            </ul>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Events <span class="caret"></span></button>
+              <ul id="st" class="dropdown-menu">
+                <li><a class="222"><span class="cubing-icon icon-222"></span> 2x2x2</a></li>
+                <li class="divider"></li>
+                <li><a class="333"><span class="cubing-icon icon-333"></span> 3x3x3</a></li>
+                <li><a class="333oh"><span class="cubing-icon icon-333oh"></span> 3x3x3 OH</a></li>
+                <li><a class="333bf"><span class="cubing-icon icon-333bf"></span> 3x3x3 BLD</a></li>
+                <li><a class="333ft"><span class="cubing-icon icon-333ft"></span> 3x3x3 Feet</a></li>
+                <li class="divider"></li>
+                <li><a class="444"><span class="cubing-icon icon-444"></span> 4x4x4</a></li>
+                <li><a class="444bf"><span class="cubing-icon icon-444bf"></span> 4x4x4 BLD</a></li>
+                <li class="divider"></li>
+                <li><a class="555"><span class="cubing-icon icon-555"></span> 5x5x5</a></li>
+                <li><a class="555bf"><span class="cubing-icon icon-555bf"></span> 5x5x5 BLD</a></li>
+                <li class="divider"></li>
+                <li><a class="666"><span class="cubing-icon icon-666"></span> 6x6x6</a></li>
+                <li><a class="777"><span class="cubing-icon icon-777"></span> 7x7x7</a></li>
+                <li class="divider"></li>
+                <li><a class="minx"><span class="cubing-icon icon-minx"></span> Megaminx</a></li>
+                <li><a class="pyram"><span class="cubing-icon icon-pyram"></span> Pyraminx</a></li>
+                <li><a class="skewb"><span class="cubing-icon icon-skewb"></span> Skewb</a></li>
+                <li><a class="sq1"><span class="cubing-icon icon-sq1"></span> Square-1</a></li>
+                <li><a class="clock"><span class="cubing-icon icon-clock"></span> Clock</a></li>
+              </ul>
+            </div>
             <hr>
             <input type="checkbox" id="dmask"> Display masking
             <hr>
