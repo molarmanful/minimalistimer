@@ -26,22 +26,7 @@
     <meta name="MobileOptimized" content="320">
     <link rel="apple-touch-startup-image" href="https://dl.dropboxusercontent.com/s/rmgf0cabnm30s2c/minimstart640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
     <link rel="apple-touch-startup-image" href="https://dl.dropboxusercontent.com/s/rbvvf4utv9l85qi/minimstart640x920.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone, retina -->
-    <script>
-      function getStylesheet() {
-        var currentTime = new Date().getHours();
-        if (0 <= currentTime && currentTime < 6) {
-          document.write("<link rel='stylesheet' href='bootstrap1.css' type='text/css'>");
-        }
-        if (6 <= currentTime && currentTime < 20) {
-          document.write("<link rel='stylesheet' href='bootstrap.css' type='text/css'>");
-        }
-        if (20 <= currentTime && currentTime <= 24) {
-          document.write("<link rel='stylesheet' href='bootstrap1.css' type='text/css'>");
-        }
-      }
-      getStylesheet();
-    </script>
-    <noscript><link rel='stylesheet prefetch' href='bootstrap.css'></noscript>
+    <link rel='stylesheet prefetch' href='bootstrap.css'>
     <link rel='stylesheet prefetch' href='cubingicons.css'>
     <link rel='stylesheet prefetch' href='ionicons.css'>
     <link rel="icon" href="https://dl.dropboxusercontent.com/s/hkgrbf95zf0dcef/favicon-32x32.png" type="image/png" />
