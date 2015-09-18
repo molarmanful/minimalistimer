@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" manifest="cache.appcache">
+  <head>
+    <meta charset="UTF-8">
+    <title>MinimalisTimer</title>
+    <meta name="description" content="Improve your twisty puzzle skills with this elegant yet robust timer!">
+    <meta name="keywords" content="timer, simple, minimalist, minimalist timer, rubik's cube, simple timer, simple rubik's cube timer, cube, cube timer, minimalistimer">
+    <meta name="robots" content="index, nofollow">
+    <link rel="manifest" href="manifest.json">
+    <meta property="og:title" content="MinimalisTimer">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Improve your twisty puzzle skills with this elegant yet robust timer!">
+    <meta property="og:image" content="https://dl.dropboxusercontent.com/s/wff2drn6ixmbpam/favicon-194x194.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@molarmanful">
+    <meta name="twitter:title" content="MinimalisTimer">
+    <meta name="twitter:description" content="Improve your twisty puzzle skills with this elegant yet robust timer!">
+    <meta name="twitter:image" content="https://dl.dropboxusercontent.com/s/wff2drn6ixmbpam/favicon-194x194.png">
+    <link rel="author" href="https://plus.google.com/+BenPangMolarmanful"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="MinimalisTimer">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <link rel="apple-touch-startup-image" href="https://dl.dropboxusercontent.com/s/rmgf0cabnm30s2c/minimstart640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
+    <link rel="apple-touch-startup-image" href="https://dl.dropboxusercontent.com/s/rbvvf4utv9l85qi/minimstart640x920.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone, retina -->
+    <link rel='stylesheet prefetch' href='bootstrap.css'>
+    <link rel='stylesheet prefetch' href='cubingicons.css'>
+    <link rel='stylesheet prefetch' href='ionicons.css'>
+    <link rel="icon" href="https://dl.dropboxusercontent.com/s/hkgrbf95zf0dcef/favicon-32x32.png" type="image/png" />
+    <link rel="shortcut icon" href="https://dl.dropboxusercontent.com/s/9ds63a2rytzet54/favicon.ico" />
+    <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="https://dl.dropboxusercontent.com/s/0k14cnrsgjy4l7w/apple-touch-icon-57x57.png"><!-- 57×57px -->
+    <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://dl.dropboxusercontent.com/s/ry1c1ffc37ef0fz/apple-touch-icon-72x72.png">
+    <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://dl.dropboxusercontent.com/s/5sbozn3b91d8gr7/apple-touch-icon-76x76.png">
+    <!-- For iPhone with @2× display running iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://dl.dropboxusercontent.com/s/1be1e8r3z3b2xrn/apple-touch-icon-114x114.png">
+    <!-- For iPhone with @2× display running iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://dl.dropboxusercontent.com/s/nahnzoy38t3c5s3/apple-touch-icon-120x120.png">
+    <!-- For iPad with @2× display running iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://dl.dropboxusercontent.com/s/0dhdp1imu9x11vs/apple-touch-icon-144x144.png">
+    <!-- For iPad with @2× display running iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://dl.dropboxusercontent.com/s/36yc95oyp8bco7m/apple-touch-icon-152x152.png">
+    <!-- For iPhone 6 Plus with @3× display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://dl.dropboxusercontent.com/s/brj7sr6s63dnehe/apple-touch-icon-180x180.png">
+    <!-- For Chrome for Android: -->
+    <link rel="icon" sizes="192x192" href="https://dl.dropboxusercontent.com/s/wff2drn6ixmbpam/favicon-194x194.png">
+    <meta name="msapplication-TileColor" content="#363636">
+    <meta name="msapplication-TileImage" content="https://dl.dropboxusercontent.com/s/ptkes7psnnfqwja/mstile-144x144.png">
+    <meta name="theme-color" content="#363636">
+    <style>
+      body .jumbotron h1 {
+        font-size: 19vw;
+      }
+      body .jumbotron #time {
+        width: 100%;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      body .jumbotron #scramble {
+        font-size: 3.3vw;
+      }
+      body #dt,
+      body #dtc,
+      body .plus2,
+      body .dnf {
+        display: none;
+      }
+      body h2 {
+        font-size: 2em !important;
+      }
+      .popover {
+        z-index:100000000;
+      }
+      textarea {
+        font-family: monospace !important;
+        width: 100%;
+      }
+      @media (min-width: 979px) {
+        body ul.nav li.dropdown:hover > ul.dropdown-menu {
+          display: block;
+        }
+      }
+    </style>
+    <style id="ccss"></style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse dis theme">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button data-toggle="collapse" data-target="#m" class="navbar-toggle collapsed">
+            <div class="ionicon ion-ion-navicon"></div>
+          </button><span class="navbar-brand">MinimalisTimer - <span class="type"></span>
+            <noscript>needs Javascript</noscript></span>
+        </div>
+        <div id="m" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" data-toggle="modal" data-target="#setmod"><span class="ionicon ion-ion-android-settings"></span> Settings</a></li>
+            <li class="hidden-sm hidden-xs"><a href="#" id="stats" data-toggle="modal" data-target="#mod"><span class="ionicon ion-ion-stats-bars"></span> Statistics</a></li>
+            <li class="hidden-lg hidden-md hidden-sm"><a href="#" data-toggle="modal" data-target="#helpmod"><span class="ionicon ion-ion-help-circled"></span> Help</a></li>
+            <li class="hidden-lg hidden-md hidden-sm"><a href="http://www.molarmanful.com/cubing-blog//the-story-of-the-creation-of-a-nice-looking-online-timer" target="_blank"><span class="ionicon ion-ion-ios-book"></span> Backstory</a></li>
+            <li class="hidden-lg hidden-md hidden-sm"><a href="https://github.com/molarmanful/minimalistimer" target="_blank"><span class="ionicon ion-ion-social-github"></span> Source Code</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid text-center">
+      <div class="jumbotron text-center">
+        <h1 id="time">0:0.000</h1>
+        <button id="ins" class="btn btn-success btn-lg btn-block dis">Start WCA (15-sec) Inspection</button>
+        <hr class="dis"/>
+        <p id="scramble" class="dis"></p>
+      </div>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom hidden-xs dis">
+      <div class="container-fluid">
+        <p class="navbar-text">© 2015. Made with love by <a href="http://molarmanful.com" target="_blank">Ben Pang (Molarmanful)</a>.</p>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" data-toggle="modal" data-target="#helpmod"><span class="ionicon ion-ion-help-circled"></span> Help</a></li>
+          <li><a href="http://www.molarmanful.com/cubing-blog//the-story-of-the-creation-of-a-nice-looking-online-timer" target="_blank"><span class="ionicon ion-ion-ios-book"></span> Backstory</a></li>
+          <li><a href="https://github.com/molarmanful/minimalistimer" target="_blank"><span class="ionicon ion-ion-social-github"></span> Source Code</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="mod" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button data-dismiss="modal" aria-label="Close" class="close hidden-sm hidden-xs"><span aria-hidden="true">&times;</span></button>
+            <h2>Statistics</h2>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Submit time for given scramble in form of 1:2.345 or 12.345" id="et">
+              <span class="input-group-btn">
+                <button id="subet" class="btn btn-primary" type="button">Submit time for this event</button>
+              </span>
+            </div>
+            <p class="help text-success" style="display: none"></p>
+            <br/>
+            <button id="reset" class="btn btn-danger btn-sm">Double-click to delete ALL times for this event</button>
+            <button id="resl" class="btn btn-danger btn-sm">Click to delete last time for this event</button>
+            <hr/>
+            <p>Times:<br/><span id="timelist">None submitted.</span></p>
+            <hr/>
+            <p>Best Time: <span id="pb">DNF</span></p>
+            <p>Worst Time: <span id="pw">DNF</span></p>
+            <hr/>
+            <p>Current Average of 5: <span id="aof">DNF</span></p>
+            <p>Current Average of 12: <span id="aot">DNF</span></p>
+            <p>Current Average of 100: <span id="aoh">DNF</span></p>
+            <hr/>
+            <p>Session Average: <span id="sa">DNF</span></p>
+            <p>Session Mean: <span id="sm">DNF</span></p>
+          </div>
+          <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-default hidden-sm hidden-xs">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="helpmod" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button data-dismiss="modal" aria-label="Close" class="close hidden-sm hidden-xs"><span aria-hidden="true">&times;</span></button>
+            <h2>Help</h2>
+          </div>
+          <div class="modal-body">
+            <p class="ht dis hidden-sm hidden-xs">Press the <kbd>spacebar</kbd> to start/stop the timer. Start inspection with <kbd>ctrl + spacebar</kbd>. Click the scramble to change it.</p>
+            <p class="ht dis hidden-md hidden-lg">Press the display to start/stop the timer. Tap the scramble to change it. Change device orientation to landscape to show statistics.</p>
+            <p>MinimalisTimer aims to give its users the best experience possible. If you see a bug or have a suggestion, you can <a href="https://github.com/molarmanful/minimalistimer/issues/new">submit a Github issue</a> or <a href="https://www.speedsolving.com/forum/showthread.php?52899-MinimalisTimer-released!">post to the Speedsolving forum thread.</a></p>
+            <p>Enjoy!</p>
+          </div>
+          <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-default">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="setmod" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button data-dismiss="modal" aria-label="Close" class="close hidden-sm hidden-xs"><span aria-hidden="true">&times;</span></button>
+            <h2>Settings</h2>
+          </div>
+          <div class="modal-body">
+            <div class="btn-group btn-block">
+              <button class="btn btn-info btn-block dropdown-toggle" type="button" data-toggle="dropdown">Events <span class="caret"></span></button>
+              <ul id="st" class="dropdown-menu btn-block" role="menu">
+                <li><a class="222"><span class="cubing-icon icon-222"></span> 2x2x2</a></li>
+                <li class="divider"></li>
+                <li><a class="333"><span class="cubing-icon icon-333"></span> 3x3x3</a></li>
+                <li><a class="333oh"><span class="cubing-icon icon-333oh"></span> 3x3x3 OH</a></li>
+                <li><a class="333bf"><span class="cubing-icon icon-333bf"></span> 3x3x3 BLD</a></li>
+                <li><a class="333ft"><span class="cubing-icon icon-333ft"></span> 3x3x3 Feet</a></li>
+                <li class="divider"></li>
+                <li><a class="444"><span class="cubing-icon icon-444"></span> 4x4x4</a></li>
+                <li><a class="444bf"><span class="cubing-icon icon-444bf"></span> 4x4x4 BLD</a></li>
+                <li class="divider"></li>
+                <li><a class="555"><span class="cubing-icon icon-555"></span> 5x5x5</a></li>
+                <li><a class="555bf"><span class="cubing-icon icon-555bf"></span> 5x5x5 BLD</a></li>
+                <li class="divider"></li>
+                <li><a class="666"><span class="cubing-icon icon-666"></span> 6x6x6</a></li>
+                <li><a class="777"><span class="cubing-icon icon-777"></span> 7x7x7</a></li>
+                <li class="divider"></li>
+                <li><a class="minx"><span class="cubing-icon icon-minx"></span> Megaminx</a></li>
+                <li><a class="pyram"><span class="cubing-icon icon-pyram"></span> Pyraminx</a></li>
+                <li><a class="skewb"><span class="cubing-icon icon-skewb"></span> Skewb</a></li>
+                <li><a class="sq1"><span class="cubing-icon icon-sq1"></span> Square-1</a></li>
+                <li><a class="clock"><span class="cubing-icon icon-clock"></span> Clock</a></li>
+              </ul>
+            </div>
+            <hr>
+            <input type="checkbox" id="dmask"> Display masking
+            <hr>
+            <label for="csstxt">CSS Editor</label>
+            <textarea class="form-control" rows="10" id="csstxt">/* CSS goes here */</textarea>
+            <label for="jstxt">JS Editor</label>
+            <textarea class="form-control" rows="10" id="jstxt">/* JS goes here */</textarea>
+            <button class="btn btn-block btn-success" id="subcode">Submit code</button>
+          </div>
+          <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-default">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src='jquery.js'></script>
+    <script src='scrambler.js'></script>
+    <script src='timer.js'></script>
+  </body>
+</html>
