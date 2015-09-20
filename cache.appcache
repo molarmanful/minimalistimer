@@ -1,21 +1,25 @@
 CACHE MANIFEST
-#21:19
+#15:57
 CACHE:
 index.html
 
 #scripts
-jquery.js
-scrambler.js
-timer.js
+js/jquery.js
+js/scrambler.js
+js/timer.js
 
 #cubing icons
-cubingicons.css
+css/cubingicons.css
 
 #ionicons
-ionicons.css
+css/ionicons.css
 
 #bootstrap
-bootstrap.css
+css/bootstrap.css
+
+#favicons
+favicons/minimstart640x920.png
+favicons/minimstart640x1096.png
 
 NETWORK:
 *
