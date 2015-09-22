@@ -98,7 +98,7 @@ $(document).keyup(function (e) {
         } else {
             record = false;
             $('.dis').fadeTo('fast', 1);
-            $('button, a').removeAttr('disabled');
+            $('button, a').removeClass('disabled');
             times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($('#time').text())));
             scrambles[sn].push(scramble);
             $('#scramble').html(scr);
@@ -128,11 +128,11 @@ $('#time').on('touchend', function () {
         clearInterval(ins);
         timer_obj.start($('#dmask').is(':checked') ? 'Timing' : []._);
         $('.dis').fadeTo('fast', 0.01);
-        $('button, a').blur().attr('disabled', 'true');
+        $('button, a').blur().addClass('disabled');
     } else {
         record = false;
         $('.dis').fadeTo('fast', 1);
-        $('button, a').removeAttr('disabled');
+        $('button, a').removeClass('disabled');
         times[sn].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($('#time').text())));
         scrambles[sn].push(scramble);
         $('#scramble').html(scr);
