@@ -13,13 +13,13 @@ if (typeof (Storage) != 'undefined') {
     if (localStorage.getItem('scrambles') != null && JSON.parse(localStorage['scrambles']).length == ev.length) {
         scrambles = JSON.parse(localStorage['scrambles']);
     }
-    if (localStorage.getItem('csstxt') != null) {
-        $('#csstxt').val(localStorage['csstxt']);
-        $('#ccss').html(localStorage['csstxt']);
+    if (localStorage.getItem('csstxt1') != null) {
+        $('#csstxt').val(localStorage['csstxt1']);
+        $('#ccss').html(localStorage['csstxt1']);
     }
-    if (localStorage.getItem('jstxt') != null) {
-        $('#jstxt').val(localStorage['jstxt']);
-        eval(localStorage['jstxt']);
+    if (localStorage.getItem('jstxt1') != null) {
+        $('#jstxt').val(localStorage['jstxt1']);
+        eval(localStorage['jstxt1']);
     }
 } else {
     $.cookie.json = true;
@@ -29,11 +29,11 @@ if (typeof (Storage) != 'undefined') {
     if ($.cookie('scrambles') != undefined && $.cookie('scrambles').length == ev.length) {
         times = $.cookie('scrambles');
     }
-    if ($.cookie('csstxt') != undefined) {
-        $('#csstxt').val($.cookie('csstxt'));
+    if ($.cookie('csstxt1') != undefined) {
+        $('#csstxt').val($.cookie('csstxt1'));
     }
-    if ($.cookie('jstxt') != undefined) {
-        $('#jstxt').val($.cookie('jstxt'));
+    if ($.cookie('jstxt1') != undefined) {
+        $('#jstxt').val($.cookie('jstxt1'));
     }
 }
 while (times.length < ev.length) {
@@ -281,12 +281,12 @@ window.onbeforeunload = function () {
     if (typeof (Storage) != 'undefined') {
         localStorage['times'] = JSON.stringify(times);
         localStorage['scrambles'] = JSON.stringify(scrambles);
-        localStorage['csstxt'] = $('#csstxt').val();
+        localStorage['csstxt1'] = $('#csstxt').val();
         localStorage['jstxt'] = $('#jstxt').val();
     }
     $.cookie('times', JSON.stringify(times));
     $.cookie('scrambles', JSON.stringify(scrambles));
-    $.cookie('csstxt', $('#csstxt').val());
+    $.cookie('csstxt1', $('#csstxt').val());
     $.cookie('jstxt', $('#jstxt').val());
 };
 
