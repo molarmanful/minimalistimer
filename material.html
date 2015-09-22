@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+
+        <title>MinimalisTimer - Material Edition</title>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css"  media="screen,projection"/>
+        <link rel='stylesheet prefetch' href='css/cubingicons.css'>
+
+        <!--mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="apple-touch-fullscreen" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="MinimalisTimer">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+
+        <!--favicons-->
+        <link rel="manifest" href="favicons/manifest.json">
+
+        <link rel="apple-touch-startup-image" href="favicons/minimstart640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+        <!-- iPhone 5+ -->
+        <link rel="apple-touch-startup-image" href="favicons/minimstart640x920.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)">
+        <!-- iPhone, retina -->
+
+        <link rel="icon" href="favicons/favicon-32x32.png" type="image/png" />
+        <link rel="shortcut icon" href="favicons/favicon.ico" />
+
+        <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+        <link rel="apple-touch-icon-precomposed" href="favicons/apple-touch-icon-57x57.png">
+        <!-- 57×57px -->
+        <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicons/apple-touch-icon-72x72.png">
+        <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="favicons/apple-touch-icon-76x76.png">
+        <!-- For iPhone with @2× display running iOS ≤ 6: -->
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicons/apple-touch-icon-114x114.png">
+        <!-- For iPhone with @2× display running iOS ≥ 7: -->
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicons/apple-touch-icon-120x120.png">
+        <!-- For iPad with @2× display running iOS ≤ 6: -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicons/apple-touch-icon-144x144.png">
+        <!-- For iPad with @2× display running iOS ≥ 7: -->
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="favicons/apple-touch-icon-152x152.png">
+        <!-- For iPhone 6 Plus with @3× display: -->
+        <link rel="apple-touch-icon-precomposed" sizes="180x180" href="favicons/apple-touch-icon-180x180.png">
+        <!-- For Chrome for Android: -->
+        <link rel="icon" sizes="192x192" href="favicons/favicon-194x194.png">
+        <meta name="msapplication-TileColor" content="#363636">
+        <meta name="msapplication-TileImage" content="favicons/mstile-144x144.png">
+        <meta name="theme-color" content="#363636">
+        <style>
+            #time {
+                width: 100%;
+                font-size: 19vw;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            #scramble {
+                font-size: 3.3vw;
+            }
+
+            body #dt,
+            body #dtc,
+            body .plus2,
+            body .dnf {
+                display: none;
+            }
+
+            body h2 {
+                font-size: 2em !important;
+            }
+
+            .popover {
+                z-index: 100000000;
+            }
+
+            textarea {
+                font-family: monospace !important;
+                width: 100%;
+            }
+
+            @media (min-width: 979px) {
+                body ul.nav li.dropdown:hover > ul.dropdown-menu {
+                    display: block;
+                }
+            }
+        </style>
+        <style id="ccss"></style>
+    </head>
+
+    <body>
+        <nav class="grey darken-3">
+            <div class="nav-wrapper container">
+                <span class="brand-logo">MinimalisTimer - <span class="type"></span><noscript>needs Javascript</noscript></span>
+                <a href="#" data-activates="m" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="modal-trigger" href="#setmod">Settings</a></li>
+                    <li><a id="stats" class="modal-trigger" href="#mod">Statistics</a></li>
+                    <li><a class="modal-trigger" href="#helpmod">Help</a></li>
+                </ul>
+                <ul id="m" class="side-nav">
+                    <li><a class="modal-trigger" href="#setmod">Settings</a></li>
+                    <li><a id="stats" class="modal-trigger" href="#mod">Statistics</a></li>
+                    <li><a class="modal-trigger" href="#helpmod">Help</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container center-align">
+            <br>
+            <br>
+            <h1 id="time">0:0.000</h1>
+            <button id="ins" class="btn-large green accent-3 waves-effect waves-light dis" style="width:100%">Start WCA (15-sec) Inspection</button>
+            <p id="scramble" class="dis"></p>
+        </div>
+        <div id="mod" class="modal modal-fixed-footer bottom-sheet">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Statistics</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" class="form-control" placeholder="In form of 1:2.345 or 12.345" id="et">
+                                <label for="et">Submit time</label>
+                            </div>
+                            <div class="col s12">
+                                <button id="subet" class="btn-flat waves-effect waves-light" type="button">Submit time for this event</button>
+                            </div>
+                        </div>
+                        <p class="help text-success" style="display: none"></p>
+                        <br/>
+                        <button id="reset" class="btn waves-effect waves-light red accent-2">Double-click to delete ALL times for this event</button>
+                        <button id="resl" class="btn waves-effect waves-light red accent-2">Click to delete last time for this event</button>
+                        <hr/>
+                        <p>Times:
+                            <br/><span id="timelist">None submitted.</span></p>
+                        <hr/>
+                        <p>Best Time: <span id="pb">DNF</span></p>
+                        <p>Worst Time: <span id="pw">DNF</span></p>
+                        <hr/>
+                        <p>Current Average of 5: <span id="aof">DNF</span></p>
+                        <p>Current Average of 12: <span id="aot">DNF</span></p>
+                        <p>Current Average of 100: <span id="aoh">DNF</span></p>
+                        <hr/>
+                        <p>Session Average: <span id="sa">DNF</span></p>
+                        <p>Session Mean: <span id="sm">DNF</span></p>
+                    </div>
+                </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
+            </div>
+        </div>
+        <div id="helpmod" class="modal modal-fixed-footer bottom-sheet">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Help</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome to MinimalisTimer - with a <i>twist</i>! Yes, this is an experimental styling of your favorite timer in Materialize. It does look different, huh?</p>
+                    <p>Sadly, this version does not work offline for now. Sorry!</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
+            </div>
+        </div>
+        <div id="setmod" class="modal modal-fixed-footer bottom-sheet">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Settings</h2>
+                </div>
+                <div class="modal-body">
+                    <button class="btn dropdown-button" data-activates="st" style="width:100% !important">Events</button>
+                    <ul id="st" class="dropdown-content" role="menu">
+                        <li><a class="222"><span class="cubing-icon icon-222"></span> 2x2x2</a></li>
+                        <li class="divider"></li>
+                        <li><a class="333"><span class="cubing-icon icon-333"></span> 3x3x3</a></li>
+                        <li><a class="333oh"><span class="cubing-icon icon-333oh"></span> 3x3x3 OH</a></li>
+                        <li><a class="333bf"><span class="cubing-icon icon-333bf"></span> 3x3x3 BLD</a></li>
+                        <li><a class="333ft"><span class="cubing-icon icon-333ft"></span> 3x3x3 Feet</a></li>
+                        <li class="divider"></li>
+                        <li><a class="444"><span class="cubing-icon icon-444"></span> 4x4x4</a></li>
+                        <li><a class="444bf"><span class="cubing-icon icon-444bf"></span> 4x4x4 BLD</a></li>
+                        <li class="divider"></li>
+                        <li><a class="555"><span class="cubing-icon icon-555"></span> 5x5x5</a></li>
+                        <li><a class="555bf"><span class="cubing-icon icon-555bf"></span> 5x5x5 BLD</a></li>
+                        <li class="divider"></li>
+                        <li><a class="666"><span class="cubing-icon icon-666"></span> 6x6x6</a></li>
+                        <li><a class="777"><span class="cubing-icon icon-777"></span> 7x7x7</a></li>
+                        <li class="divider"></li>
+                        <li><a class="minx"><span class="cubing-icon icon-minx"></span> Megaminx</a></li>
+                        <li><a class="pyram"><span class="cubing-icon icon-pyram"></span> Pyraminx</a></li>
+                        <li><a class="skewb"><span class="cubing-icon icon-skewb"></span> Skewb</a></li>
+                        <li><a class="sq1"><span class="cubing-icon icon-sq1"></span> Square-1</a></li>
+                        <li><a class="clock"><span class="cubing-icon icon-clock"></span> Clock</a></li>
+                    </ul>
+                    <hr>
+                    <p><input type="checkbox" id="dmask"><label for="dmask">Display masking</label></p>
+                    <hr>
+                    <div class="input-field">
+                        <label for="csstxt">CSS Editor</label>
+                        <textarea class="materialize-textarea" rows="10" id="csstxt">/* CSS goes here */</textarea>
+                    </div>
+                    <div class="input-field">
+                        <label for="jstxt">JS Editor</label>
+                        <textarea class="materialize-textarea" rows="10" id="jstxt">/* JS goes here */</textarea>
+                    </div>
+                    <button class="waves-effect waves-green btn" id="subcode" width="100%">Submit code</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
+                <br>
+            </div>
+        </div>
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+        <script src='js/scrambler.js'></script>
+        <script src='js/materialtimer.js'></script>
+        <script>
+            $(function(){
+                $(".button-collapse").sideNav();
+                $('.modal-trigger').leanModal();
+            });
+        </script>
+    </body>
+
+</html>
