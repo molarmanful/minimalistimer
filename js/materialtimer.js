@@ -94,7 +94,7 @@ $(document).keyup(function (e) {
             clearInterval(ins);
             timer_obj.start($('#dmask').is(':checked') ? 'Timing' : []._);
             $('.dis').fadeTo('fast', 0.01);
-            $('button, a').blur().attr('disabled', 'true');
+            $('button, a').blur().addClass('disabled');
         } else {
             record = false;
             $('.dis').fadeTo('fast', 1);
@@ -107,7 +107,7 @@ $(document).keyup(function (e) {
         $('#time').text('15');
         var x = 14;
         $('.dis').fadeTo('fast', 0.01);
-        $('button, a').blur().attr('disabled', 'true');
+        $('button, a').blur().addClass('disabled');
         ins = setInterval(function () {
             $('#time').text(x);
             if (x == 0) {
