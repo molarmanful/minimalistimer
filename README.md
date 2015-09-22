@@ -17,3 +17,7 @@ Built on jQuery, Bootstrap, jQuery Cookie, jQuery Finger, Mark 2, Bootswatch the
 ## Pro Tips!
 - On mobile devices, add MinimalisTimer to your homescreen to turn it into an app.
 - On mobile devices, going into landscape mode pulls up the stats.
+
+## Experiments
+- [3SetTimer](https://molarmanful.github.io/3settimer): Built on an older version of MinimalisTimer; 3x3 subset trainer
+- [MinimalisTimer - Material Edition](https://molarmanful.github.io/minimalistimer/material.html): Reskin of MinimalisTimer using Materialize
